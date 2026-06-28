@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-title-ru="Velour — переводчик и ассистент личек для креейторов"
+      data-title-en="Velour — DM translator and assistant for creators"
+      data-desc-ru="Velour: мгновенный перевод личных сообщений, подсказки ответов, Телеграм-пульт и память о фанах для креейторов."
+      data-desc-en="Velour: instant DM translation, reply suggestions, a Telegram remote, and fan memory for creators.">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velour</title>
+<meta name="description" content="Velour — DM translator and assistant for creators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">
+  <span data-lang="ru">К содержимому</span><span data-lang="en">Skip to content</span>
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top">Velour</a>
+    <div class="header-right">
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#features"><span data-lang="ru">Возможности</span><span data-lang="en">Features</span></a>
+        <a href="#editions"><span data-lang="ru">Версии</span><span data-lang="en">Editions</span></a>
+        <a href="#support"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language / Язык">
+        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="kicker">VELOUR</div>
+      <h1>Velour</h1>
+      <p class="lede" data-lang="ru">Говори на языке каждого фана.</p>
+      <p class="lede" data-lang="en">Speak every fan's language.</p>
+      <p data-lang="ru" style="max-width:620px;margin:0 auto 36px">Ассистент личек для креейторов: мгновенный перевод в обе стороны, помощь с ответами в твоём стиле и память о каждом диалоге — чтобы общение было живым, личным и без языкового барьера.</p>
+      <p data-lang="en" style="max-width:620px;margin:0 auto 36px">A DM assistant for creators: instant two-way translation, reply help in your own voice, and memory for every conversation — so every chat stays warm, personal, and barrier-free.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{STORE_URL}}">
+          <span data-lang="ru">Бесплатный переводчик</span><span data-lang="en">Free translator</span>
+        </a>
+        <a class="btn btn-secondary" href="#editions">
+          <span data-lang="ru">Полная версия</span><span data-lang="en">Full version</span>
+        </a>
+        <a class="btn btn-ghost" href="{{TG_SUPPORT_URL}}">
+          <span data-lang="ru">Канал поддержки →</span><span data-lang="en">Support channel →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" id="demo">
+    <div class="container">
+      <div class="section-head">
+        <h2><span data-lang="ru">Демо</span><span data-lang="en">Demo</span></h2>
+        <p data-lang="ru">Видео-демонстрация и скриншоты рабочей панели появятся здесь.</p>
+        <p data-lang="en">A demo video and panel screenshots will go here.</p>
+      </div>
+      <div class="demo-video">
+        <img src="assets/demo-placeholder.svg" alt="Velour demo video placeholder" loading="lazy">
+      </div>
+      <div class="demo-shots">
+        <figure>
+          <img src="assets/screenshot-panel.svg" alt="" loading="lazy">
+          <figcaption><span data-lang="ru">Рабочая панель</span><span data-lang="en">The working panel</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screenshot-telegram.svg" alt="" loading="lazy">
+          <figcaption><span data-lang="ru">Телеграм-пульт</span><span data-lang="en">Telegram remote</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2><span data-lang="ru">Возможности</span><span data-lang="en">Features</span></h2>
+      </div>
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M5 8h14M8 5v14M19 16l-3 3-3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Перевод</span><span data-lang="en">Translation</span></h3>
+          <p data-lang="ru">Двусторонний перевод на лету: входящие на твоём языке, исходящие — на языке фана.</p>
+          <p data-lang="en">Two-way, on-the-fly: read incoming in your language, send in theirs.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-3.8 7A8.5 8.5 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3a8.38 8.38 0 0 1 7 3.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 11l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Подсказки ответов</span><span data-lang="en">Reply suggestions</span></h3>
+          <p data-lang="ru">ИИ предлагает варианты в твоём стиле — выбираешь, правишь и отправляешь сама.</p>
+          <p data-lang="en">AI drafts options in your style — you pick, tweak, and send.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Телеграм-пульт</span><span data-lang="en">Telegram remote</span></h3>
+          <p data-lang="ru">Зеркало диалогов и управление прямо из Телеграма — отвечай, когда тебя нет за компом.</p>
+          <p data-lang="en">Mirror your chats and reply from Telegram — handle DMs even away from the PC.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4V3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Память о фане</span><span data-lang="en">Fan memory</span></h3>
+          <p data-lang="ru">Бот помнит контекст каждого: имена, темы, договорённости — никаких «кто это?».</p>
+          <p data-lang="en">Remembers each fan's context — names, topics, details. No more 'who's this?'.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke-linecap="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Утренний дайджест</span><span data-lang="en">Morning digest</span></h3>
+          <p data-lang="ru">Сводка за ночь: кому ответить, что важно — одним взглядом с утра.</p>
+          <p data-lang="en">An overnight summary: who to reply to, what matters — at a glance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" id="editions">
+    <div class="container">
+      <div class="section-head">
+        <h2><span data-lang="ru">Версии</span><span data-lang="en">Editions</span></h2>
+      </div>
+
+      <div class="edition-grid">
+        <div class="edition-card">
+          <div class="edition-name">Velour Lite</div>
+          <p data-lang="ru">Бесплатно, из Chrome Web Store. Чистый переводчик личек: plug&amp;play, без настройки, без отправки данных на сторонние ИИ — только перевод.</p>
+          <p data-lang="en">Free, from the Chrome Web Store. A pure DM translator: plug &amp; play, no setup, no data sent to AI — translation only.</p>
+          <div class="edition-actions">
+            <a class="btn btn-primary" href="{{STORE_URL}}">
+              <span data-lang="ru">В магазине</span><span data-lang="en">On the Store</span>
+            </a>
+            <span class="btn-soon"><span data-lang="ru">(скоро)</span><span data-lang="en">(coming soon)</span></span>
+          </div>
+        </div>
+
+        <div class="edition-card is-featured">
+          <div class="edition-name">Velour Full</div>
+          <p data-lang="ru">Self-hosted, всё включено: перевод + подсказки + Телеграм + память + дайджест. Бесплатно, ставится в режиме разработчика.</p>
+          <p data-lang="en">Self-hosted, everything: translation + suggestions + Telegram + memory + digest. Free, installs in developer mode.</p>
+          <div class="edition-actions">
+            <a class="btn btn-primary" href="#install">
+              <span data-lang="ru">Как установить</span><span data-lang="en">How to install</span>
+            </a>
+            <a class="btn btn-secondary" href="{{TG_SUPPORT_URL}}">
+              <span data-lang="ru">Канал поддержки</span><span data-lang="en">Support</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col"><span data-lang="ru">Функция</span><span data-lang="en">Feature</span></th>
+            <th scope="col">Lite</th>
+            <th scope="col">Full</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row"><span data-lang="ru">Перевод</span><span data-lang="en">Translation</span></th><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><th scope="row"><span data-lang="ru">Подсказки ИИ</span><span data-lang="en">AI suggestions</span></th><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><th scope="row">Telegram</th><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><th scope="row"><span data-lang="ru">Память</span><span data-lang="en">Memory</span></th><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><th scope="row"><span data-lang="ru">Дайджест</span><span data-lang="en">Digest</span></th><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><th scope="row"><span data-lang="ru">Из магазина</span><span data-lang="en">From the Store</span></th><td class="yes">✓</td><td class="no">—</td></tr>
+          <tr><th scope="row"><span data-lang="ru">Свои ключи ИИ</span><span data-lang="en">Your own AI keys</span></th><td class="no">—</td><td class="yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="container">
+      <div class="section-head">
+        <h2><span data-lang="ru">Установка Full</span><span data-lang="en">Install Full</span></h2>
+      </div>
+
+      <ol class="install-steps" data-lang="ru">
+        <li>Скачай архив (ссылка из канала поддержки).</li>
+        <li>Распакуй архив.</li>
+        <li><code>chrome://extensions</code> → включи «Режим разработчика».</li>
+        <li>«Загрузить распакованное» → выбери папку.</li>
+        <li>Готово — открой Fansly → Messages.</li>
+      </ol>
+      <ol class="install-steps" data-lang="en">
+        <li>Download the archive (link in the support channel).</li>
+        <li>Unzip it.</li>
+        <li>Go to <code>chrome://extensions</code> → enable "Developer mode".</li>
+        <li>Click "Load unpacked" → select the folder.</li>
+        <li>Done — open Fansly → Messages.</li>
+      </ol>
+
+      <p class="install-help">
+        <span data-lang="ru">Нужна помощь? Заходи в <a href="{{TG_SUPPORT_URL}}">канал поддержки</a>.</span>
+        <span data-lang="en">Need help? Join the <a href="{{TG_SUPPORT_URL}}">support channel</a>.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt" id="support">
+    <div class="container">
+      <div class="section-head">
+        <h2><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></h2>
+      </div>
+
+      <div class="support-cta">
+        <a class="btn btn-primary" href="{{TG_SUPPORT_URL}}">
+          <span data-lang="ru">Канал поддержки в Телеграме</span><span data-lang="en">Telegram support channel</span>
+        </a>
+      </div>
+
+      <div class="faq">
+
+        <details>
+          <summary><span data-lang="ru">Это безопасно для аккаунта?</span><span data-lang="en">Is it safe for my account?</span></summary>
+          <p data-lang="ru">Velour помогает тебе, а не действует за тебя: подсказки ты отправляешь сама. Никакой накрутки.</p>
+          <p data-lang="en">Velour helps you, it doesn't act for you: you send every suggestion yourself. No automation, no bot activity.</p>
+        </details>
+
+        <details>
+          <summary><span data-lang="ru">Вы храните мои переписки?</span><span data-lang="en">Do you store my conversations?</span></summary>
+          <p data-lang="ru">Нет. Lite — только перевод транзитом. Настройки и заметки — локально в браузере. Серверов у нас нет.</p>
+          <p data-lang="en">No. Lite only translates in transit. Settings and notes are stored locally in your browser. We run no servers.</p>
+        </details>
+
+        <details>
+          <summary><span data-lang="ru">Какие языки?</span><span data-lang="en">Which languages are supported?</span></summary>
+          <p data-lang="ru">Перевод — десятки языков (Google/DeepL). Интерфейс: RU, EN, ES, DE, FR.</p>
+          <p data-lang="en">Translation covers dozens of languages (Google/DeepL). Interface: RU, EN, ES, DE, FR.</p>
+        </details>
+
+        <details>
+          <summary><span data-lang="ru">Сколько стоит?</span><span data-lang="en">How much does it cost?</span></summary>
+          <p data-lang="ru">Lite — бесплатно. Full — бесплатно (self-hosted). Поддержать проект можно через канал.</p>
+          <p data-lang="en">Lite is free. Full is free too (self-hosted). You can support the project through the channel.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Velour</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="{{TG_SUPPORT_URL}}"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+        <a href="{{STORE_URL}}">Store</a>
+      </div>
+    </div>
+    <p class="footer-disclaimer" data-lang="ru">Velour — независимый инструмент и не аффилирован с Fansly и не одобрен ею.</p>
+    <p class="footer-disclaimer" data-lang="en">Velour is an independent tool and is not affiliated with or endorsed by Fansly.</p>
+  </div>
+</footer>
+
+<script src="lang.js" defer></script>
+</body>
+</html>
