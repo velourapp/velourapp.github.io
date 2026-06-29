@@ -182,11 +182,11 @@ html[lang="en"] [data-lang="ru"] { display: none; }
 }
 .btn-ghost:hover { color: var(--text); }
 
-.btn-soon {
-  font-size: 11px;
-  font-weight: 500;
+.btn-pending {
+  background: transparent;
+  border: 1px dashed var(--border-strong);
   color: var(--text-muted);
-  margin-left: 2px;
+  cursor: default;
 }
 
 /* ── Hero ──────────────────────────────────────────────────── */
