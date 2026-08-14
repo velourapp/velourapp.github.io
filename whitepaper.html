@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-title-ru="Как Velour обращается с данными — техническая записка"
+      data-title-en="How Velour handles data — technical note"
+      data-desc-ru="Что остаётся в браузере, что уходит наружу и зачем, чего мы не делаем — и как проверить каждое из этих утверждений самостоятельно."
+      data-desc-en="What stays in your browser, what leaves and why, what we do not do — and how to verify every claim yourself.">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Velour handles data — Velour</title>
+<meta name="description" content="What stays in your browser, what leaves, and how to verify it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .wp-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; }
+  .wp-table th, .wp-table td { text-align: left; padding: .6rem .55rem; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; font-size: .93em; }
+  .wp-table th { font-weight: 600; }
+  .wp-scroll { overflow-x: auto; }
+  .wp-note { border-left: 3px solid rgba(233,30,140,.55); padding: .1rem 0 .1rem 1rem; margin: 1.2rem 0; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">
+  <span data-lang="ru">К содержимому</span><span data-lang="en">Skip to content</span>
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">Velour</a>
+    <div class="header-right">
+      <a class="back-link" href="index.html">
+        ← <span data-lang="ru">На главную</span><span data-lang="en">Back to home</span>
+      </a>
+      <div class="lang-switch" role="group" aria-label="Language / Язык">
+        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <article class="policy">
+      <h1><span data-lang="ru">Как Velour обращается с данными</span><span data-lang="en">How Velour handles data</span></h1>
+      <p class="effective-date">
+        <span data-lang="ru">Техническая записка · 14.08.2026 · дополняет <a href="privacy-full.html">политику конфиденциальности</a></span>
+        <span data-lang="en">Technical note · 14 August 2026 · companion to the <a href="privacy-full.html">privacy policy</a></span>
+      </p>
+
+      <!-- EN -->
+      <div data-lang="en">
+        <p>This note is for creators deciding whether to trust us with their inbox, and for agencies doing due diligence before putting a tool in front of their talent. It is deliberately specific: every claim below names what to open and where to look, so you can check it rather than take our word for it.</p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li><strong>Your content stays on your machine.</strong> Catalog media, tags, subscriber notes, dossiers, CRM figures and chat history live in your browser's own storage and are never uploaded to us.</li>
+          <li><strong>Text leaves only to be processed and returned.</strong> Translation and AI drafting are network services; the message text goes out, the result comes back. Nothing is stored on our side.</li>
+          <li><strong>Content tagging runs entirely on your device.</strong> The catalog's automatic tags are produced by a model that runs inside your browser. Your photos and videos are never uploaded anywhere for analysis.</li>
+        </ul>
+
+        <h2>What stays in your browser</h2>
+        <p>All of it lives in <code>chrome.storage.local</code> and the extension's own IndexedDB, on your disk:</p>
+        <ul>
+          <li>Your settings, your style profile, and <strong>all API keys and tokens</strong> you enter.</li>
+          <li>Subscriber dossiers, notes, briefs, and the local cache of conversation history.</li>
+          <li>CRM data: subscriptions, purchases, earnings figures, outreach lists.</li>
+          <li>Your content catalog, its preview thumbnails, and the automatic tags.</li>
+          <li>The tagging model's weights, downloaded once and cached.</li>
+        </ul>
+        <p>We deliberately do not use <code>chrome.storage.sync</code>. It would upload the settings object — including your API keys — to Google's servers. Transferring your setup between machines is done with an export file instead, and that export strips secrets by default.</p>
+
+        <h2>What leaves, and why</h2>
+        <div class="wp-scroll">
+        <table class="wp-table">
+          <thead><tr><th>What</th><th>Where to</th><th>When</th><th>Stored there?</th></tr></thead>
+          <tbody>
+            <tr><td>Message text</td><td>Google Translate, or DeepL</td><td>Automatically, as you read a chat</td><td>Per their terms</td></tr>
+            <tr><td>Conversation excerpt, dossier facts, your style profile</td><td>Your chosen AI provider — or ours, via our proxy</td><td>When you ask for a draft or advice</td><td>Per their terms; not on our proxy</td></tr>
+            <tr><td>Full text of mirrored chats</td><td><strong>Your own</strong> Telegram bot and group</td><td>Automatically, if you enable the mirror</td><td>Yes — it stays in Telegram</td></tr>
+            <tr><td>Error codes and counters — no text, no nicknames</td><td>Our server</td><td>Only if you turn diagnostics on (off by default)</td><td>30 days</td></tr>
+            <tr><td>Nothing but a download request</td><td>Our server, or Hugging Face</td><td>Once, when you enable auto-tagging</td><td>—</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Media files never leave. When a chat contains a photo or video, the Telegram mirror sends a marker such as <code>[photo]</code> — never the file itself.</p>
+
+        <h2>Two modes, two different pictures</h2>
+        <p><strong>Your own API keys.</strong> Text goes straight from your browser to the provider under your account. We are not in the path and cannot see it, even in principle.</p>
+        <p><strong>Our proxy (with a licence).</strong> So you don't have to obtain provider keys, requests go through our server. It forwards each request and returns the answer. It does <strong>not</strong> store the content: what gets written down is the provider name, the model, the last 8 characters of your licence key, token counts and cost — the numbers needed for billing. Message text is never logged and never written to our database. Our web server does keep ordinary access logs, which include IP addresses.</p>
+
+        <h2>Hiding names from the AI</h2>
+        <p>There is a setting — <em>"Hide nicknames from the AI"</em> — that replaces the fan's nickname and your own name with placeholders before the prompt is sent, and restores them in the reply. It covers reply drafting and coaching advice.</p>
+        <div class="wp-note">
+          <p>Be clear about what this does and does not do. It removes the <em>identity</em> from the prompt, not the <em>content</em>: the conversation text still goes to the provider. And it only knows the nickname from the chat header and your own name — if a fan types his own name in a message, or if you pasted someone's nickname into your style examples, that stays. It is off by default, because addressing someone by name is part of how flirting reads.</p>
+        </div>
+
+        <h2>What we do not do</h2>
+        <ul>
+          <li><strong>No analytics, no trackers, no advertising pixels.</strong> Not one, in any build.</li>
+          <li><strong>We do not sell, rent, or share your data</strong>, and we do not profile you or your fans.</li>
+          <li><strong>We never send a message on your behalf automatically.</strong> Every reply is sent by you — from the panel or from your Telegram remote.</li>
+          <li><strong>We do not train anything on your conversations.</strong> We have no model of our own and no copy of your data to train it on.</li>
+          <li><strong>The free translator build contains no AI code at all.</strong> It is not switched off — it is physically removed at build time, and the build cannot reach any AI provider because those addresses are absent from its manifest.</li>
+        </ul>
+
+        <h2>How to check all of this yourself</h2>
+        <ol>
+          <li><strong>Read the host list.</strong> Unzip the build and open <code>manifest.json</code>. The <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There is no hidden destination, because there cannot be one.</li>
+          <li><strong>Confirm there is no remote code.</strong> The extension is Manifest V3, which forbids loading and executing code from the network. What is in the archive is what runs. The tagging model's weights are data for a fixed program, not code.</li>
+          <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the hosts from step 1.</li>
+          <li><strong>Verify the archive.</strong> Every build is published with its SHA-256 checksum, and our archives are built reproducibly — the same sources produce a byte-identical file. See the <a href="downloads.html">downloads page</a>.</li>
+          <li><strong>Search for trackers.</strong> Grep the unpacked build for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find nothing.</li>
+        </ol>
+
+        <h2>The honest limits</h2>
+        <p>A privacy claim is only useful if it also says where it stops:</p>
+        <ul>
+          <li><strong>Translation always happens.</strong> It is the one flow that runs whether or not you use anything else, and the message text does go to a translation provider. With a licence or your own DeepL key that provider is DeepL, under its API terms; otherwise it is Google's public translation endpoint, which carries no contractual data terms.</li>
+          <li><strong>The Telegram mirror is permanent.</strong> Once a conversation is mirrored into your group, it is in Telegram — deleting your data in Velour does not remove it from there. And anyone you add to that group can read it.</li>
+          <li><strong>We cannot vouch for the AI providers.</strong> What they do with a request is governed by their terms, not ours. If that matters to you, run the local model option instead — it never leaves your machine.</li>
+          <li><strong>Local means local, not encrypted.</strong> Your data sits in your browser profile. Anyone with access to your unlocked computer can read it. That is a property of browser extensions in general, not something we can fix.</li>
+        </ul>
+
+        <h2>Found a problem?</h2>
+        <p>If you believe something here is wrong, or you have found a security issue, write to <strong>security@velourff.com</strong>. Our disclosure policy is on the <a href="security.html">security page</a>.</p>
+      </div>
+
+      <!-- RU -->
+      <div data-lang="ru">
+        <p>Эта записка — для криейторов, которые решают, доверить ли нам свои личку, и для агентств, которые проверяют инструмент перед тем, как дать его своим моделям. Она намеренно конкретная: под каждым утверждением написано, что открыть и куда посмотреть, чтобы проверить, а не поверить на слово.</p>
+
+        <h2>Коротко</h2>
+        <ul>
+          <li><strong>Твой контент остаётся на твоей машине.</strong> Медиа каталога, теги, заметки по подписчикам, досье, цифры CRM и история переписки лежат в хранилище браузера и нам не загружаются.</li>
+          <li><strong>Текст уходит только чтобы вернуться обработанным.</strong> Перевод и генерация ответов — сетевые сервисы: текст уходит, результат приходит. На нашей стороне ничего не сохраняется.</li>
+          <li><strong>Разметка контента идёт целиком на твоём устройстве.</strong> Автотеги каталога считает модель, которая работает внутри браузера. Твои фото и видео никуда не отправляются для анализа.</li>
+        </ul>
+
+        <h2>Что остаётся в браузере</h2>
+        <p>Всё это живёт в <code>chrome.storage.local</code> и в собственной IndexedDB расширения, на твоём диске:</p>
+        <ul>
+          <li>Настройки, профиль стиля и <strong>все ключи и токены</strong>, которые ты вводишь.</li>
+          <li>Досье, заметки и брифы по подписчикам, локальный кеш истории переписки.</li>
+          <li>Данные CRM: подписки, покупки, суммы из кошелька, списки для обращения.</li>
+          <li>Каталог контента, превью и автотеги.</li>
+          <li>Веса модели разметки — скачиваются один раз и кешируются.</li>
+        </ul>
+        <p>Мы сознательно не используем <code>chrome.storage.sync</code>: он отправил бы объект настроек — вместе с твоими API-ключами — на серверы Google. Перенос на другую машину делается файлом экспорта, и из него секреты по умолчанию вырезаются.</p>
+
+        <h2>Что уходит и зачем</h2>
+        <div class="wp-scroll">
+        <table class="wp-table">
+          <thead><tr><th>Что</th><th>Куда</th><th>Когда</th><th>Хранится там?</th></tr></thead>
+          <tbody>
+            <tr><td>Текст сообщения</td><td>Google Translate или DeepL</td><td>Автоматически, когда читаешь чат</td><td>По их условиям</td></tr>
+            <tr><td>Фрагмент переписки, факты досье, профиль стиля</td><td>Выбранный тобой ИИ-провайдер — или наш, через прокси</td><td>Когда просишь черновик или совет</td><td>По их условиям; на нашем прокси — нет</td></tr>
+            <tr><td>Полный текст зеркалируемых диалогов</td><td><strong>Твой собственный</strong> бот и группа в Телеграме</td><td>Автоматически, если включишь зеркало</td><td>Да — остаётся в Телеграме</td></tr>
+            <tr><td>Коды ошибок и счётчики — ни текста, ни ников</td><td>Наш сервер</td><td>Только если включишь диагностику (по умолчанию выключена)</td><td>30 дней</td></tr>
+            <tr><td>Ничего, кроме запроса на скачивание</td><td>Наш сервер или Hugging Face</td><td>Один раз, при включении автотегов</td><td>—</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Медиафайлы не уходят никогда. Если в переписке есть фото или видео, в зеркало Телеграма уходит пометка вида <code>[фото]</code> — сам файл не передаётся.</p>
+
+        <h2>Два режима — две разные картины</h2>
+        <p><strong>Свои API-ключи.</strong> Текст идёт из твоего браузера прямо к провайдеру под твоим аккаунтом. Нас в этом пути нет, и увидеть его мы не можем в принципе.</p>
+        <p><strong>Наш прокси (по лицензии).</strong> Чтобы не заводить ключи провайдеров, запросы идут через наш сервер: он передаёт запрос дальше и возвращает ответ. Содержимое он <strong>не сохраняет</strong>. Записывается имя провайдера, модель, последние 8 символов лицензионного ключа, количество токенов и стоимость — цифры, нужные для биллинга. Текст сообщений не пишется ни в лог, ни в базу. При этом веб-сервер ведёт обычные журналы доступа, а в них есть IP-адреса.</p>
+
+        <h2>Как скрыть имена от ИИ</h2>
+        <p>В настройках есть галка <em>«Скрывать ники от ИИ»</em>: ник фана и твоё имя заменяются плейсхолдерами перед отправкой промпта и восстанавливаются в ответе. Работает для генерации ответов и для советов.</p>
+        <div class="wp-note">
+          <p>Скажем прямо, что это даёт, а чего нет. Убирается <em>личность</em> из промпта, но не <em>содержание</em>: текст переписки провайдер всё равно получает. И знает эта галка только ник из шапки чата и твоё имя — если фан сам назвал себя в сообщении или если чужой ник попал в твои примеры стиля, они останутся. По умолчанию галка выключена: обращение по имени — часть того, как читается флирт.</p>
+        </div>
+
+        <h2>Чего мы не делаем</h2>
+        <ul>
+          <li><strong>Никакой аналитики, трекеров и рекламных пикселей.</strong> Ни одного, ни в одной сборке.</li>
+          <li><strong>Не продаём, не сдаём и не передаём твои данные</strong>, не профилируем ни тебя, ни твоих фанов.</li>
+          <li><strong>Никогда не отправляем сообщения за тебя автоматически.</strong> Каждый ответ отправляешь ты — из панели или со своего пульта в Телеграме.</li>
+          <li><strong>Не обучаем ничего на твоих переписках.</strong> У нас нет ни своей модели, ни копии твоих данных, на которых её можно было бы учить.</li>
+          <li><strong>В бесплатной сборке-переводчике кода ИИ нет вообще.</strong> Он не выключен — он физически вырезан при сборке, и обратиться к ИИ-провайдерам она не может, потому что этих адресов нет в её манифесте.</li>
+        </ul>
+
+        <h2>Как проверить всё это самому</h2>
+        <ol>
+          <li><strong>Прочитай список хостов.</strong> Распакуй сборку и открой <code>manifest.json</code>. Массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм так устроен.</li>
+          <li><strong>Убедись, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в архиве — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
+          <li><strong>Посмотри трафик.</strong> Открой DevTools сервис-воркера расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 1.</li>
+          <li><strong>Сверь архив.</strong> Каждая сборка публикуется вместе с её SHA-256, и архивы собираются воспроизводимо — одни и те же исходники дают побайтово одинаковый файл. См. <a href="downloads.html">страницу загрузки</a>.</li>
+          <li><strong>Поищи трекеры.</strong> Прогрепай распакованную сборку на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Не найдёшь ничего.</li>
+        </ol>
+
+        <h2>Честные границы</h2>
+        <p>Заявление о приватности чего-то стоит, только если сказано, где оно заканчивается:</p>
+        <ul>
+          <li><strong>Перевод происходит всегда.</strong> Это единственный поток, который работает независимо от того, пользуешься ли ты остальным, и текст сообщения действительно уходит переводчику. С лицензией или со своим ключом DeepL это DeepL с его условиями для API; иначе — публичный переводческий эндпоинт Google, у которого никаких договорных условий по данным нет.</li>
+          <li><strong>Зеркало в Телеграме необратимо.</strong> Отзеркаленный диалог уже в Телеграме — стирание данных в Velour оттуда его не уберёт. И читать его может любой, кого ты добавишь в эту группу.</li>
+          <li><strong>За ИИ-провайдеров мы не ручаемся.</strong> Что они делают с запросом, определяют их условия, а не наши. Если для тебя это принципиально — работай с локальной моделью: она не покидает твою машину.</li>
+          <li><strong>Локально — значит локально, а не зашифровано.</strong> Данные лежат в профиле твоего браузера. Кто имеет доступ к твоему разлоченному компьютеру, тот их прочитает. Это свойство браузерных расширений вообще, а не то, что мы можем исправить.</li>
+        </ul>
+
+        <h2>Нашёл ошибку?</h2>
+        <p>Если считаешь, что здесь что-то написано неверно, или нашёл проблему с безопасностью — пиши на <strong>security@velourff.com</strong>. Политика раскрытия — на <a href="security.html">странице безопасности</a>.</p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Velour</div>
+      <div class="footer-links">
+        <a href="index.html"><span data-lang="ru">Главная</span><span data-lang="en">Home</span></a>
+        <a href="privacy-full.html"><span data-lang="ru">Приватность</span><span data-lang="en">Privacy</span></a>
+        <a href="security.html"><span data-lang="ru">Безопасность</span><span data-lang="en">Security</span></a>
+        <a href="terms.html"><span data-lang="ru">Условия</span><span data-lang="en">Terms</span></a>
+        <a href="https://t.me/velourapp"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="lang.js" defer></script>
+</body>
+</html>

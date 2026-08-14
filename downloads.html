@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Сгенерировано release.mjs. Правки руками потеряются при следующем релизе — меняй шаблон в release.mjs. -->
+<html lang="en"
+      data-title-ru="Скачать и проверить — Velour"
+      data-title-en="Download and verify — Velour"
+      data-desc-ru="Ссылки на сборки Velour и SHA-256 каждой из них: как убедиться, что скачанный файл не подменён."
+      data-desc-en="Velour builds with the SHA-256 of each: how to check the file you downloaded was not tampered with.">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download and verify — Velour</title>
+<meta name="description" content="Velour builds and their SHA-256 checksums.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .dl-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  .dl-table th, .dl-table td { text-align: left; padding: .7rem .6rem; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; }
+  .dl-file { opacity: .7; font-size: .85em; margin-top: .2rem; }
+  .dl-hash { font-size: .78em; word-break: break-all; }
+  .dl-scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">
+  <span data-lang="ru">К содержимому</span><span data-lang="en">Skip to content</span>
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">Velour</a>
+    <div class="header-right">
+      <a class="back-link" href="index.html">
+        ← <span data-lang="ru">На главную</span><span data-lang="en">Back to home</span>
+      </a>
+      <div class="lang-switch" role="group" aria-label="Language / Язык">
+        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <article class="policy">
+      <h1><span data-lang="ru">Скачать и проверить</span><span data-lang="en">Download and verify</span></h1>
+      <p class="effective-date">
+        <span data-lang="ru">Версия 1.1.0</span><span data-lang="en">Version 1.1.0</span>
+      </p>
+
+      <p>
+        <span data-lang="ru">Рядом с каждой сборкой — её контрольная сумма SHA-256. Сверь её после скачивания: совпала — файл ровно тот, что мы выложили; не совпала — файл повреждён при скачивании или подменён, устанавливать его не надо.</span>
+        <span data-lang="en">Each build is listed with its SHA-256 checksum. Check it after downloading: if it matches, the file is exactly the one we published; if it does not, the file was corrupted in transit or tampered with — do not install it.</span>
+      </p>
+
+      <div class="dl-scroll">
+      <table class="dl-table">
+        <thead>
+          <tr>
+            <th><span data-lang="ru">Сборка</span><span data-lang="en">Build</span></th>
+            <th>SHA-256</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="files/velour-fansly-1.1.0.zip"><span data-lang="ru">Velour для Fansly (полная версия)</span><span data-lang="en">Velour for Fansly (full version)</span></a>
+            <div class="dl-file">velour-fansly-1.1.0.zip · 6.06 <span data-lang="ru">МБ</span><span data-lang="en">MB</span></div>
+          </td>
+          <td><code class="dl-hash">8e25fe9ffc0d50b333b4320eacfeed4e4e62924a702b973e6b4ab291c5bb96df</code></td>
+        </tr>
+        <tr>
+          <td>
+            <a href="files/velour-fansly-lite-1.1.0.zip"><span data-lang="ru">Velour Lite для Fansly (переводчик)</span><span data-lang="en">Velour Lite for Fansly (translator)</span></a>
+            <div class="dl-file">velour-fansly-lite-1.1.0.zip · 0.20 <span data-lang="ru">МБ</span><span data-lang="en">MB</span></div>
+          </td>
+          <td><code class="dl-hash">709f8bec8d3b60ce82f80bfdfef1eb9bd8736b94d2d750685b3bbcfe75bbf358</code></td>
+        </tr>
+        <tr>
+          <td>
+            <a href="files/velour-onlyfans-1.1.0.zip"><span data-lang="ru">Velour для OnlyFans (полная версия)</span><span data-lang="en">Velour for OnlyFans (full version)</span></a>
+            <div class="dl-file">velour-onlyfans-1.1.0.zip · 6.06 <span data-lang="ru">МБ</span><span data-lang="en">MB</span></div>
+          </td>
+          <td><code class="dl-hash">397db57d84e5fbbad38e2f8257a451a1ec2b6a48dbd6c4e33d0fb2e3070ee4c7</code></td>
+        </tr>
+        <tr>
+          <td>
+            <a href="files/velour-onlyfans-lite-1.1.0.zip"><span data-lang="ru">Velour Lite для OnlyFans (переводчик)</span><span data-lang="en">Velour Lite for OnlyFans (translator)</span></a>
+            <div class="dl-file">velour-onlyfans-lite-1.1.0.zip · 0.20 <span data-lang="ru">МБ</span><span data-lang="en">MB</span></div>
+          </td>
+          <td><code class="dl-hash">62ac6f187692008fb11fc8056e71db7aa8992300f349fce0d21f4c7923fa2a31</code></td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2><span data-lang="ru">Как сверить — Windows</span><span data-lang="en">How to check — Windows</span></h2>
+      <p>
+        <span data-lang="ru">Открой PowerShell в папке со скачанным файлом и выполни (подставь своё имя файла):</span>
+        <span data-lang="en">Open PowerShell in the folder with the downloaded file and run (substitute your file name):</span>
+      </p>
+      <pre><code>Get-FileHash .\velour-fansly-1.1.0.zip -Algorithm SHA256 | Format-List</code></pre>
+      <p>
+        <span data-lang="ru">В строке <code>Hash</code> будет 64 символа. Сравни их со строкой из таблицы выше — регистр не важен. Проще всего скопировать оба значения и сравнить поиском, а не глазами.</span>
+        <span data-lang="en">The <code>Hash</code> line contains 64 characters. Compare them with the row in the table above — case does not matter. Easiest is to copy both values and compare them with a search rather than by eye.</span>
+      </p>
+
+      <h2><span data-lang="ru">macOS и Linux</span><span data-lang="en">macOS and Linux</span></h2>
+      <pre><code>shasum -a 256 velour-fansly-1.1.0.zip</code></pre>
+
+      <h2><span data-lang="ru">Что эта проверка даёт, а что нет</span><span data-lang="en">What this check does and does not prove</span></h2>
+      <p>
+        <span data-lang="ru"><strong>Даёт:</strong> уверенность, что скачанный архив совпадает с тем, который мы собрали и опубликовали — то есть по дороге его не повредили и не подменили.</span>
+        <span data-lang="en"><strong>It does prove:</strong> that the archive you downloaded is the same one we built and published — it was not corrupted or swapped along the way.</span>
+      </p>
+      <p>
+        <span data-lang="ru"><strong>Не даёт:</strong> это не «защита от взлома» и не аудит содержимого. Хэш подтверждает целостность файла, а не безопасность кода внутри него. Что именно расширение может делать с сетью, видно в другом месте — в <code>manifest.json</code> внутри архива: там полный список хостов, куда оно вообще способно обратиться.</span>
+        <span data-lang="en"><strong>It does not prove:</strong> this is not "hack protection" and not a content audit. A checksum confirms file integrity, not the safety of the code inside. What the extension can do on the network is visible elsewhere — in <code>manifest.json</code> inside the archive, which lists every host it is able to contact at all.</span>
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Velour</div>
+      <div class="footer-links">
+        <a href="index.html"><span data-lang="ru">Главная</span><span data-lang="en">Home</span></a>
+        <a href="privacy-full.html"><span data-lang="ru">Приватность</span><span data-lang="en">Privacy</span></a>
+        <a href="terms.html"><span data-lang="ru">Условия</span><span data-lang="en">Terms</span></a>
+        <a href="https://t.me/velourapp"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="lang.js" defer></script>
+</body>
+</html>
