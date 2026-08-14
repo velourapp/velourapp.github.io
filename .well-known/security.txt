@@ -1,0 +1,10 @@
+# Velour — контакт по безопасности / security contact
+# Политика раскрытия: https://velourff.com/security.html
+# Disclosure policy:   https://velourff.com/security.html
+
+Contact: mailto:security@velourff.com
+Expires: 2027-08-01T00:00:00.000Z
+Preferred-Languages: ru, en
+Policy: https://velourff.com/security.html
+Canonical: https://velourff.com/.well-known/security.txt
+Canonical: https://velourapp.github.io/.well-known/security.txt

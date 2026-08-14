@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-title-ru="Сообщить об уязвимости — Velour"
+      data-title-en="Report a vulnerability — Velour"
+      data-desc-ru="Как сообщить о найденной уязвимости в Velour: куда писать, за какое время отвечаем, что входит в область проверки и что уязвимостью не считается."
+      data-desc-en="How to report a security vulnerability in Velour: where to write, our response times, what is in scope and what we do not treat as a vulnerability.">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report a vulnerability — Velour</title>
+<meta name="description" content="Velour vulnerability disclosure policy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">
+  <span data-lang="ru">К содержимому</span><span data-lang="en">Skip to content</span>
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">Velour</a>
+    <div class="header-right">
+      <a class="back-link" href="index.html">
+        ← <span data-lang="ru">На главную</span><span data-lang="en">Back to home</span>
+      </a>
+      <div class="lang-switch" role="group" aria-label="Language / Язык">
+        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <article class="policy">
+      <h1><span data-lang="ru">Сообщить об уязвимости</span><span data-lang="en">Report a vulnerability</span></h1>
+      <p class="effective-date"><span data-lang="ru">Обновлено: 14.08.2026</span><span data-lang="en">Updated: 14 August 2026</span></p>
+
+      <!-- EN -->
+      <div data-lang="en">
+        <p>Velour handles private conversations of adult creators. If you have found something that puts that data at risk, we want to hear about it, and we would rather hear it from you than from someone who abuses it.</p>
+
+        <h2>How to report</h2>
+        <p>Email <strong>security@velourff.com</strong>. Write in Russian or English, whichever you prefer. Machine-readable contact details are published at <a href="/.well-known/security.txt">/.well-known/security.txt</a> (RFC 9116).</p>
+        <p>A useful report contains: what you found, the steps to reproduce it, the build and version you tested (the version is in <code>manifest.json</code>), and what an attacker gains — what data becomes readable or what action becomes possible.</p>
+        <p><strong>Please do not attach real fan data.</strong> No message screenshots, no explicit content, no other people's nicknames or payment details. Redact them, or describe the shape of the data instead. We cannot accept a report that requires us to read someone's private correspondence to understand it.</p>
+
+        <h2>What we commit to</h2>
+        <ul>
+          <li><strong>First reply within 5 business days.</strong> Velour is built by a very small team, and we would rather promise a deadline we can keep than an impressive one we cannot.</li>
+          <li>A status update at least every 14 days while the issue is open.</li>
+          <li>An honest assessment: if we consider the finding low-risk or out of scope, we will tell you so and explain why, instead of going quiet.</li>
+          <li>If you want credit, we will name you when the fix ships. If you prefer to stay anonymous, that is fine too.</li>
+        </ul>
+        <p>Fix timelines depend on severity. Anything that exposes creators' or fans' data is treated as urgent; cosmetic issues are queued with everything else.</p>
+
+        <h2>We do not run a bug bounty</h2>
+        <p>We have no paid reward programme, and we would rather say that plainly than let you spend a weekend on the assumption that we do. What we can offer is a fast, honest response and public credit.</p>
+
+        <h2>In scope</h2>
+        <ul>
+          <li>The Velour browser extension, all builds (full and Lite, Fansly and OnlyFans).</li>
+          <li><code>velourff.com</code> and its mirror <code>velourapp.github.io</code>.</li>
+          <li>Our API proxy: <code>api.velourff.com</code>.</li>
+          <li>Our Telegram billing bot.</li>
+        </ul>
+
+        <h2>Not vulnerabilities</h2>
+        <p>These are either intentional design decisions or issues we cannot act on. Reporting them is not useful to either of us:</p>
+        <ul>
+          <li><strong>Vulnerabilities in Fansly, OnlyFans, Telegram, or the AI and translation providers themselves.</strong> Report those to them — we cannot fix another platform.</li>
+          <li><strong>The extension's broad host permissions.</strong> This is a documented design decision: the full list of hosts it can reach is in <code>manifest.json</code> and explained in our privacy documentation.</li>
+          <li><strong>API keys and data stored in <code>chrome.storage.local</code>.</strong> That is where they are meant to live — on the user's own device. Someone with access to an unlocked browser profile has already won; that is not a flaw in Velour.</li>
+          <li>Missing security headers on the static site with no demonstrated impact.</li>
+          <li>Self-XSS, or anything that requires the victim to paste attacker-supplied code into their own console.</li>
+          <li>Automated scanner output with no working proof of concept.</li>
+          <li>Volumetric attacks (DoS/DDoS), or brute-forcing our rate limits.</li>
+          <li>Social engineering against us or our users, and physical access attacks.</li>
+          <li>Outdated library versions with no demonstrated exploitation path in our code.</li>
+          <li>The content an AI model returns. Model output is not under our control, and a distasteful reply is not a security issue.</li>
+        </ul>
+
+        <h2>Rules, and our commitment to you</h2>
+        <p>While researching, please:</p>
+        <ul>
+          <li>Test only against your own account and your own installation.</li>
+          <li>Never read, modify, or download other people's data. If you stumble into it, stop immediately and tell us what happened.</li>
+          <li>Do not degrade the service for anyone else.</li>
+          <li>Give us 90 days before publishing. If we can fix it sooner, we will, and we will not ask you to wait longer than needed.</li>
+        </ul>
+        <p>If you follow these rules in good faith, we will not pursue legal action against you over your research, and we will make it clear to any third party that your work was authorised. If something in these rules gets in the way of a legitimate finding, write to us first and ask.</p>
+
+        <h2>Encryption</h2>
+        <p>We do not currently publish a PGP key. If you need to send something sensitive encrypted, email us first and we will arrange a channel.</p>
+      </div>
+
+      <!-- RU -->
+      <div data-lang="ru">
+        <p>Через Velour проходит личная переписка криейторов adult-контента. Если ты нашёл что-то, что ставит эти данные под удар, мы хотим об этом знать — и предпочтём услышать это от тебя, а не от того, кто этим воспользуется.</p>
+
+        <h2>Как сообщить</h2>
+        <p>Пиши на <strong>security@velourff.com</strong>, по-русски или по-английски — как удобнее. Машиночитаемые контакты опубликованы по адресу <a href="/.well-known/security.txt">/.well-known/security.txt</a> (RFC 9116).</p>
+        <p>Полезное сообщение содержит: что нашёл, шаги воспроизведения, сборку и версию, на которой проверял (версия есть в <code>manifest.json</code>), и что это даёт атакующему — какие данные становятся доступны или какое действие становится возможным.</p>
+        <p><strong>Пожалуйста, не прикладывай реальные данные фанов.</strong> Ни скриншотов переписки, ни explicit-контента, ни чужих ников и платёжных данных. Замажь их или опиши структуру данных словами. Мы не можем принять сообщение, для понимания которого нужно прочитать чью-то личную переписку.</p>
+
+        <h2>Что мы обещаем</h2>
+        <ul>
+          <li><strong>Первый ответ в течение 5 рабочих дней.</strong> Velour делает очень маленькая команда, и мы лучше пообещаем срок, который выдержим, чем красивый, который не выдержим.</li>
+          <li>Обновление статуса не реже раза в 14 дней, пока вопрос открыт.</li>
+          <li>Честную оценку: если мы считаем находку малозначимой или вне области проверки, мы так и скажем и объясним почему, а не замолчим.</li>
+          <li>Если хочешь — укажем тебя в благодарностях, когда выйдет исправление. Хочешь остаться анонимным — тоже нормально.</li>
+        </ul>
+        <p>Сроки исправления зависят от серьёзности. Всё, что раскрывает данные криейторов или их фанов, считаем срочным; косметика встаёт в общую очередь.</p>
+
+        <h2>Программы вознаграждений у нас нет</h2>
+        <p>Платного bug bounty мы не ведём, и лучше скажем это прямо, чем дадим тебе потратить выходные в расчёте на выплату. Что мы можем дать — быстрый честный ответ и публичное упоминание.</p>
+
+        <h2>Область проверки</h2>
+        <ul>
+          <li>Расширение Velour, все сборки (полная и Lite, Fansly и OnlyFans).</li>
+          <li><code>velourff.com</code> и зеркало <code>velourapp.github.io</code>.</li>
+          <li>Наш API-прокси: <code>api.velourff.com</code>.</li>
+          <li>Наш биллинговый бот в Телеграме.</li>
+        </ul>
+
+        <h2>Что мы не считаем уязвимостью</h2>
+        <p>Это либо осознанные проектные решения, либо то, с чем мы ничего не можем сделать. Сообщать о таком бесполезно для обеих сторон:</p>
+        <ul>
+          <li><strong>Уязвимости самих Fansly, OnlyFans, Telegram, а также AI- и переводческих провайдеров.</strong> Сообщай им — чужую площадку мы починить не можем.</li>
+          <li><strong>Широкий список хостов у расширения.</strong> Это задокументированное решение: полный перечень адресов, куда расширение вообще может обратиться, лежит в <code>manifest.json</code> и разобран в нашей документации о приватности.</li>
+          <li><strong>API-ключи и данные в <code>chrome.storage.local</code>.</strong> Им там и место — на устройстве самого пользователя. У кого есть доступ к разлоченному профилю браузера, тот уже выиграл; это не изъян Velour.</li>
+          <li>Отсутствие security-заголовков на статическом сайте без демонстрации влияния.</li>
+          <li>Self-XSS и всё, что требует от жертвы самостоятельно вставить чужой код себе в консоль.</li>
+          <li>Вывод автоматических сканеров без рабочего подтверждения.</li>
+          <li>Объёмные атаки (DoS/DDoS) и перебор наших лимитов запросов.</li>
+          <li>Социальная инженерия против нас или наших пользователей, а также атаки с физическим доступом.</li>
+          <li>Устаревшие версии библиотек без показанного пути эксплуатации в нашем коде.</li>
+          <li>Содержание ответов ИИ. Вывод модели нам не подконтролен, а неудачная реплика — не проблема безопасности.</li>
+        </ul>
+
+        <h2>Правила и наши обязательства</h2>
+        <p>Во время исследования, пожалуйста:</p>
+        <ul>
+          <li>Проверяй только на своём аккаунте и своей установке.</li>
+          <li>Никогда не читай, не изменяй и не выгружай чужие данные. Наткнулся случайно — немедленно остановись и расскажи нам, что произошло.</li>
+          <li>Не ухудшай работу сервиса для других.</li>
+          <li>Дай нам 90 дней до публикации. Успеем раньше — исправим раньше, и просить ждать дольше нужного не станем.</li>
+        </ul>
+        <p>Если ты добросовестно следуешь этим правилам, мы не будем инициировать против тебя юридические действия из-за исследования и подтвердим третьим лицам, что твоя работа была санкционирована. Если какое-то из правил мешает разобрать реальную находку — напиши нам заранее и спроси.</p>
+
+        <h2>Шифрование</h2>
+        <p>PGP-ключ мы пока не публикуем. Если нужно передать что-то чувствительное в зашифрованном виде — напиши, договоримся о канале.</p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Velour</div>
+      <div class="footer-links">
+        <a href="index.html"><span data-lang="ru">Главная</span><span data-lang="en">Home</span></a>
+        <a href="privacy-full.html"><span data-lang="ru">Приватность</span><span data-lang="en">Privacy</span></a>
+        <a href="terms.html"><span data-lang="ru">Условия</span><span data-lang="en">Terms</span></a>
+        <a href="https://t.me/velourapp"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="lang.js" defer></script>
+</body>
+</html>

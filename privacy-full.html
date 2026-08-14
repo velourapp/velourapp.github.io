@@ -54,19 +54,26 @@
         <p>Some features send text to third-party services <em>in transit</em>, only to return a result:</p>
         <ul>
           <li><strong>Translation</strong> — the message text goes to Google Translate (default) or DeepL (if you add your own DeepL key).</li>
-          <li><strong>Reply drafts, dossiers, coaching</strong> — the relevant conversation text goes to an AI provider to generate the result. Depending on your setup this is one or more of: Groq, Google (Gemini), Anthropic, or OpenRouter.</li>
-          <li><strong>Telegram</strong> — if you enable chat mirroring or the remote, your conversation messages and notifications are sent to <em>your own</em> Telegram group via the Telegram Bot API using <em>your</em> bot token.</li>
+          <li><strong>Reply drafts, dossiers, coaching</strong> — the relevant conversation text goes to an AI provider to generate the result. Depending on your setup this is one or more of: Groq, Google (Gemini), Anthropic, or OpenRouter. You can also run a local model through Ollama, in which case nothing leaves your machine at all.</li>
+          <li><strong>Telegram</strong> — if you enable chat mirroring or the remote, your conversation messages and notifications are sent to <em>your own</em> Telegram group via the Telegram Bot API using <em>your</em> bot token. Media files are not forwarded — only a marker such as <code>[photo]</code>. Note that whatever is mirrored stays in Telegram permanently, and anyone you add to that group can read it.</li>
+          <li><strong>Diagnostics (off by default)</strong> — if you switch on bug reports, the extension sends us error codes, counters, timestamps, build version and a random device id. Never message text, nicknames, or amounts: the payload is restricted by a fixed whitelist of event codes and field names, on the client and again on our server. These records are kept for 30 days.</li>
+          <li><strong>The auto-tagging model</strong> — enabling automatic catalog tags downloads the model weights (~360 MB) once, from our server or from Hugging Face. This is a download only: your images are never uploaded. The tagging itself runs inside your browser.</li>
+          <li><strong>Update and layout config</strong> — the extension periodically fetches two small public files (the current version, and a list of page selectors) from our GitHub Pages site. No licence key and no cookies are sent with these requests.</li>
         </ul>
+
+        <h2>Hiding names from the AI</h2>
+        <p>Settings contain a toggle, <strong>"Hide nicknames from the AI"</strong>, which replaces the fan's nickname and your own name with placeholders before a prompt is sent, and restores them in the result. It covers reply drafting and coaching advice. It removes the identity from the prompt, not the content — the conversation text still goes to the provider — and it does not catch names a fan types into a message himself. It is off by default, because being addressed by name is part of how a conversation reads.</p>
 
         <h2>Your keys, or our proxy — your choice</h2>
         <p>You can run Velour in two modes:</p>
         <ul>
           <li><strong>Your own API keys</strong> — text goes directly from your browser to the AI/translation provider under your account. We never see it.</li>
-          <li><strong>Velour Cloud proxy (optional subscription)</strong> — so you don't have to obtain provider keys, requests are routed through our proxy using your license key. The proxy forwards each request to the provider and returns the result; it <strong>does not store the content</strong> of your messages. For billing it counts only usage volume (tokens and translated characters), not message text.</li>
+          <li><strong>Velour Cloud proxy (optional subscription)</strong> — so you don't have to obtain provider keys, requests are routed through our proxy using your license key. The proxy forwards each request to the provider and returns the result; it <strong>does not store the content</strong> of your messages. What we record is the provider name, the model, the last 8 characters of your licence key, token counts and cost — the figures needed for billing. Message text is never written to a log or a database. Our web server does keep ordinary access logs, which include IP addresses.</li>
         </ul>
 
         <h2>Permissions</h2>
-        <p><code>storage</code> (save your data locally); <code>tabs</code>/<code>alarms</code> (open/refresh Fansly or OnlyFans tabs for scheduled data collection you enable); access to <code>fansly.com</code> / <code>onlyfans.com</code> (read the chats you work with and insert your reply on the page); access to translation, AI, Telegram and Velour Cloud endpoints — only for the features described above.</p>
+        <p><code>storage</code> (save your data locally); <code>tabs</code>/<code>alarms</code> (open/refresh Fansly or OnlyFans tabs for scheduled data collection you enable); access to <code>fansly.com</code> / <code>onlyfans.com</code> (read the chats you work with and insert your reply on the page). Network access is limited to a fixed list of hosts: the translation endpoints (<code>translate.googleapis.com</code>, <code>api-free.deepl.com</code>), the AI providers (<code>api.anthropic.com</code>, <code>generativelanguage.googleapis.com</code>, <code>api.groq.com</code>, <code>openrouter.ai</code>), <code>api.telegram.org</code>, our own <code>api.velourff.com</code>, <code>velourapp.github.io</code> for update and layout config, <code>huggingface.co</code> for the tagging model, and <code>localhost</code> for a local Ollama model.</p>
+        <p>That list is not a promise — it is the complete set of addresses the extension is able to reach, and Chrome blocks everything else. You can read it yourself in <code>manifest.json</code> inside the build. The translator-only build declares far fewer hosts, because the AI code is not in it at all.</p>
 
         <h2>About your subscribers' data</h2>
         <p>Velour processes information that is already visible to you in your own creator account (messages you exchange, purchases, subscription status) to help you do your work. As the creator you are the controller of that data; Velour keeps it locally on your device for your own use. We do not sell, rent, or share it, and we do not use it for advertising or profiling.</p>
@@ -81,7 +88,10 @@
         <p>Velour is a tool for verified adult creators (18+). It is not intended for anyone under 18.</p>
 
         <h2>Contact</h2>
-        <p>@velourappadmin (Telegram support channel).</p>
+        <p>@velourappadmin (Telegram support channel). For privacy or security matters, write to <strong>security@velourff.com</strong> — see our <a href="security.html">disclosure policy</a>.</p>
+
+        <h2>Want to verify any of this?</h2>
+        <p>Our <a href="whitepaper.html">technical note</a> explains, claim by claim, what to open and where to look.</p>
 
         <h2>Changes</h2>
         <p>We may update this policy; the effective date above reflects the latest version.</p>
@@ -101,19 +111,26 @@
         <p>Некоторые функции отправляют текст сторонним сервисам <em>транзитом</em>, только чтобы вернуть результат:</p>
         <ul>
           <li><strong>Перевод</strong> — текст сообщения уходит в Google Translate (по умолчанию) или DeepL (если добавишь свой ключ DeepL).</li>
-          <li><strong>Черновики ответов, досье, советы</strong> — соответствующий текст переписки уходит AI-провайдеру для генерации результата. В зависимости от твоих настроек это один или несколько из: Groq, Google (Gemini), Anthropic, OpenRouter.</li>
-          <li><strong>Telegram</strong> — если включишь зеркало чатов или пульт, сообщения переписки и уведомления отправляются в <em>твою собственную</em> группу Telegram через Telegram Bot API с помощью <em>твоего</em> токена бота.</li>
+          <li><strong>Черновики ответов, досье, советы</strong> — соответствующий текст переписки уходит AI-провайдеру для генерации результата. В зависимости от твоих настроек это один или несколько из: Groq, Google (Gemini), Anthropic, OpenRouter. Можно работать и с локальной моделью через Ollama — тогда не уходит вообще ничего.</li>
+          <li><strong>Telegram</strong> — если включишь зеркало чатов или пульт, сообщения переписки и уведомления отправляются в <em>твою собственную</em> группу Telegram через Telegram Bot API с помощью <em>твоего</em> токена бота. Медиафайлы не пересылаются — только пометка вида <code>[фото]</code>. Учти: отзеркаленное остаётся в Telegram навсегда, и прочитать его может любой, кого ты добавишь в эту группу.</li>
+          <li><strong>Диагностика (по умолчанию выключена)</strong> — если включишь отправку багрепортов, к нам уходят коды ошибок, счётчики, отметки времени, версия сборки и случайный идентификатор устройства. Никогда — текст сообщений, ники и суммы: состав ограничен фиксированным списком допустимых кодов событий и имён полей, и на клиенте, и повторно на нашем сервере. Такие записи хранятся 30 дней.</li>
+          <li><strong>Модель автотегов</strong> — при включении автоматических тегов каталога один раз скачиваются веса модели (~360 МБ), с нашего сервера или с Hugging Face. Это только скачивание: твои изображения никуда не загружаются, разметка идёт внутри браузера.</li>
+          <li><strong>Конфиг обновлений и вёрстки</strong> — расширение периодически забирает два небольших публичных файла (текущая версия и список селекторов страниц) с нашего сайта на GitHub Pages. Ни лицензионный ключ, ни куки с этими запросами не отправляются.</li>
         </ul>
+
+        <h2>Как скрыть имена от ИИ</h2>
+        <p>В настройках есть галка <strong>«Скрывать ники от ИИ»</strong>: ник фана и твоё имя заменяются плейсхолдерами перед отправкой промпта и восстанавливаются в результате. Работает для генерации ответов и для советов. Убирается личность, но не содержание — текст переписки провайдер всё равно получает, — и она не ловит имена, которые фан пишет в сообщении сам. По умолчанию выключена: обращение по имени — часть того, как читается разговор.</p>
 
         <h2>Свои ключи или наш прокси — на твой выбор</h2>
         <p>Velour можно использовать в двух режимах:</p>
         <ul>
           <li><strong>Свои API-ключи</strong> — текст идёт напрямую из твоего браузера к AI/провайдеру перевода под твоим аккаунтом. Мы его не видим.</li>
-          <li><strong>Прокси Velour Cloud (опциональная подписка)</strong> — чтобы не заводить ключи провайдеров, запросы маршрутизируются через наш прокси по твоему лицензионному ключу. Прокси передаёт каждый запрос провайдеру и возвращает результат; он <strong>не сохраняет содержимое</strong> твоих сообщений. Для биллинга считается только объём использования (токены и переведённые символы), а не текст сообщений.</li>
+          <li><strong>Прокси Velour Cloud (опциональная подписка)</strong> — чтобы не заводить ключи провайдеров, запросы маршрутизируются через наш прокси по твоему лицензионному ключу. Прокси передаёт каждый запрос провайдеру и возвращает результат; он <strong>не сохраняет содержимое</strong> твоих сообщений. Записывается имя провайдера, модель, последние 8 символов лицензионного ключа, количество токенов и стоимость — цифры, нужные для счёта. Текст сообщений не пишется ни в лог, ни в базу. При этом веб-сервер ведёт обычные журналы доступа, а в них есть IP-адреса.</li>
         </ul>
 
         <h2>Разрешения</h2>
-        <p><code>storage</code> (локальное хранение твоих данных); <code>tabs</code>/<code>alarms</code> (открывать/обновлять вкладки Fansly или OnlyFans для периодического сбора данных, который ты включаешь); доступ к <code>fansly.com</code> / <code>onlyfans.com</code> (чтение чатов, с которыми ты работаешь, и вставка твоего ответа на странице); доступ к эндпоинтам перевода, AI, Telegram и Velour Cloud — только для описанных выше функций.</p>
+        <p><code>storage</code> (локальное хранение твоих данных); <code>tabs</code>/<code>alarms</code> (открывать/обновлять вкладки Fansly или OnlyFans для периодического сбора данных, который ты включаешь); доступ к <code>fansly.com</code> / <code>onlyfans.com</code> (чтение чатов, с которыми ты работаешь, и вставка твоего ответа на странице). Сетевой доступ ограничен фиксированным списком хостов: эндпоинты перевода (<code>translate.googleapis.com</code>, <code>api-free.deepl.com</code>), ИИ-провайдеры (<code>api.anthropic.com</code>, <code>generativelanguage.googleapis.com</code>, <code>api.groq.com</code>, <code>openrouter.ai</code>), <code>api.telegram.org</code>, наш <code>api.velourff.com</code>, <code>velourapp.github.io</code> для конфига обновлений и вёрстки, <code>huggingface.co</code> для модели автотегов и <code>localhost</code> для локальной модели Ollama.</p>
+        <p>Этот список — не обещание, а полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Прочитать его можно самому — в <code>manifest.json</code> внутри сборки. У сборки-переводчика хостов заметно меньше, потому что кода ИИ в ней нет вовсе.</p>
 
         <h2>О данных твоих подписчиков</h2>
         <p>Velour обрабатывает информацию, которая и так видна тебе в твоём аккаунте криейтора (сообщения, которыми вы обмениваетесь, покупки, статус подписки), чтобы помочь тебе в работе. Как криейтор ты являешься контролёром этих данных; Velour хранит их локально на твоём устройстве для твоего же использования. Мы не продаём, не сдаём и не передаём их, и не используем для рекламы или профилирования.</p>
@@ -128,7 +145,10 @@
         <p>Velour — инструмент для верифицированных взрослых криейторов (18+). Он не предназначен для лиц младше 18 лет.</p>
 
         <h2>Контакт</h2>
-        <p>@velourappadmin (канал поддержки в Телеграме).</p>
+        <p>@velourappadmin (канал поддержки в Телеграме). По вопросам приватности и безопасности — <strong>security@velourff.com</strong>, см. <a href="security.html">политику раскрытия</a>.</p>
+
+        <h2>Хочешь проверить?</h2>
+        <p>В <a href="whitepaper.html">технической записке</a> под каждым утверждением написано, что открыть и куда посмотреть.</p>
 
         <h2>Изменения</h2>
         <p>Мы можем обновлять эту политику; дата выше отражает последнюю версию.</p>
