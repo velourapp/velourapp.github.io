@@ -111,7 +111,7 @@
           <li><strong>Read the host list.</strong> Unzip the build and open <code>manifest.json</code>. The <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There is no hidden destination, because there cannot be one.</li>
           <li><strong>Confirm there is no remote code.</strong> The extension is Manifest V3, which forbids loading and executing code from the network. What is in the archive is what runs. The tagging model's weights are data for a fixed program, not code.</li>
           <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the hosts from step 1.</li>
-          <li><strong>Verify the archive.</strong> Every build is published with its SHA-256 checksum, and our archives are built reproducibly — the same sources produce a byte-identical file. See the <a href="downloads.html">downloads page</a>.</li>
+          <li><strong>Verify the archive.</strong> Every build is published with its SHA-256 checksum, and our archives are built reproducibly — the same sources produce a byte-identical file, so you can rebuild and compare rather than trust. Checksums come with the download link.</li>
           <li><strong>Search for trackers.</strong> Grep the unpacked build for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find nothing.</li>
         </ol>
 
@@ -189,7 +189,7 @@
           <li><strong>Прочитай список хостов.</strong> Распакуй сборку и открой <code>manifest.json</code>. Массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм так устроен.</li>
           <li><strong>Убедись, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в архиве — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
           <li><strong>Посмотри трафик.</strong> Открой DevTools сервис-воркера расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 1.</li>
-          <li><strong>Сверь архив.</strong> Каждая сборка публикуется вместе с её SHA-256, и архивы собираются воспроизводимо — одни и те же исходники дают побайтово одинаковый файл. См. <a href="downloads.html">страницу загрузки</a>.</li>
+          <li><strong>Сверь архив.</strong> Каждая сборка публикуется вместе с её SHA-256, и архивы собираются воспроизводимо — одни и те же исходники дают побайтово одинаковый файл, так что можно пересобрать и сравнить, а не верить. Контрольные суммы идут вместе со ссылкой на скачивание.</li>
           <li><strong>Поищи трекеры.</strong> Прогрепай распакованную сборку на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Не найдёшь ничего.</li>
         </ol>
 

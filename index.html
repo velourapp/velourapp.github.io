@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"
-      data-title-ru="Velour — переводчик и ассистент личек для креейторов"
-      data-title-en="Velour — DM translator and assistant for creators"
-      data-desc-ru="Velour: мгновенный перевод личных сообщений, подсказки ответов, Телеграм-пульт и память о фанах для креейторов."
-      data-desc-en="Velour: instant DM translation, reply suggestions, a Telegram remote, and fan memory for creators.">
+      data-title-ru="Velour — ассистент личек для криейторов Fansly"
+      data-title-en="Velour — DM assistant for Fansly creators"
+      data-desc-ru="Velour: досье на каждого подписчика, подсказки ответов в твоём стиле, разметка контента прямо в браузере и перевод в обе стороны. Данные остаются у тебя."
+      data-desc-en="Velour: a dossier on every subscriber, reply suggestions in your own voice, on-device content tagging and two-way translation. Your data stays with you.">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Velour</title>
-<meta name="description" content="Velour — DM translator and assistant for creators.">
+<meta name="description" content="Velour — DM assistant for Fansly creators.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -25,7 +25,8 @@
     <div class="header-right">
       <nav class="main-nav" aria-label="Основная навигация">
         <a href="#features"><span data-lang="ru">Возможности</span><span data-lang="en">Features</span></a>
-        <a href="#editions"><span data-lang="ru">Версии</span><span data-lang="en">Editions</span></a>
+        <a href="#pricing"><span data-lang="ru">Тарифы</span><span data-lang="en">Pricing</span></a>
+        <a href="#install"><span data-lang="ru">Установка</span><span data-lang="en">Install</span></a>
         <a href="#support"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
       </nav>
       <div class="lang-switch" role="group" aria-label="Language / Язык">
@@ -42,16 +43,16 @@
     <div class="container">
       <div class="kicker">VELOUR</div>
       <h1>Velour</h1>
-      <p class="lede" data-lang="ru">Говори на языке своего фана.</p>
-      <p class="lede" data-lang="en">Speak every fan's language.</p>
-      <p data-lang="ru" style="max-width:620px;margin:0 auto 36px">Ассистент личек для креейторов: мгновенный перевод в обе стороны, помощь с ответами в твоём стиле и память о каждом диалоге — чтобы общение было живым, личным и без языкового барьера.</p>
-      <p data-lang="en" style="max-width:620px;margin:0 auto 36px">A DM assistant for creators: instant two-way translation, reply help in your own voice, and memory for every conversation — so every chat stays warm, personal, and barrier-free.</p>
+      <p class="lede" data-lang="ru">Помни каждого. Говори на его языке.</p>
+      <p class="lede" data-lang="en">Remember everyone. Speak their language.</p>
+      <p data-lang="ru" style="max-width:640px;margin:0 auto 36px">Ассистент личек для криейторов Fansly: досье на каждого подписчика, подсказки ответов в твоём голосе, разметка твоего контента прямо в браузере и перевод в обе стороны. Переписка, каталог и заметки остаются на твоём устройстве — и это можно проверить, а не принять на веру.</p>
+      <p data-lang="en" style="max-width:640px;margin:0 auto 36px">A DM assistant for Fansly creators: a dossier on every subscriber, reply suggestions in your own voice, tagging of your own content right inside the browser, and two-way translation. Conversations, catalog and notes stay on your device — and you can verify that rather than take our word for it.</p>
       <div class="hero-actions">
-        <span class="btn btn-pending">
-          <span data-lang="ru">Бесплатный переводчик — скоро</span><span data-lang="en">Free translator — soon</span>
-        </span>
-        <a class="btn btn-secondary" href="#editions">
-          <span data-lang="ru">Полная версия</span><span data-lang="en">Full version</span>
+        <a class="btn btn-primary" href="#install">
+          <span data-lang="ru">Установить</span><span data-lang="en">Install</span>
+        </a>
+        <a class="btn btn-secondary" href="#pricing">
+          <span data-lang="ru">Тарифы</span><span data-lang="en">Pricing</span>
         </a>
         <a class="btn btn-ghost" href="https://t.me/velourapp">
           <span data-lang="ru">Канал поддержки →</span><span data-lang="en">Support channel →</span>
@@ -60,30 +61,11 @@
     </div>
   </section>
 
-  <section class="section-alt" id="demo">
-    <div class="container">
-      <div class="section-head">
-        <h2><span data-lang="ru">Демо</span><span data-lang="en">Demo</span></h2>
-        <p data-lang="ru">Видео-демонстрация и скриншоты рабочей панели появятся здесь.</p>
-        <p data-lang="en">A demo video and panel screenshots will go here.</p>
-      </div>
-      <div class="demo-video">
-        <img src="assets/demo-placeholder.svg" alt="Velour demo video placeholder" loading="lazy">
-      </div>
-      <div class="demo-shots">
-        <figure>
-          <img src="assets/screenshot-panel.svg" alt="" loading="lazy">
-          <figcaption><span data-lang="ru">Рабочая панель</span><span data-lang="en">The working panel</span></figcaption>
-        </figure>
-        <figure>
-          <img src="assets/screenshot-telegram.svg" alt="" loading="lazy">
-          <figcaption><span data-lang="ru">Телеграм-пульт</span><span data-lang="en">Telegram remote</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+  <!-- Блок «Демо» убран до появления настоящих скриншотов: заглушки с подписью «скоро»
+       на витрине, которую показывают агентствам, работают против. Кадры всё равно нужны
+       для листинга CWS (стерильные, без explicit) — те же и вернуть сюда. -->
 
-  <section id="features">
+  <section class="section-alt" id="features">
     <div class="container">
       <div class="section-head">
         <h2><span data-lang="ru">Возможности</span><span data-lang="en">Features</span></h2>
@@ -92,11 +74,38 @@
 
         <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4V3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Досье на каждого</span><span data-lang="en">A dossier on everyone</span></h3>
+          <p data-lang="ru">Что он рассказал о себе, когда рассказал, чем живёт, что уже покупал. Никаких «прости, а кто это?» после сотни диалогов.</p>
+          <p data-lang="en">What he told you about himself, when he told you, what he's into, what he already bought. No more "sorry, who is this again?" after a hundred chats.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M20.6 13.4 12 22l-9-9V3h10l7.6 7.6a2 2 0 0 1 0 2.8z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+          </div>
+          <h3><span data-lang="ru">Разметка контента на твоём устройстве</span><span data-lang="en">Content tagging on your device</span></h3>
+          <p data-lang="ru">Каталог сам понимает, что на снимке, и проставляет теги. Модель работает внутри браузера — фото и видео никуда не отправляются. Облачные сервисы такое просто отказываются обрабатывать.</p>
+          <p data-lang="en">The catalog figures out what's in a shot and tags it. The model runs inside your browser — photos and videos are never uploaded. Cloud services simply refuse to process this kind of content.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Приватность, которую можно проверить</span><span data-lang="en">Privacy you can verify</span></h3>
+          <p data-lang="ru">Мы не просим верить на слово: в <a href="whitepaper.html">технической записке</a> под каждым утверждением написано, что открыть и куда посмотреть. Полный список адресов, куда расширение вообще может обратиться, лежит в его манифесте.</p>
+          <p data-lang="en">We don't ask you to take our word for it: our <a href="whitepaper.html">technical note</a> says, claim by claim, what to open and where to look. The complete list of addresses the extension can reach at all is in its manifest.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M5 8h14M8 5v14M19 16l-3 3-3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3><span data-lang="ru">Перевод</span><span data-lang="en">Translation</span></h3>
-          <p data-lang="ru">Двусторонний перевод на лету: входящие на твоём языке, исходящие — на языке фана.</p>
-          <p data-lang="en">Two-way, on-the-fly: read incoming in your language, send in theirs.</p>
+          <h3><span data-lang="ru">Перевод в обе стороны</span><span data-lang="en">Two-way translation</span></h3>
+          <p data-lang="ru">Входящие — на твоём языке, исходящие — на языке фана, с правильным родом говорящего. Языковой барьер перестаёт существовать.</p>
+          <p data-lang="en">Incoming in your language, outgoing in his — with the right grammatical gender for the speaker. The language barrier stops existing.</p>
         </div>
 
         <div class="feature-card">
@@ -104,90 +113,120 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-3.8 7A8.5 8.5 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3a8.38 8.38 0 0 1 7 3.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 11l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3><span data-lang="ru">Подсказки ответов</span><span data-lang="en">Reply suggestions</span></h3>
-          <p data-lang="ru">ИИ предлагает варианты в твоём стиле — выбираешь, правишь и отправляешь сама.</p>
-          <p data-lang="en">AI drafts options in your style — you pick, tweak, and send.</p>
+          <p data-lang="ru">Варианты в твоём стиле, собранные по твоим же сообщениям. Выбираешь, правишь и отправляешь сама — расширение не пишет за тебя.</p>
+          <p data-lang="en">Options in your own voice, learned from your own messages. You pick, tweak and send — the extension never writes on your behalf.</p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3><span data-lang="ru">Телеграм-пульт</span><span data-lang="en">Telegram remote</span></h3>
-          <p data-lang="ru">Диалоги зеркалятся в твою собственную группу, твоим ботом — отвечай, когда тебя нет за компом. Медиа не пересылается, только пометка.</p>
-          <p data-lang="en">Chats mirror into your own group via your own bot — reply even when away from the PC. Media isn't forwarded, only a marker.</p>
+          <h3><span data-lang="ru">Совет по диалогу</span><span data-lang="en">Conversation coaching</span></h3>
+          <p data-lang="ru">Когда непонятно, куда вести разговор: за что зацепиться, чего не трогать и пара готовых фраз. Не вместо тебя, а подсказкой на полях.</p>
+          <p data-lang="en">For when you're not sure where to take the conversation: what to latch onto, what to avoid, and a couple of ready phrasings. A note in the margin, not a replacement.</p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4V3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m3 14 4-4 4 4 3-3 4 4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
           </div>
-          <h3><span data-lang="ru">Память о фане</span><span data-lang="en">Fan memory</span></h3>
-          <p data-lang="ru">Бот помнит контекст каждого: имена, темы, договорённости — никаких «кто это?».</p>
-          <p data-lang="en">Remembers each fan's context — names, topics, details. No more 'who's this?'.</p>
+          <h3><span data-lang="ru">Каталог контента</span><span data-lang="en">Content catalog</span></h3>
+          <p data-lang="ru">Весь твой vault в одном месте: превью, поиск по тегам, фильтры, отметка того, что уже продавалось. Нужное вложение находится из чата — пикером, не перебором папок.</p>
+          <p data-lang="en">Your whole vault in one place: previews, tag search, filters, and a mark on what has already sold. The attachment you need is found from the chat — with a picker, not by digging through folders.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke-linecap="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">CRM и цифры</span><span data-lang="en">CRM and numbers</span></h3>
+          <p data-lang="ru">Кто платит, кто остыл, кто вот-вот отпишется. Помесячная динамика по постам, подписчикам и выручке — чтобы решения были не на ощущениях.</p>
+          <p data-lang="en">Who pays, who cooled off, who is about to lapse. Month-by-month dynamics for posts, subscribers and revenue — so decisions aren't based on gut feel.</p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke-linecap="round"/></svg>
           </div>
-          <h3><span data-lang="ru">Утренний дайджест</span><span data-lang="en">Morning digest</span></h3>
-          <p data-lang="ru">Сводка за ночь: кому ответить, что важно — одним взглядом с утра.</p>
-          <p data-lang="en">An overnight summary: who to reply to, what matters — at a glance.</p>
+          <h3><span data-lang="ru">Кому написать сегодня</span><span data-lang="en">Who to write today</span></h3>
+          <p data-lang="ru">С утра — короткий список: кто ждёт ответа, у кого заканчивается подписка, кого стоит вернуть. С поводом и черновиком, а не просто списком имён.</p>
+          <p data-lang="en">A short morning list: who's waiting for a reply, whose subscription is ending, who's worth winning back. With a reason and a draft, not just names.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3><span data-lang="ru">Зеркало в Телеграме</span><span data-lang="en">Telegram mirror</span></h3>
+          <p data-lang="ru">Диалоги приходят в твою собственную группу, твоим ботом — можно ответить с телефона. Медиа не пересылается, только пометка. Заодно оттуда пишутся посты.</p>
+          <p data-lang="en">Chats arrive in your own group via your own bot — you can reply from your phone. Media isn't forwarded, only a marker. Post drafts are written from there too.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <section class="section-alt" id="editions">
+  <section id="pricing">
     <div class="container">
       <div class="section-head">
-        <h2><span data-lang="ru">Версии</span><span data-lang="en">Editions</span></h2>
+        <h2><span data-lang="ru">Тарифы</span><span data-lang="en">Pricing</span></h2>
+        <p data-lang="ru">Само расширение бесплатное, и таким останется. Платное — только облако Velour: перевод и ИИ без возни с ключами провайдеров.</p>
+        <p data-lang="en">The extension itself is free and stays that way. The only paid part is Velour Cloud: translation and AI without wrangling provider keys yourself.</p>
       </div>
 
       <div class="edition-grid">
         <div class="edition-card">
-          <div class="edition-name">Velour Lite</div>
-          <p data-lang="ru">Бесплатно, из Chrome Web Store. Чистый переводчик личек: plug&amp;play, без настройки. Кода ИИ в этой сборке нет вообще — он вырезан физически. Наружу уходит только текст, который переводится.</p>
-          <p data-lang="en">Free, from the Chrome Web Store. A pure DM translator: plug &amp; play, no setup. This build contains no AI code at all — it is physically removed. The only thing that leaves is the text being translated.</p>
+          <div class="edition-name">💎 BASE — $9.99 / TON 2</div>
+          <p data-lang="ru">Месяц работы облака для одного аккаунта в обычном ритме. Все функции доступны — тариф ограничивает только объём.</p>
+          <p data-lang="en">A month of cloud for one account at a normal pace. Every feature is available — the plan limits volume only.</p>
           <div class="edition-actions">
-            <span class="btn btn-pending">
-              <span data-lang="ru">В магазине — скоро</span><span data-lang="en">On the Store — soon</span>
-            </span>
+            <a class="btn btn-secondary" href="https://t.me/velourmebot">
+              <span data-lang="ru">Купить BASE</span><span data-lang="en">Get BASE</span>
+            </a>
           </div>
         </div>
 
         <div class="edition-card is-featured">
-          <div class="edition-name">Velour Full</div>
-          <p data-lang="ru">Self-hosted, всё включено: перевод + подсказки + Телеграм + память + дайджест. Бесплатно, ставится в режиме разработчика.</p>
-          <p data-lang="en">Self-hosted, everything: translation + suggestions + Telegram + memory + digest. Free, installs in developer mode.</p>
+          <div class="edition-name">🔥 PRO — $19.99 / TON 5</div>
+          <p data-lang="ru">То же самое, но с запасом — для плотного потока переписки. Функции ровно те же: мы не режем возможности ради апгрейда.</p>
+          <p data-lang="en">The same thing with headroom — for a heavy flow of messages. Exactly the same features: we don't hold capabilities hostage to an upgrade.</p>
           <div class="edition-actions">
-            <a class="btn btn-primary" href="#install">
-              <span data-lang="ru">Как установить</span><span data-lang="en">How to install</span>
-            </a>
-            <a class="btn btn-secondary" href="https://t.me/velourapp">
-              <span data-lang="ru">Канал поддержки</span><span data-lang="en">Support</span>
+            <a class="btn btn-primary" href="https://t.me/velourmebot">
+              <span data-lang="ru">Купить PRO</span><span data-lang="en">Get PRO</span>
             </a>
           </div>
         </div>
       </div>
 
+      <p class="install-help">
+        <span data-lang="ru">Ключ выдаёт бот <a href="https://t.me/velourmebot">@velourmebot</a> — выбираешь тариф, платишь, получаешь ключ и вставляешь его в настройки. Оплата: TON, USDT/USDC (TRC20), Paxum. Подписка помесячная, продлевается вручную — автосписаний нет.</span>
+        <span data-lang="en">The key is issued by <a href="https://t.me/velourmebot">@velourmebot</a> — pick a plan, pay, get your key and paste it into the settings. Payment: TON, USDT/USDC (TRC20), Paxum. Monthly, renewed manually — no automatic charges.</span>
+      </p>
+
       <table class="compare-table">
         <thead>
           <tr>
-            <th scope="col"><span data-lang="ru">Функция</span><span data-lang="en">Feature</span></th>
-            <th scope="col">Lite</th>
-            <th scope="col">Full</th>
+            <th scope="col"><span data-lang="ru">Что нужно</span><span data-lang="en">What it takes</span></th>
+            <th scope="col"><span data-lang="ru">Без облака</span><span data-lang="en">Without the cloud</span></th>
+            <th scope="col"><span data-lang="ru">С облаком</span><span data-lang="en">With the cloud</span></th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row"><span data-lang="ru">Перевод</span><span data-lang="en">Translation</span></th><td class="yes">✓</td><td class="yes">✓</td></tr>
-          <tr><th scope="row"><span data-lang="ru">Подсказки ИИ</span><span data-lang="en">AI suggestions</span></th><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><th scope="row">Telegram</th><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><th scope="row"><span data-lang="ru">Память</span><span data-lang="en">Memory</span></th><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><th scope="row"><span data-lang="ru">Дайджест</span><span data-lang="en">Digest</span></th><td class="no">—</td><td class="yes">✓</td></tr>
-          <tr><th scope="row"><span data-lang="ru">Из магазина</span><span data-lang="en">From the Store</span></th><td class="yes">✓</td><td class="no">—</td></tr>
-          <tr><th scope="row"><span data-lang="ru">Свои ключи ИИ</span><span data-lang="en">Your own AI keys</span></th><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr>
+            <th scope="row"><span data-lang="ru">Перевод</span><span data-lang="en">Translation</span></th>
+            <td><span data-lang="ru">бесплатный, или свой ключ DeepL</span><span data-lang="en">free tier, or your own DeepL key</span></td>
+            <td class="yes"><span data-lang="ru">включён</span><span data-lang="en">included</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span data-lang="ru">Подсказки и советы</span><span data-lang="en">Suggestions and coaching</span></th>
+            <td><span data-lang="ru">свои ключи ИИ-провайдеров</span><span data-lang="en">your own AI provider keys</span></td>
+            <td class="yes"><span data-lang="ru">включены, ключи не нужны</span><span data-lang="en">included, no keys needed</span></td>
+          </tr>
+          <tr>
+            <th scope="row"><span data-lang="ru">Досье, CRM, каталог, автотеги, Телеграм</span><span data-lang="en">Dossiers, CRM, catalog, tagging, Telegram</span></th>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -196,22 +235,24 @@
   <section id="install">
     <div class="container">
       <div class="section-head">
-        <h2><span data-lang="ru">Установка Full</span><span data-lang="en">Install Full</span></h2>
+        <h2><span data-lang="ru">Установка</span><span data-lang="en">Install</span></h2>
+        <p data-lang="ru">Сейчас расширение ставится вручную из архива. Версия для Chrome Web Store готовится.</p>
+        <p data-lang="en">For now the extension installs manually from an archive. A Chrome Web Store version is on the way.</p>
       </div>
 
       <ol class="install-steps" data-lang="ru">
-        <li>Скачай архив (ссылка из канала поддержки).</li>
+        <li>Скачай архив (ссылка в <a href="https://t.me/velourapp">канале поддержки</a>).</li>
         <li>Распакуй архив.</li>
         <li><code>chrome://extensions</code> → включи «Режим разработчика».</li>
         <li>«Загрузить распакованное» → выбери папку.</li>
-        <li>Готово — открой Fansly → Messages.</li>
+        <li>Готово — мастер настройки запустится сам.</li>
       </ol>
       <ol class="install-steps" data-lang="en">
-        <li>Download the archive (link in the support channel).</li>
+        <li>Download the archive (link in the <a href="https://t.me/velourapp">support channel</a>).</li>
         <li>Unzip it.</li>
         <li>Go to <code>chrome://extensions</code> → enable "Developer mode".</li>
         <li>Click "Load unpacked" → select the folder.</li>
-        <li>Done — open Fansly → Messages.</li>
+        <li>Done — the setup wizard starts on its own.</li>
       </ol>
 
       <p class="install-help">
@@ -233,30 +274,47 @@
         </a>
       </div>
 
+      <p class="install-help">
+        <span data-lang="ru">Предпочитаешь почту — <a href="mailto:support@velourff.com">support@velourff.com</a>. По оплате и счетам: <a href="mailto:sale@velourff.com">sale@velourff.com</a>. По безопасности и приватности: <a href="mailto:security@velourff.com">security@velourff.com</a>.</span>
+        <span data-lang="en">Prefer email — <a href="mailto:support@velourff.com">support@velourff.com</a>. Billing and payments: <a href="mailto:sale@velourff.com">sale@velourff.com</a>. Security and privacy: <a href="mailto:security@velourff.com">security@velourff.com</a>.</span>
+      </p>
+
       <div class="faq">
 
         <details>
           <summary><span data-lang="ru">Это безопасно для аккаунта?</span><span data-lang="en">Is it safe for my account?</span></summary>
-          <p data-lang="ru">Velour помогает тебе, а не действует за тебя: подсказки ты отправляешь сама. Никакой накрутки.</p>
-          <p data-lang="en">Velour helps you, it doesn't act for you: you send every suggestion yourself. No automation, no bot activity.</p>
+          <p data-lang="ru">Velour помогает тебе, а не действует за тебя: каждый ответ отправляешь ты сама. Автоматической отправки в расширении нет — она удалена физически, а не выключена галкой.</p>
+          <p data-lang="en">Velour helps you, it doesn't act for you: you send every reply yourself. There is no automatic sending in the extension — it was physically removed, not hidden behind a toggle.</p>
         </details>
 
         <details>
           <summary><span data-lang="ru">Вы храните мои переписки?</span><span data-lang="en">Do you store my conversations?</span></summary>
-          <p data-lang="ru">Нет. Переписки, досье и заметки лежат в твоём браузере и нам не загружаются. Текст уходит наружу только транзитом — переводчику и, если пользуешься подсказками, ИИ-провайдеру: уходит запрос, возвращается результат. В Lite нет даже этого — только перевод. У полной версии есть наш облачный прокси (по желанию, вместо своих ключей провайдеров): он передаёт запрос дальше и содержимое не сохраняет — для счёта считаются только токены и символы. Подробно и с проверкой — в <a href="whitepaper.html">технической записке</a>.</p>
-          <p data-lang="en">No. Conversations, dossiers and notes live in your browser and are never uploaded to us. Text leaves only in transit — to the translator and, if you use suggestions, to an AI provider: the request goes out, the result comes back. Lite doesn't even do that — translation only. The full version can optionally use our cloud proxy instead of your own provider keys: it forwards the request and does not store the content — billing counts tokens and characters, nothing else. The details, and how to check them, are in the <a href="whitepaper.html">technical note</a>.</p>
-        </details>
-
-        <details>
-          <summary><span data-lang="ru">Какие языки?</span><span data-lang="en">Which languages are supported?</span></summary>
-          <p data-lang="ru">Перевод — десятки языков (Google/DeepL). Интерфейс: RU, EN, ES, DE, FR.</p>
-          <p data-lang="en">Translation covers dozens of languages (Google/DeepL). Interface: RU, EN, ES, DE, FR.</p>
+          <p data-lang="ru">Нет. Переписки, досье, каталог и заметки лежат в твоём браузере и нам не загружаются. Текст уходит наружу только транзитом — переводчику и, если пользуешься подсказками, ИИ-провайдеру: уходит запрос, возвращается результат. Облако Velour передаёт запрос дальше и содержимого не сохраняет — для счёта считаются только объёмы. Подробно и с проверкой — в <a href="whitepaper.html">технической записке</a>.</p>
+          <p data-lang="en">No. Conversations, dossiers, catalog and notes live in your browser and are never uploaded to us. Text leaves only in transit — to the translator and, if you use suggestions, to an AI provider: the request goes out, the result comes back. Velour Cloud forwards the request and stores none of the content — billing counts volume only. The details, and how to check them, are in the <a href="whitepaper.html">technical note</a>.</p>
         </details>
 
         <details>
           <summary><span data-lang="ru">Сколько стоит?</span><span data-lang="en">How much does it cost?</span></summary>
-          <p data-lang="ru">Lite — бесплатно. Full — бесплатно (self-hosted). Поддержать проект можно через канал.</p>
-          <p data-lang="en">Lite is free. Full is free too (self-hosted). You can support the project through the channel.</p>
+          <p data-lang="ru">Расширение бесплатное. Платить нужно, только если хочешь пользоваться облаком Velour вместо своих ключей провайдеров: BASE $9.99 или PRO $19.99 в месяц. Ключ выдаёт бот <a href="https://t.me/velourmebot">@velourmebot</a>; оплата в TON, USDT/USDC (TRC20) или через Paxum.</p>
+          <p data-lang="en">The extension is free. You only pay if you want Velour Cloud instead of your own provider keys: BASE $9.99 or PRO $19.99 per month. The key is issued by <a href="https://t.me/velourmebot">@velourmebot</a>; payment in TON, USDT/USDC (TRC20) or via Paxum.</p>
+        </details>
+
+        <details>
+          <summary><span data-lang="ru">Чем PRO отличается от BASE?</span><span data-lang="en">How is PRO different from BASE?</span></summary>
+          <p data-lang="ru">Только объёмом. Набор функций одинаковый — мы принципиально не прячем возможности за апгрейд. Если упрёшься в лимит на BASE, перейти на PRO можно в любой момент.</p>
+          <p data-lang="en">Volume only. The feature set is identical — we deliberately don't lock capabilities behind an upgrade. If you hit the BASE limit, you can move to PRO at any time.</p>
+        </details>
+
+        <details>
+          <summary><span data-lang="ru">Можно вообще не платить?</span><span data-lang="en">Can I use it without paying at all?</span></summary>
+          <p data-lang="ru">Да. Подставь свои ключи ИИ-провайдеров и переводчика — расширение будет работать полностью, платить будешь напрямую им. Облако нужно тем, кто не хочет этим заниматься.</p>
+          <p data-lang="en">Yes. Plug in your own AI and translation keys — the extension works in full and you pay the providers directly. The cloud is for people who'd rather not deal with that.</p>
+        </details>
+
+        <details>
+          <summary><span data-lang="ru">Какие языки?</span><span data-lang="en">Which languages are supported?</span></summary>
+          <p data-lang="ru">Перевод — десятки языков. Интерфейс: русский, английский, испанский, немецкий, французский.</p>
+          <p data-lang="en">Translation covers dozens of languages. Interface: Russian, English, Spanish, German, French.</p>
         </details>
 
       </div>
@@ -270,12 +328,11 @@
     <div class="footer-row">
       <div>© 2026 Velour</div>
       <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="privacy-full.html">Privacy Policy</a>
         <a href="whitepaper.html"><span data-lang="ru">Как мы обращаемся с данными</span><span data-lang="en">How we handle data</span></a>
         <a href="security.html"><span data-lang="ru">Безопасность</span><span data-lang="en">Security</span></a>
         <a href="terms.html"><span data-lang="ru">Условия</span><span data-lang="en">Terms</span></a>
         <a href="https://t.me/velourapp"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
-        <span><span data-lang="ru">Store — скоро</span><span data-lang="en">Store — soon</span></span>
       </div>
     </div>
     <p class="footer-disclaimer" data-lang="ru">Velour — независимый инструмент и не аффилирован с Fansly и не одобрен ею.</p>
