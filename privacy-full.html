@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261025">
 </head>
 <body>
 <a class="skip-link" href="#main">
@@ -48,7 +48,7 @@
         <p>Velour helps you handle your own creator inbox: it translates messages, drafts reply suggestions in your writing style, keeps notes and a profile (“dossier”) on your subscribers, shows a simple CRM and business stats, and can mirror your chats to your own Telegram group. <strong>Velour never sends a message on your behalf automatically — you review and send every reply yourself.</strong></p>
 
         <h2>Where your data is stored</h2>
-        <p>Everything Velour builds stays <strong>locally in your browser</strong> (<code>chrome.storage</code> and IndexedDB) on your device: your settings, style profile, subscriber notes and dossiers, a local cache of conversation history, purchase/subscription figures, your content catalog, and diagnostics. This data is never uploaded to us for storage.</p>
+        <p>Everything Velour builds stays <strong>locally in your browser</strong> (<code>chrome.storage</code> and IndexedDB) on your device: your settings, style profile, subscriber notes and dossiers, a local cache of conversation history, purchase/subscription figures, your content catalog, and diagnostics. The catalog also keeps <strong>still frames taken from your own videos</strong> — they show at a glance what is inside a clip and let the tagging model read it. Frames stay on your device and are not sent anywhere for analysis. This data is never uploaded to us for storage.</p>
 
         <h2>What is sent, and where</h2>
         <p>Some features send text to third-party services <em>in transit</em>, only to return a result:</p>
@@ -58,7 +58,9 @@
           <li><strong>Telegram</strong> — if you enable chat mirroring or the remote, your conversation messages and notifications are sent to <em>your own</em> Telegram group via the Telegram Bot API using <em>your</em> bot token. Media files are not forwarded — only a marker such as <code>[photo]</code>. Note that whatever is mirrored stays in Telegram permanently, and anyone you add to that group can read it.</li>
           <li><strong>Diagnostics (off by default)</strong> — if you switch on bug reports, the extension sends us error codes, counters, timestamps, build version and a random device id. Never message text, nicknames, or amounts: the payload is restricted by a fixed whitelist of event codes and field names, on the client and again on our server. These records are kept for 30 days.</li>
           <li><strong>The auto-tagging model</strong> — enabling automatic catalog tags downloads the model weights (~360 MB) once, from our server or from Hugging Face. This is a download only: your images are never uploaded. The tagging itself runs inside your browser.</li>
-          <li><strong>Update and layout config</strong> — the extension periodically fetches two small public files (the current version, and a list of page selectors) from our GitHub Pages site. No licence key and no cookies are sent with these requests.</li>
+          <li><strong>The trial key on first run</strong> — so the cloud works right away, the extension sends our server a fingerprint (hash) of this installation's random code, plus the platform name — literally one word, "fansly" or "onlyfans", saying where the extension is running — and receives a 3-day trial key back. The code is generated inside the extension and is not derived from anything personal — not your account, not your device. On our server the fingerprint is hashed again with a secret and is never stored as received; the IP address is used only to rate-limit issuing and is not kept.</li>
+          <li><strong>Paying on the site</strong> — when you buy a plan on our payment page, your subscription key, the chosen plan and payment method go to our server; for USDT also the transaction ID you paste yourself, for Paxum the payment number if you provide one. This is what ties the payment to your key. No name, no email, no wallet details beyond what is already visible on the blockchain are requested. Orders are kept for seven days; the IP address is used only for rate limiting.</li>
+          <li><strong>Update and layout config</strong> — the extension periodically fetches two small public files (the current version, and a list of page selectors) from our GitHub Pages site, and a signed list of our server addresses from the server itself. No licence key and no cookies are sent with these requests; the address list's signature is checked against a key built into the extension.</li>
         </ul>
 
         <h2>Hiding names from the AI</h2>
@@ -79,7 +81,7 @@
         <p>Velour processes information that is already visible to you in your own creator account (messages you exchange, purchases, subscription status) to help you do your work. As the creator you are the controller of that data; Velour keeps it locally on your device for your own use. We do not sell, rent, or share it, and we do not use it for advertising or profiling.</p>
 
         <h2>Deleting your data</h2>
-        <p>You are in control. In settings you can <strong>“Wipe fan data”</strong> (conversations, dossiers, CRM, finances — keeps your settings, license and style) or do a <strong>“Full reset”</strong> (everything except your license and settings, for switching accounts). You can also delete a <strong>single subscriber's</strong> data from the CRM. Removing the extension deletes all locally stored data. Note that data on Fansly/OnlyFans itself is not affected by these actions, and anything already mirrored to Telegram remains in your Telegram group.</p>
+        <p>You are in control. In settings you can <strong>“Wipe fan data”</strong> (conversations, dossiers, CRM, finances — keeps your settings, license and style) or do a <strong>“Full reset”</strong> (everything except your license and settings, for switching accounts). <strong>“Clear catalog”</strong> removes your content catalog — previews, video frames and tags — leaving conversations and dossiers untouched. You can also delete a <strong>single subscriber's</strong> data from the CRM. Removing the extension deletes all locally stored data. Note that data on Fansly/OnlyFans itself is not affected by these actions, and anything already mirrored to Telegram remains in your Telegram group.</p>
 
         <h2>No tracking</h2>
         <p>No analytics, no ads, no third-party tracking, no sale or sharing of your data. Data is used only to provide the features you use.</p>
@@ -105,7 +107,7 @@
         <p>Velour помогает тебе вести собственную переписку с подписчиками: переводит сообщения, предлагает черновики ответов в твоём стиле, ведёт заметки и профиль («досье») по подписчикам, показывает простую CRM и бизнес-статистику, а также может зеркалить твои чаты в твою же группу в Telegram. <strong>Velour никогда не отправляет сообщения за тебя автоматически — каждый ответ ты просматриваешь и отправляешь сам.</strong></p>
 
         <h2>Где хранятся твои данные</h2>
-        <p>Всё, что собирает Velour, остаётся <strong>локально в твоём браузере</strong> (<code>chrome.storage</code> и IndexedDB) на твоём устройстве: настройки, стиль-профиль, заметки и досье по подписчикам, локальный кеш истории переписки, суммы покупок/подписок, каталог твоего контента, диагностика. Эти данные не загружаются нам на хранение.</p>
+        <p>Всё, что собирает Velour, остаётся <strong>локально в твоём браузере</strong> (<code>chrome.storage</code> и IndexedDB) на твоём устройстве: настройки, стиль-профиль, заметки и досье по подписчикам, локальный кеш истории переписки, суммы покупок/подписок, каталог твоего контента, диагностика. В каталоге хранятся и <strong>стоп-кадры из твоих видео</strong> — по ним сразу видно, что внутри ролика, и по ним же модель проставляет теги. Кадры остаются на устройстве и никуда не отправляются для анализа. Эти данные не загружаются нам на хранение.</p>
 
         <h2>Что и куда отправляется</h2>
         <p>Некоторые функции отправляют текст сторонним сервисам <em>транзитом</em>, только чтобы вернуть результат:</p>
@@ -115,7 +117,9 @@
           <li><strong>Telegram</strong> — если включишь зеркало чатов или пульт, сообщения переписки и уведомления отправляются в <em>твою собственную</em> группу Telegram через Telegram Bot API с помощью <em>твоего</em> токена бота. Медиафайлы не пересылаются — только пометка вида <code>[фото]</code>. Учти: отзеркаленное остаётся в Telegram навсегда, и прочитать его может любой, кого ты добавишь в эту группу.</li>
           <li><strong>Диагностика (по умолчанию выключена)</strong> — если включишь отправку багрепортов, к нам уходят коды ошибок, счётчики, отметки времени, версия сборки и случайный идентификатор устройства. Никогда — текст сообщений, ники и суммы: состав ограничен фиксированным списком допустимых кодов событий и имён полей, и на клиенте, и повторно на нашем сервере. Такие записи хранятся 30 дней.</li>
           <li><strong>Модель автотегов</strong> — при включении автоматических тегов каталога один раз скачиваются веса модели (~360 МБ), с нашего сервера или с Hugging Face. Это только скачивание: твои изображения никуда не загружаются, разметка идёт внутри браузера.</li>
-          <li><strong>Конфиг обновлений и вёрстки</strong> — расширение периодически забирает два небольших публичных файла (текущая версия и список селекторов страниц) с нашего сайта на GitHub Pages. Ни лицензионный ключ, ни куки с этими запросами не отправляются.</li>
+          <li><strong>Пробный ключ при первом запуске</strong> — чтобы облако заработало сразу, расширение отправляет нашему серверу отпечаток (хэш) случайного кода этой установки и название площадки — буквально одно слово, «fansly» или «onlyfans», означающее, где расширение запущено, — а в ответ получает пробный ключ на 3 дня. Код создаётся прямо в расширении и ни из чего личного не выводится: ни из аккаунта, ни из устройства. На сервере отпечаток ещё раз хэшируется с секретом и в присланном виде не хранится; IP-адрес используется только для ограничения частоты выдачи и не сохраняется.</li>
+          <li><strong>Оплата на сайте</strong> — когда ты покупаешь тариф на нашей странице оплаты, на сервер уходят ключ подписки, выбранный тариф и способ оплаты; для USDT — ещё идентификатор твоей транзакции, который ты вставляешь сама, для Paxum — номер платежа, если укажешь. Это нужно, чтобы привязать платёж к твоему ключу. Ни имя, ни почта, ни данные кошелька, кроме того, что и так видно в блокчейне, не запрашиваются. Заказы хранятся семь дней; IP-адрес используется только для ограничения частоты запросов.</li>
+          <li><strong>Конфиг обновлений и вёрстки</strong> — расширение периодически забирает два небольших публичных файла (текущая версия и список селекторов страниц) с нашего сайта на GitHub Pages, а с нашего сервера — подписанный список его адресов. Ни лицензионный ключ, ни куки с этими запросами не отправляются; подпись списка адресов проверяется ключом, зашитым в сборку.</li>
         </ul>
 
         <h2>Как скрыть имена от ИИ</h2>
@@ -136,7 +140,7 @@
         <p>Velour обрабатывает информацию, которая и так видна тебе в твоём аккаунте криейтора (сообщения, которыми вы обмениваетесь, покупки, статус подписки), чтобы помочь тебе в работе. Как криейтор ты являешься контролёром этих данных; Velour хранит их локально на твоём устройстве для твоего же использования. Мы не продаём, не сдаём и не передаём их, и не используем для рекламы или профилирования.</p>
 
         <h2>Удаление данных</h2>
-        <p>Контроль у тебя. В настройках можно <strong>«Стереть данные фанов»</strong> (переписки, досье, CRM, финансы — настройки, лицензия и стиль сохраняются) или сделать <strong>«Полный сброс»</strong> (всё, кроме лицензии и настроек, для смены аккаунта). Также можно удалить данные <strong>отдельного подписчика</strong> в CRM. Удаление расширения стирает все локально сохранённые данные. Учти: данные на самой Fansly/OnlyFans этими действиями не затрагиваются, а то, что уже отзеркалено в Telegram, остаётся в твоей группе Telegram.</p>
+        <p>Контроль у тебя. В настройках можно <strong>«Стереть данные фанов»</strong> (переписки, досье, CRM, финансы — настройки, лицензия и стиль сохраняются) или сделать <strong>«Полный сброс»</strong> (всё, кроме лицензии и настроек, для смены аккаунта). Отдельно есть <strong>«Очистить каталог»</strong> — он убирает каталог твоего контента: превью, кадры видео и теги, не трогая переписки и досье. Также можно удалить данные <strong>отдельного подписчика</strong> в CRM. Удаление расширения стирает все локально сохранённые данные. Учти: данные на самой Fansly/OnlyFans этими действиями не затрагиваются, а то, что уже отзеркалено в Telegram, остаётся в твоей группе Telegram.</p>
 
         <h2>Без слежки</h2>
         <p>Никакой аналитики, рекламы, стороннего трекинга, продажи или передачи твоих данных. Данные используются только для предоставления тех функций, которыми ты пользуешься.</p>
@@ -170,6 +174,6 @@
   </div>
 </footer>
 
-<script src="lang.js" defer></script>
+<script src="lang.js?v=20261025" defer></script>
 </body>
 </html>
