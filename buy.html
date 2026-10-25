@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-title-ru="Velour — оплата подписки"
+      data-title-en="Velour — pay for your subscription"
+      data-desc-ru="Оплата облака Velour: BASE или PRO, gram, USDT (TRC-20) или Paxum. Без аккаунтов и карты — только ключ подписки."
+      data-desc-en="Pay for Velour Cloud: BASE or PRO, with gram, USDT (TRC-20) or Paxum. No accounts, no card — just your subscription key.">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Velour — Pay</title>
+<meta name="description" content="Pay for Velour Cloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261025">
+</head>
+<body>
+<a class="skip-link" href="#main">
+  <span data-lang="ru">К содержимому</span><span data-lang="en">Skip to content</span>
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">Velour</a>
+    <div class="header-right">
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="index.html#features"><span data-lang="ru">Возможности</span><span data-lang="en">Features</span></a>
+        <a href="index.html#pricing"><span data-lang="ru">Тарифы</span><span data-lang="en">Pricing</span></a>
+        <a href="index.html#install"><span data-lang="ru">Установка</span><span data-lang="en">Install</span></a>
+        <a href="index.html#support"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language / Язык">
+        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="buy">
+  <div class="container buy-wrap">
+
+    <div class="section-head">
+      <h2><span data-lang="ru">Оплата подписки</span><span data-lang="en">Pay for your subscription</span></h2>
+      <p data-lang="ru">Без аккаунтов и без карты. Нужен только ключ подписки из расширения — оплата привяжется к нему, перенастраивать ничего не придётся.</p>
+      <p data-lang="en">No accounts, no card. All you need is the subscription key from the extension — the payment is tied to it, nothing to reconfigure.</p>
+    </div>
+
+    <ol class="buy-steps" aria-label="Шаги">
+      <li data-step="key"    class="is-current"><span data-lang="ru">Ключ</span><span data-lang="en">Key</span></li>
+      <li data-step="tier"><span data-lang="ru">Тариф</span><span data-lang="en">Plan</span></li>
+      <li data-step="method"><span data-lang="ru">Способ</span><span data-lang="en">Method</span></li>
+      <li data-step="pay"><span data-lang="ru">Оплата</span><span data-lang="en">Payment</span></li>
+    </ol>
+
+    <!-- ── Шаг 1: ключ ─────────────────────────────────────── -->
+    <section class="buy-card" data-panel="key">
+      <h3><span data-lang="ru">Ключ подписки</span><span data-lang="en">Subscription key</span></h3>
+      <p data-lang="ru">Он уже есть в расширении: <strong>Настройки → Ключ подписки → «Скопировать»</strong>. Ключ выдаётся сам при установке, ничего регистрировать не нужно.</p>
+      <p data-lang="en">It's already in the extension: <strong>Settings → Subscription key → "Copy"</strong>. The key is issued automatically on install, there's nothing to register.</p>
+
+      <form id="key-form" class="buy-form" autocomplete="off">
+        <label class="buy-label" for="key-input"><span data-lang="ru">Вставь ключ</span><span data-lang="en">Paste the key</span></label>
+        <div class="buy-row">
+          <input id="key-input" class="buy-input mono" type="text" inputmode="text" spellcheck="false" autocapitalize="off" placeholder="velour-…" required>
+          <button type="submit" class="btn btn-primary" id="key-check"><span data-lang="ru">Проверить</span><span data-lang="en">Check</span></button>
+        </div>
+        <p class="buy-error" id="key-error" role="alert" hidden></p>
+      </form>
+
+      <div class="buy-status" id="key-status" hidden></div>
+
+      <p class="buy-hint">
+        <span data-lang="ru">Нет расширения? <a href="index.html#install">Поставь его</a> — первые три дня облако работает сразу, покупать заранее нечего.</span>
+        <span data-lang="en">No extension yet? <a href="index.html#install">Install it</a> — the cloud works for the first three days right away, there's nothing to buy in advance.</span>
+      </p>
+    </section>
+
+    <!-- ── Шаг 2: тариф ────────────────────────────────────── -->
+    <section class="buy-card" data-panel="tier" hidden>
+      <h3><span data-lang="ru">Тариф</span><span data-lang="en">Plan</span></h3>
+      <p data-lang="ru">Функции одинаковые, разница только в объёме. Оплата за 30 дней, продлевается вручную — автосписаний нет.</p>
+      <p data-lang="en">Same features, the only difference is volume. You pay for 30 days and renew manually — no automatic charges.</p>
+      <p class="buy-hint" id="tier-note"></p>
+
+      <div class="buy-choice" role="radiogroup" aria-label="Тариф">
+        <label class="buy-option" data-tier="base">
+          <input type="radio" name="tier" value="base">
+          <span class="buy-option-head">💎 BASE <b>$9.99</b></span>
+          <span data-lang="ru">Обычный ритм переписки для одного аккаунта.</span>
+          <span data-lang="en">A normal messaging pace for one account.</span>
+        </label>
+        <label class="buy-option" data-tier="pro">
+          <input type="radio" name="tier" value="pro">
+          <span class="buy-option-head">🔥 PRO <b>$24.99</b></span>
+          <span data-lang="ru">То же самое с запасом — для плотного потока.</span>
+          <span data-lang="en">The same with headroom — for a heavy flow.</span>
+        </label>
+      </div>
+
+      <div class="buy-nav">
+        <button type="button" class="btn btn-ghost" data-back="key"><span data-lang="ru">← Назад</span><span data-lang="en">← Back</span></button>
+        <button type="button" class="btn btn-primary" id="tier-next" disabled><span data-lang="ru">Дальше</span><span data-lang="en">Next</span></button>
+      </div>
+    </section>
+
+    <!-- ── Шаг 3: способ ───────────────────────────────────── -->
+    <section class="buy-card" data-panel="method" hidden>
+      <h3><span data-lang="ru">Способ оплаты</span><span data-lang="en">Payment method</span></h3>
+
+      <div class="buy-choice" role="radiogroup" aria-label="Способ оплаты">
+        <label class="buy-option" data-method="usdt">
+          <input type="radio" name="method" value="usdt">
+          <span class="buy-option-head">💵 USDT <small>TRC-20</small></span>
+          <span data-lang="ru">Перевод в сети TRON на точную сумму из счёта. После перевода вставишь ID транзакции — подтверждается автоматически.</span>
+          <span data-lang="en">A transfer on the TRON network for the exact invoiced amount. After sending, paste the transaction ID — confirmed automatically.</span>
+        </label>
+        <label class="buy-option" data-method="gram">
+          <input type="radio" name="method" value="gram">
+          <span class="buy-option-head">💠 gram</span>
+          <span data-lang="ru">Из любого кошелька с поддержкой gram. Подтверждается автоматически, обычно за несколько минут.</span>
+          <span data-lang="en">From any wallet that supports gram. Confirmed automatically, usually within minutes.</span>
+        </label>
+        <label class="buy-option" data-method="paxum">
+          <input type="radio" name="method" value="paxum">
+          <span class="buy-option-head">🏦 Paxum</span>
+          <span data-lang="ru">Перевод на наш Paxum-аккаунт. Подтверждаем вручную — обычно в течение дня.</span>
+          <span data-lang="en">A transfer to our Paxum account. Confirmed by hand — usually within a day.</span>
+        </label>
+      </div>
+      <p class="buy-error" id="method-error" role="alert" hidden></p>
+
+      <div class="buy-nav">
+        <button type="button" class="btn btn-ghost" data-back="tier"><span data-lang="ru">← Назад</span><span data-lang="en">← Back</span></button>
+        <button type="button" class="btn btn-primary" id="method-next" disabled><span data-lang="ru">Перейти к оплате</span><span data-lang="en">Go to payment</span></button>
+      </div>
+    </section>
+
+    <!-- ── Шаг 4: оплата (заполняется скриптом) ───────────── -->
+    <section class="buy-card" data-panel="pay" hidden>
+      <h3 id="pay-title"></h3>
+      <div id="pay-body"></div>
+    </section>
+
+    <!-- ── Готово ─────────────────────────────────────────── -->
+    <section class="buy-card buy-done" data-panel="done" hidden>
+      <div class="buy-done-mark" aria-hidden="true">✓</div>
+      <h3 id="done-title"></h3>
+      <p id="done-text"></p>
+
+      <div class="buy-keybox">
+        <div class="buy-keybox-label"><span data-lang="ru">Твой ключ подписки</span><span data-lang="en">Your subscription key</span></div>
+        <div class="buy-row">
+          <code class="buy-key mono" id="done-key"></code>
+          <button type="button" class="btn btn-secondary" data-copy="#done-key"><span data-lang="ru">Скопировать</span><span data-lang="en">Copy</span></button>
+        </div>
+        <p data-lang="ru"><strong>Сохрани его.</strong> Если переустановишь расширение, этот ключ вернёт подписку. Другого способа восстановить её без Телеграма нет — только через поддержку, по данным платежа.</p>
+        <p data-lang="en"><strong>Save it.</strong> If you reinstall the extension, this key brings your subscription back. There is no other way to restore it without Telegram — only via support, using your payment details.</p>
+      </div>
+
+      <p data-lang="ru">Чтобы расширение подхватило подписку сразу: открой его настройки и нажми «Сохранить». Иначе оно заметит само при следующем запросе к облаку.</p>
+      <p data-lang="en">To make the extension pick the subscription up right away: open its settings and press "Save". Otherwise it will notice on its own on the next cloud request.</p>
+
+      <div class="buy-nav">
+        <a class="btn btn-primary" href="index.html"><span data-lang="ru">На главную</span><span data-lang="en">Back to home</span></a>
+      </div>
+    </section>
+
+    <p class="buy-foot">
+      <span data-lang="ru">Реквизиты для оплаты приходят с нашего сервера по защищённому соединению. Сверяй сумму и адрес на этой странице — мы никогда не присылаем их в сообщениях.</span>
+      <span data-lang="en">Payment details come from our server over a secure connection. Verify the amount and address on this page — we never send them in messages.</span>
+    </p>
+    <p class="buy-foot">
+      <span data-lang="ru">Что-то не так? <a href="https://t.me/velourapp">Канал поддержки</a> или <a href="mailto:sale@velourff.com">sale@velourff.com</a>.</span>
+      <span data-lang="en">Something off? <a href="https://t.me/velourapp">Support channel</a> or <a href="mailto:sale@velourff.com">sale@velourff.com</a>.</span>
+    </p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Velour</div>
+      <div class="footer-links">
+        <a href="privacy-full.html">Privacy Policy</a>
+        <a href="whitepaper.html"><span data-lang="ru">Как мы обращаемся с данными</span><span data-lang="en">How we handle data</span></a>
+        <a href="security.html"><span data-lang="ru">Безопасность</span><span data-lang="en">Security</span></a>
+        <a href="terms.html"><span data-lang="ru">Условия</span><span data-lang="en">Terms</span></a>
+        <a href="https://t.me/velourapp"><span data-lang="ru">Поддержка</span><span data-lang="en">Support</span></a>
+      </div>
+    </div>
+    <p class="footer-disclaimer" data-lang="ru">Velour — независимый инструмент: он не связан с Fansly, и Fansly его не одобряла.</p>
+    <p class="footer-disclaimer" data-lang="en">Velour is an independent tool and is not affiliated with or endorsed by Fansly.</p>
+  </div>
+</footer>
+
+<script src="lang.js?v=20261025" defer></script>
+<script src="assets/qrcode.js?v=20261025" defer></script>
+<script src="buy.js?v=20261025" defer></script>
+</body>
+</html>
