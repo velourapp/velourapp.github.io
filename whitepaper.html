@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261025">
 <style>
   .wp-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; }
   .wp-table th, .wp-table td { text-align: left; padding: .6rem .55rem; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; font-size: .93em; }
@@ -67,7 +67,7 @@
           <li>Your settings, your style profile, and <strong>all API keys and tokens</strong> you enter.</li>
           <li>Subscriber dossiers, notes, briefs, and the local cache of conversation history.</li>
           <li>CRM data: subscriptions, purchases, earnings figures, outreach lists.</li>
-          <li>Your content catalog, its preview thumbnails, and the automatic tags.</li>
+          <li>Your content catalog, its preview thumbnails, the automatic tags, and still frames taken from your videos — the frames the tagging model reads, kept so you can see what is inside a clip and so that a reinstall does not mean tagging everything from scratch. They never leave the device.</li>
           <li>The tagging model's weights, downloaded once and cached.</li>
         </ul>
         <p>We deliberately do not use <code>chrome.storage.sync</code>. It would upload the settings object — including your API keys — to Google's servers. Transferring your setup between machines is done with an export file instead, and that export strips secrets by default.</p>
@@ -80,6 +80,7 @@
             <tr><td>Message text</td><td>Google Translate, or DeepL</td><td>Automatically, as you read a chat</td><td>Per their terms</td></tr>
             <tr><td>Conversation excerpt, dossier facts, your style profile</td><td>Your chosen AI provider — or ours, via our proxy</td><td>When you ask for a draft or advice</td><td>Per their terms; not on our proxy</td></tr>
             <tr><td>Full text of mirrored chats</td><td><strong>Your own</strong> Telegram bot and group</td><td>Automatically, if you enable the mirror</td><td>Yes — it stays in Telegram</td></tr>
+            <tr><td>This installation's random code (as a hash) + the word "fansly" or "onlyfans"</td><td>Our server</td><td>Once, on first run — this is how the 3-day trial key is issued</td><td>Only in additionally encrypted form; IP not kept</td></tr>
             <tr><td>Error codes and counters — no text, no nicknames</td><td>Our server</td><td>Only if you turn diagnostics on (off by default)</td><td>30 days</td></tr>
             <tr><td>Nothing but a download request</td><td>Our server, or Hugging Face</td><td>Once, when you enable auto-tagging</td><td>—</td></tr>
           </tbody>
@@ -107,13 +108,15 @@
         </ul>
 
         <h2>How to check all of this yourself</h2>
+        <p>Installing from the Chrome Web Store does not put the code out of your reach — quite the opposite. Chrome stores every extension <strong>unpacked</strong> on your own disk, so what you read there is literally what runs.</p>
         <ol>
-          <li><strong>Read the host list.</strong> Unzip the build and open <code>manifest.json</code>. The <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There is no hidden destination, because there cannot be one.</li>
-          <li><strong>Confirm there is no remote code.</strong> The extension is Manifest V3, which forbids loading and executing code from the network. What is in the archive is what runs. The tagging model's weights are data for a fixed program, not code.</li>
-          <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the hosts from step 1.</li>
-          <li><strong>Verify the archive.</strong> Every build is published with its SHA-256 checksum, and our archives are built reproducibly — the same sources produce a byte-identical file, so you can rebuild and compare rather than trust. Checksums come with the download link.</li>
-          <li><strong>Search for trackers.</strong> Grep the unpacked build for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find nothing.</li>
+          <li><strong>Read the permissions in plain words.</strong> Open <code>chrome://extensions</code> → Details. Chrome lists what the extension may access, in its own wording, not ours. It also shows the version and the Web Store listing it came from.</li>
+          <li><strong>Read the host list in the source.</strong> The extension's files sit in your Chrome profile, under <code>Extensions/&lt;id&gt;/&lt;version&gt;/</code>. Open <code>manifest.json</code> there: the <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There is no hidden destination, because there cannot be one.</li>
+          <li><strong>Confirm there is no remote code.</strong> The extension is Manifest V3, which forbids loading and executing code from the network. What lies in that folder is what runs. The tagging model's weights are data for a fixed program, not code.</li>
+          <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the hosts from step 2.</li>
+          <li><strong>Search for trackers.</strong> Grep that same folder for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find nothing.</li>
         </ol>
+        <p>Two things the Web Store adds on top: the package is signed and delivered by Google rather than by us, and every update is reviewed before it can reach you — we cannot quietly swap the code in an extension you already have installed.</p>
 
         <h2>The honest limits</h2>
         <p>A privacy claim is only useful if it also says where it stops:</p>
@@ -145,7 +148,7 @@
           <li>Настройки, профиль стиля и <strong>все ключи и токены</strong>, которые ты вводишь.</li>
           <li>Досье, заметки и брифы по подписчикам, локальный кеш истории переписки.</li>
           <li>Данные CRM: подписки, покупки, суммы из кошелька, списки для обращения.</li>
-          <li>Каталог контента, превью и автотеги.</li>
+          <li>Каталог контента, превью, автотеги и стоп-кадры из твоих видео — те самые кадры, по которым модель проставляет теги; они остаются, чтобы было видно, что внутри ролика, и чтобы после переустановки не размечать всё заново. Устройство не покидают.</li>
           <li>Веса модели разметки — скачиваются один раз и кешируются.</li>
         </ul>
         <p>Мы сознательно не используем <code>chrome.storage.sync</code>: он отправил бы объект настроек — вместе с твоими API-ключами — на серверы Google. Перенос на другую машину делается файлом экспорта, и из него секреты по умолчанию вырезаются.</p>
@@ -158,6 +161,7 @@
             <tr><td>Текст сообщения</td><td>Google Translate или DeepL</td><td>Автоматически, когда читаешь чат</td><td>По их условиям</td></tr>
             <tr><td>Фрагмент переписки, факты досье, профиль стиля</td><td>Выбранный тобой ИИ-провайдер — или наш, через прокси</td><td>Когда просишь черновик или совет</td><td>По их условиям; на нашем прокси — нет</td></tr>
             <tr><td>Полный текст зеркалируемых диалогов</td><td><strong>Твой собственный</strong> бот и группа в Телеграме</td><td>Автоматически, если включишь зеркало</td><td>Да — остаётся в Телеграме</td></tr>
+            <tr><td>Случайный код установки (в виде хэша) + слово «fansly» или «onlyfans»</td><td>Наш сервер</td><td>Один раз, при первом запуске — так выдаётся пробный ключ на 3 дня</td><td>Только в дополнительно зашифрованном виде; IP не сохраняется</td></tr>
             <tr><td>Коды ошибок и счётчики — ни текста, ни ников</td><td>Наш сервер</td><td>Только если включишь диагностику (по умолчанию выключена)</td><td>30 дней</td></tr>
             <tr><td>Ничего, кроме запроса на скачивание</td><td>Наш сервер или Hugging Face</td><td>Один раз, при включении автотегов</td><td>—</td></tr>
           </tbody>
@@ -185,13 +189,15 @@
         </ul>
 
         <h2>Как проверить всё это самому</h2>
+        <p>Установка из Chrome Web Store не прячет код от тебя — наоборот. Chrome хранит любое расширение на твоём диске <strong>в распакованном виде</strong>, так что прочитанное там и есть то, что работает.</p>
         <ol>
-          <li><strong>Прочитай список хостов.</strong> Распакуй сборку и открой <code>manifest.json</code>. Массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм так устроен.</li>
-          <li><strong>Убедись, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в архиве — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
-          <li><strong>Посмотри трафик.</strong> Открой DevTools сервис-воркера расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 1.</li>
-          <li><strong>Сверь архив.</strong> Каждая сборка публикуется вместе с её SHA-256, и архивы собираются воспроизводимо — одни и те же исходники дают побайтово одинаковый файл, так что можно пересобрать и сравнить, а не верить. Контрольные суммы идут вместе со ссылкой на скачивание.</li>
-          <li><strong>Поищи трекеры.</strong> Прогрепай распакованную сборку на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Не найдёшь ничего.</li>
+          <li><strong>Прочитай разрешения человеческими словами.</strong> Открой <code>chrome://extensions</code> → «Подробнее». Chrome сам перечислит, к чему расширение имеет доступ — своей формулировкой, не нашей. Там же видно версию и то, из какого листинга магазина оно поставлено.</li>
+          <li><strong>Прочитай список хостов в исходниках.</strong> Файлы расширения лежат в профиле Chrome, в папке <code>Extensions/&lt;id&gt;/&lt;версия&gt;/</code>. Открой там <code>manifest.json</code>: массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм так устроен.</li>
+          <li><strong>Убедись, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в этой папке — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
+          <li><strong>Посмотри трафик.</strong> Открой DevTools сервис-воркера расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 2.</li>
+          <li><strong>Поищи трекеры.</strong> Прогрепай ту же папку на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Не найдёшь ничего.</li>
         </ol>
+        <p>Магазин добавляет к этому две вещи: пакет подписан и раздаётся Google, а не нами, и каждое обновление проходит проверку, прежде чем доехать до тебя — подменить код в уже установленном у тебя расширении мы незаметно не можем.</p>
 
         <h2>Честные границы</h2>
         <p>Заявление о приватности чего-то стоит, только если сказано, где оно заканчивается:</p>
@@ -224,6 +230,6 @@
   </div>
 </footer>
 
-<script src="lang.js" defer></script>
+<script src="lang.js?v=20261025" defer></script>
 </body>
 </html>
