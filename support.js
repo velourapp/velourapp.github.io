@@ -23,6 +23,7 @@
     rate:        { ru: 'Слишком часто. Подожди немного и попробуй ещё раз.', en: 'Too many requests. Wait a little and try again.' },
     bad:         { ru: 'Сервер не принял обращение. Проверь текст и попробуй ещё раз.', en: 'The server did not accept the request. Check the text and try again.' },
     net:         { ru: 'Не отправилось. Напиши в канал поддержки или на почту — ссылки ниже.', en: 'It did not send. Write to the support channel or by email — links below.' },
+    unavail:     { ru: 'Поддержка временно недоступна. Попробуй через пару минут или напиши в канал.', en: 'Support is temporarily unavailable. Try again in a couple of minutes, or write to the channel.' },
     doneTitle:   { ru: 'Обращение {t} принято', en: 'Request {t} received' },
     doneNoCt:    { ru: 'Чтобы получить ответ в Телеграме, открой @velourmebot и отправь команду ниже. Поддержка не увидит твой Телеграм — только номер обращения.', en: 'To get a reply in Telegram, open @velourmebot and send the command below. Support will not see your Telegram — only the request number.' },
     doneCt:      { ru: 'Ответим на указанный контакт. Номер обращения на всякий случай сохрани.', en: 'We will reply to the contact you gave. Keep the request number just in case.' },
@@ -65,7 +66,7 @@
       .then(function (res) { return res.text().then(function (txt) { var d = null; try { d = txt ? JSON.parse(txt) : null; } catch (x) {} return { status: res.status, data: d }; }); })
       .then(function (r) {
         if (r.status === 201 && r.data && r.data.ok && r.data.ticket) { last = { ticket: String(r.data.ticket), contact: !!c }; renderDone(); return; }
-        err.textContent = r.status === 429 ? t('rate') : r.status === 400 ? t('bad') : t('net'); err.hidden = false;
+        err.textContent = r.status === 429 ? t('rate') : r.status === 400 ? t('bad') : r.status === 503 ? t('unavail') : t('net'); err.hidden = false;
       })
       .catch(function () { err.textContent = t('net'); err.hidden = false; })
       .finally(function () { if (timer) clearTimeout(timer); sending = false; btn.innerHTML = orig; refresh(); });
