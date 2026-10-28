@@ -747,3 +747,28 @@ section { padding: 72px 0; }
   .pay-qr { max-width: 220px; margin: 0 auto; }
   .buy-steps li { font-size: 11px; padding: 6px 8px; }
 }
+
+/* ── Форма поддержки (index.html, todo п.61) ──────────────── */
+
+.sup { max-width: 720px; margin: 26px auto 34px; }
+.sup-form, .sup-done {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.sup-form h3 { margin: 0 0 14px; font-size: 18px; color: var(--text); }
+.sup-msg { width: 100%; min-height: 120px; resize: vertical; box-sizing: border-box; display: block; }
+.sup-count { font-size: 12px; color: var(--text-muted); text-align: right; margin: 4px 0 12px; }
+.sup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sup-grid .buy-input { width: 100%; box-sizing: border-box; }
+.sup-hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+.sup-hp { display: none; }
+.sup-nav { align-items: center; margin-top: 16px; }
+.sup-privacy { margin: 0; font-size: 12px; color: var(--text-muted); flex: 1; min-width: 220px; }
+.sup-done { text-align: center; }
+.sup-done h3 { margin: 0 0 8px; color: var(--text); }
+.sup-done .buy-row { justify-content: center; margin: 14px 0; }
+.sup-done-mark { width: 48px; height: 48px; margin: 0 auto 12px; border-radius: 50%; background: #1f3a30; color: #5dcaa5; font-size: 26px; line-height: 48px; }
+.sup-cmd { font-size: 16px; padding: 9px 12px; background: var(--bg); border: 1px solid var(--border-strong); border-radius: 8px; color: var(--text); }
+@media (max-width: 560px) { .sup-grid { grid-template-columns: 1fr; } .sup-form, .sup-done { padding: 18px 14px; } }
