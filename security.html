@@ -38,7 +38,7 @@
   <div class="container">
     <article class="policy">
       <h1><span data-lang="ru">Сообщить об уязвимости</span><span data-lang="en">Report a vulnerability</span></h1>
-      <p class="effective-date"><span data-lang="ru">Обновлено: 14.08.2026</span><span data-lang="en">Updated: 14 August 2026</span></p>
+      <p class="effective-date"><span data-lang="ru">Обновлено: 28.10.2026</span><span data-lang="en">Updated: 28 October 2026</span></p>
 
       <!-- EN -->
       <div data-lang="en">
@@ -63,7 +63,7 @@
 
         <h2>In scope</h2>
         <ul>
-          <li>The Velour browser extension, all builds (full and Lite, Fansly and OnlyFans).</li>
+          <li>The Velour for Fansly browser extension — both the Chrome Web Store version and the version from our site.</li>
           <li><code>velourff.com</code> and its mirror <code>velourapp.github.io</code>.</li>
           <li>Our API proxy: <code>api.velourff.com</code>.</li>
           <li>Our Telegram billing bot.</li>
@@ -72,7 +72,7 @@
         <h2>Not vulnerabilities</h2>
         <p>These are either intentional design decisions or issues we cannot act on. Reporting them is not useful to either of us:</p>
         <ul>
-          <li><strong>Vulnerabilities in Fansly, OnlyFans, Telegram, or the AI and translation providers themselves.</strong> Report those to them — we cannot fix another platform.</li>
+          <li><strong>Vulnerabilities in Fansly, Telegram, or the AI and translation providers themselves.</strong> Report those to them — we cannot fix another platform.</li>
           <li><strong>The extension's broad host permissions.</strong> This is a documented design decision: the full list of hosts it can reach is in <code>manifest.json</code> and explained in our privacy documentation.</li>
           <li><strong>API keys and data stored in <code>chrome.storage.local</code>.</strong> That is where they are meant to live — on the user's own device. Someone with access to an unlocked browser profile has already won; that is not a flaw in Velour.</li>
           <li>Missing security headers on the static site with no demonstrated impact.</li>
@@ -121,7 +121,7 @@
 
         <h2>Область проверки</h2>
         <ul>
-          <li>Расширение Velour, все сборки (полная и Lite, Fansly и OnlyFans).</li>
+          <li>Расширение Velour for Fansly — и версия из Chrome Web Store, и версия с нашего сайта.</li>
           <li><code>velourff.com</code> и зеркало <code>velourapp.github.io</code>.</li>
           <li>Наш API-прокси: <code>api.velourff.com</code>.</li>
           <li>Наш биллинговый бот в Телеграме.</li>
@@ -130,7 +130,7 @@
         <h2>Что мы не считаем уязвимостью</h2>
         <p>Это либо осознанные проектные решения, либо то, с чем мы ничего не можем сделать. Сообщать о таком бесполезно для обеих сторон:</p>
         <ul>
-          <li><strong>Уязвимости самих Fansly, OnlyFans, Telegram, а также AI- и переводческих провайдеров.</strong> Сообщай им — чужую площадку мы починить не можем.</li>
+          <li><strong>Уязвимости самих Fansly, Telegram, а также AI- и переводческих провайдеров.</strong> Сообщай им — чужую площадку мы починить не можем.</li>
           <li><strong>Широкий список хостов у расширения.</strong> Это задокументированное решение: полный перечень адресов, куда расширение вообще может обратиться, лежит в <code>manifest.json</code> и разобран в нашей документации о приватности.</li>
           <li><strong>API-ключи и данные в <code>chrome.storage.local</code>.</strong> Им там и место — на устройстве самого пользователя. У кого есть доступ к разлоченному профилю браузера, тот уже выиграл; это не изъян Velour.</li>
           <li>Отсутствие security-заголовков на статическом сайте без демонстрации влияния.</li>
