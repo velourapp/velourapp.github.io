@@ -1,7 +1,7 @@
 {
-  "_note": "Канал обновлений. Читает background.checkVersion → velourapp.github.io/version.json. Баннер в панели показывается ТОЛЬКО если version здесь БОЛЬШЕ версии в manifest.json у пользователя. Между релизами держать равной текущей опубликованной версии — тогда баннера нет, но канал живой. В момент релиза поднимать вместе с бампом манифеста.",
-  "version": "1.1.0",
-  "url": "https://velourapp.github.io/",
-  "notes": "",
-  "updated": "2026-08-11"
+  "_note": "Канал обновлений. Читает background.checkVersion → velourapp.github.io/version.json. Баннер в панели показывается ТОЛЬКО если version здесь БОЛЬШЕ версии в manifest.json у пользователя. Между релизами держать равной текущей опубликованной версии — тогда баннера нет, но канал живой. В момент релиза поднимать вместе с бампом манифеста. url — куда ведёт баннер (страница загрузок). notes — одна строка ≤300 знаков, показывается всем, поэтому RU · EN.",
+  "version": "1.2.0",
+  "url": "https://velourff.com/downloads",
+  "notes": "1.2.0: перевод с контекстом, команды и защита группы в Telegram, автотеги в каталоге, разбор бизнеса с ИИ, пробный доступ без ключа, фиксы синхронизации. · Context-aware translation, Telegram commands and group guard, catalog auto-tags, AI business review, automatic free trial, sync fixes.",
+  "updated": "2026-10-28"
 }
