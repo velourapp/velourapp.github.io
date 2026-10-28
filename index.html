@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261025">
+<link rel="stylesheet" href="style.css?v=20261028">
 </head>
 <body>
 <a class="skip-link" href="#main">
@@ -331,6 +331,42 @@
         <span data-lang="en">Prefer email — <a href="mailto:support@velourff.com">support@velourff.com</a>. Billing and payments: <a href="mailto:sale@velourff.com">sale@velourff.com</a>. Security and privacy: <a href="mailto:security@velourff.com">security@velourff.com</a>.</span>
       </p>
 
+      <!-- Форма обращения (todo п.61). Уходит в POST /v1/support без авторизации; ключ и контакт — по желанию. -->
+      <div class="sup">
+        <form id="support-form" class="sup-form" autocomplete="off" novalidate>
+          <h3><span data-lang="ru">Или напиши прямо отсюда</span><span data-lang="en">Or write to us right here</span></h3>
+
+          <label class="buy-label" for="sup-msg"><span data-lang="ru">Что случилось или что хочешь спросить</span><span data-lang="en">What happened, or what would you like to ask</span></label>
+          <textarea id="sup-msg" class="buy-input sup-msg" rows="5" required></textarea>
+          <div class="sup-count" id="sup-count" aria-live="polite"></div>
+
+          <div class="sup-grid">
+            <div>
+              <label class="buy-label" for="sup-key"><span data-lang="ru">Ключ подписки, если есть</span><span data-lang="en">Subscription key, if you have one</span></label>
+              <input id="sup-key" class="buy-input mono" type="text" spellcheck="false" autocapitalize="off" placeholder="velour_cloud_…">
+              <div class="sup-hint"><span data-lang="ru">Поддержка увидит тариф и срок, но не твой Телеграм.</span><span data-lang="en">Support will see your plan and its term, but not your Telegram.</span></div>
+            </div>
+            <div>
+              <label class="buy-label" for="sup-contact"><span data-lang="ru">Куда ответить, если не в бота</span><span data-lang="en">Where to reply, if not via the bot</span></label>
+              <input id="sup-contact" class="buy-input" type="text" spellcheck="false" placeholder="email / @handle">
+              <div class="sup-hint"><span data-lang="ru">Необязательно. Без контакта ответ придёт в бота по номеру обращения.</span><span data-lang="en">Optional. Without a contact, the reply comes via the bot by request number.</span></div>
+            </div>
+          </div>
+
+          <div class="sup-hp" aria-hidden="true"><label for="sup-hp">Website</label><input id="sup-hp" name="hp" type="text" tabindex="-1" autocomplete="off"></div>
+
+          <div class="buy-nav sup-nav">
+            <p class="sup-privacy">
+              <span data-lang="ru">Текст обращения уходит в закрытый чат поддержки; твой Телеграм поддержка не видит, если ты не укажешь контакт сама.</span>
+              <span data-lang="en">The text goes to a private support chat; support does not see your Telegram unless you give a contact yourself.</span>
+            </p>
+            <button type="submit" class="btn btn-primary" id="sup-send" disabled><span data-lang="ru">Отправить</span><span data-lang="en">Send</span></button>
+          </div>
+          <p class="buy-error" id="sup-error" role="alert" hidden></p>
+        </form>
+        <div id="support-done" class="sup-done" hidden></div>
+      </div>
+
       <div class="faq">
 
         <details>
@@ -398,6 +434,7 @@
   </div>
 </footer>
 
-<script src="lang.js?v=20261025" defer></script>
+<script src="lang.js?v=20261028" defer></script>
+<script src="support.js?v=20261028" defer></script>
 </body>
 </html>

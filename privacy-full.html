@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261025">
+<link rel="stylesheet" href="style.css?v=20261028">
 </head>
 <body>
 <a class="skip-link" href="#main">
@@ -59,6 +59,7 @@
           <li><strong>Diagnostics (off by default)</strong> — if you switch on bug reports, the extension sends us error codes, counters, timestamps, build version and a random device id. Never message text, nicknames, or amounts: the payload is restricted by a fixed whitelist of event codes and field names, on the client and again on our server. These records are kept for 30 days.</li>
           <li><strong>The auto-tagging model</strong> — enabling automatic catalog tags downloads the model weights (~360 MB) once, from our server or from Hugging Face. This is a download only: your images are never uploaded. The tagging itself runs inside your browser.</li>
           <li><strong>The trial key on first run</strong> — so the cloud works right away, the extension sends our server a fingerprint (hash) of this installation's random code, plus the platform name — literally one word, "fansly" or "onlyfans", saying where the extension is running — and receives a 3-day trial key back. The code is generated inside the extension and is not derived from anything personal — not your account, not your device. On our server the fingerprint is hashed again with a secret and is never stored as received; the IP address is used only to rate-limit issuing and is not kept.</li>
+          <li><strong>Contacting support from the site</strong> — if you write to us through the form on the home page, the text of your request goes to our server, plus your subscription key and a reply contact only if you choose to give them. The request lands in a private support chat in Telegram and is kept there no longer than needed to reply. Support does not see your Telegram account: without a contact, the reply comes through the bot by request number.</li>
           <li><strong>Paying on the site</strong> — when you buy a plan on our payment page, your subscription key, the chosen plan and payment method go to our server; for USDT also the transaction ID you paste yourself, for Paxum the payment number if you provide one. This is what ties the payment to your key. No name, no email, no wallet details beyond what is already visible on the blockchain are requested. Orders are kept for seven days; the IP address is used only for rate limiting.</li>
           <li><strong>Update and layout config</strong> — the extension periodically fetches two small public files (the current version, and a list of page selectors) from our GitHub Pages site, and a signed list of our server addresses from the server itself. No licence key and no cookies are sent with these requests; the address list's signature is checked against a key built into the extension.</li>
         </ul>
@@ -118,6 +119,7 @@
           <li><strong>Диагностика (по умолчанию выключена)</strong> — если включишь отправку багрепортов, к нам уходят коды ошибок, счётчики, отметки времени, версия сборки и случайный идентификатор устройства. Никогда — текст сообщений, ники и суммы: состав ограничен фиксированным списком допустимых кодов событий и имён полей, и на клиенте, и повторно на нашем сервере. Такие записи хранятся 30 дней.</li>
           <li><strong>Модель автотегов</strong> — при включении автоматических тегов каталога один раз скачиваются веса модели (~360 МБ), с нашего сервера или с Hugging Face. Это только скачивание: твои изображения никуда не загружаются, разметка идёт внутри браузера.</li>
           <li><strong>Пробный ключ при первом запуске</strong> — чтобы облако заработало сразу, расширение отправляет нашему серверу отпечаток (хэш) случайного кода этой установки и название площадки — буквально одно слово, «fansly» или «onlyfans», означающее, где расширение запущено, — а в ответ получает пробный ключ на 3 дня. Код создаётся прямо в расширении и ни из чего личного не выводится: ни из аккаунта, ни из устройства. На сервере отпечаток ещё раз хэшируется с секретом и в присланном виде не хранится; IP-адрес используется только для ограничения частоты выдачи и не сохраняется.</li>
+          <li><strong>Обращение в поддержку с сайта</strong> — если напишешь нам через форму на главной, на сервер уходит текст обращения и, только если ты сама их укажешь, ключ подписки и контакт для ответа. Обращение попадает в закрытый чат поддержки в Телеграме и хранится там не дольше, чем нужно для ответа. Твой Телеграм-аккаунт поддержка не видит: без контакта ответ приходит через бота по номеру обращения.</li>
           <li><strong>Оплата на сайте</strong> — когда ты покупаешь тариф на нашей странице оплаты, на сервер уходят ключ подписки, выбранный тариф и способ оплаты; для USDT — ещё идентификатор твоей транзакции, который ты вставляешь сама, для Paxum — номер платежа, если укажешь. Это нужно, чтобы привязать платёж к твоему ключу. Ни имя, ни почта, ни данные кошелька, кроме того, что и так видно в блокчейне, не запрашиваются. Заказы хранятся семь дней; IP-адрес используется только для ограничения частоты запросов.</li>
           <li><strong>Конфиг обновлений и вёрстки</strong> — расширение периодически забирает два небольших публичных файла (текущая версия и список селекторов страниц) с нашего сайта на GitHub Pages, а с нашего сервера — подписанный список его адресов. Ни лицензионный ключ, ни куки с этими запросами не отправляются; подпись списка адресов проверяется ключом, зашитым в сборку.</li>
         </ul>
@@ -174,6 +176,6 @@
   </div>
 </footer>
 
-<script src="lang.js?v=20261025" defer></script>
+<script src="lang.js?v=20261028" defer></script>
 </body>
 </html>
