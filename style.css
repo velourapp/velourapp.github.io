@@ -694,6 +694,8 @@ section { padding: 72px 0; }
 
 .buy-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
 .buy-nav .btn:only-child { margin-left: auto; }
+/* display: flex перебивает атрибут hidden */
+.buy-status[hidden], .buy-nav[hidden] { display: none; }
 
 /* экран оплаты */
 .pay-grid { display: grid; grid-template-columns: 180px 1fr; gap: 22px; align-items: start; margin-top: 16px; }

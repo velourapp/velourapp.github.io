@@ -162,15 +162,16 @@
   }
 
   // ── Шаг 1: ключ ───────────────────────────────────────────────────────────────────────
-  var keyForm = $('#key-form'), keyInput = $('#key-input'), keyBtn = $('#key-check'), keyErr = $('#key-error'), keyStatus = $('#key-status');
+  var keyForm = $('#key-form'), keyInput = $('#key-input'), keyBtn = $('#key-check'), keyErr = $('#key-error'), keyStatus = $('#key-status'), keyNav = $('#key-nav');
 
   keyForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var k = keyInput.value.trim();
     if (!k) return;
     state.key = k; state.quota = null; state.expired = false; state.openOrders = [];
-    keyErr.hidden = true; keyStatus.hidden = true;
+    keyErr.hidden = true; renderKeyStatus();
     keyBtn.disabled = true; setLabel(keyBtn, t('checking'));
+    keyInput.readOnly = true;   // ответ должен быть про то, что в поле: пока идёт проверка, ключ не правится
     api('/v1/quota').then(function (q) {
       state.quota = q || {};
     }).catch(function (e) {
@@ -182,16 +183,24 @@
       }).catch(function () { state.openOrders = []; });   // список не критичен: без него просто без «продолжить»
     }).then(function () {
       renderKeyStatus();
-      if (!state.openOrders.length) { renderTier(); showStep('tier'); }
+      // Итог может оказаться ниже края экрана или под клавиатурой телефона: фокус прокручивает к нему и убирает клавиатуру.
+      (keyNav.hidden ? keyStatus.querySelector('[data-resume]') : keyNav.querySelector('button')).focus();
     }).catch(function (e) {
       keyErr.textContent = errText(e); keyErr.hidden = false;
     }).finally(function () {
-      keyBtn.disabled = false; restoreLabels(keyBtn);
+      keyBtn.disabled = false; restoreLabels(keyBtn); keyInput.readOnly = false;
     });
   });
+  // Ключ в поле изменили: статус и «Дальше» были про прежний — скрыть до новой проверки.
+  keyInput.addEventListener('input', function () {
+    if (keyInput.value.trim() === state.key) return;
+    state.key = ''; state.quota = null; state.expired = false; state.openOrders = [];
+    keyErr.hidden = true; renderKeyStatus();
+  });
+  $('#key-next').addEventListener('click', function () { renderTier(); showStep('tier'); });
 
   function renderKeyStatus() {
-    if (!state.key || (!state.quota && !state.expired)) { keyStatus.hidden = true; return; }
+    if (!state.key || (!state.quota && !state.expired)) { keyStatus.hidden = true; keyNav.hidden = true; return; }
     var q = state.quota || {}, pill, cls;
     if (state.expired) { pill = t('stExpired'); cls = 'is-warn'; }
     else if (q.tier === 'lite') { pill = t('stTrial', { date: fmtDate(q.periodEnd) }); cls = 'is-ok'; }
@@ -211,6 +220,7 @@
       });
     }
     keyStatus.className = 'buy-status ' + cls; keyStatus.innerHTML = html; keyStatus.hidden = false;
+    keyNav.hidden = state.openOrders.length > 0;   // при незавершённой оплате выбор уже есть: «Продолжить» или «Начать заново»
   }
   keyStatus.addEventListener('click', function (e) {
     var b = e.target.closest('[data-resume]'); var n = e.target.closest('[data-resume-new]');
@@ -264,10 +274,11 @@
   // ── Шаг 4: оплата ─────────────────────────────────────────────────────────────────────
   var payTitle = $('#pay-title'), payBody = $('#pay-body');
 
-  function field(label, value, big) {
+  // copy — что кладём в буфер, если это не то, что показано: поле суммы в кошельке ждёт только число.
+  function field(label, value, big, copy) {
     return '<div class="pay-field"><div class="buy-label">' + esc(label) + '</div>'
       + '<div class="pay-value"><code class="mono' + (big ? ' big' : '') + '">' + esc(value) + '</code>'
-      + '<button type="button" class="btn btn-secondary btn-copy" data-copy-text="' + esc(value) + '">' + esc(t('copy')) + '</button></div></div>';
+      + '<button type="button" class="btn btn-secondary btn-copy" data-copy-text="' + esc(copy == null ? value : copy) + '">' + esc(t('copy')) + '</button></div></div>';
   }
   function qrSvg(text) {
     try {
@@ -300,7 +311,7 @@
     var fields = '', qr = '', wait = '', extra = '';
     if (m === 'gram') {
       qr = qrSvg(p.deeplink || p.address || '');
-      fields += field(t('fAmount'), p.amount + ' ' + (p.currency || 'GRAM'), true);
+      fields += field(t('fAmount'), p.amount + ' ' + (p.currency || 'GRAM'), true, p.amount);
       if (p.usd) fields += '<p class="buy-hint" style="margin:-6px 0 12px">' + esc(t('rateLine', { usd: p.usd })) + '</p>';
       fields += field(t('fAddress'), p.address || '');
       fields += field(t('fComment'), p.comment || '');
@@ -309,7 +320,7 @@
       wait = waitLine(o);
     } else if (m === 'usdt') {
       qr = qrSvg(p.address || '');
-      fields += field(t('fAmount'), p.amount + ' ' + (p.currency || 'USDT'), true);
+      fields += field(t('fAmount'), p.amount + ' ' + (p.currency || 'USDT'), true, p.amount);
       if (p.usd) fields += '<p class="buy-hint" style="margin:-6px 0 12px">' + esc(t('usdLine', { usd: p.usd })) + ' · ' + esc(p.network || 'TRC-20') + '</p>';
       fields += field(t('fAddress'), p.address || '');
       fields += '<div class="pay-warn">' + esc(t('warnUsdt', { amount: p.amount })) + '</div>';
@@ -321,7 +332,7 @@
       }
       wait = waitLine(o);
     } else {
-      fields += field(t('fAmount'), '$' + p.amount, true);
+      fields += field(t('fAmount'), '$' + p.amount, true, p.amount);
       fields += field(t('fRecipient'), p.email || '');
       fields += field(t('fReference'), p.reference || '');
       fields += '<div class="pay-warn">' + esc(t('warnPaxum')) + '</div>';
