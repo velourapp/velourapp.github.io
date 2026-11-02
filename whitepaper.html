@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261102">
+<link rel="stylesheet" href="style.css?v=20261103">
 <style>
   .wp-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; }
   .wp-table th, .wp-table td { text-align: left; padding: .6rem .55rem; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; font-size: .93em; }
@@ -77,12 +77,12 @@
         <table class="wp-table">
           <thead><tr><th>What</th><th>Where to</th><th>When</th><th>Stored there?</th></tr></thead>
           <tbody>
-            <tr><td>Message text</td><td>Google Translate, or DeepL</td><td>Automatically, as you read a chat</td><td>Per their terms</td></tr>
+            <tr><td>Message text</td><td>DeepL or an AI provider: through our server with a subscription, directly with your own keys. Google Translate as the fallback</td><td>Automatically, as you read a chat. Translation can be switched off in settings</td><td>Per their terms; not on our proxy</td></tr>
             <tr><td>Conversation excerpt, dossier facts, your style profile</td><td>Your chosen AI provider — or ours, via our proxy</td><td>When you ask for a draft or advice</td><td>Per their terms; not on our proxy</td></tr>
             <tr><td>Full text of mirrored chats</td><td><strong>Your own</strong> Telegram bot and group</td><td>Automatically, if you enable the mirror</td><td>Yes — it stays in Telegram</td></tr>
             <tr><td>This installation's random code (as a hash) + the word "fansly"</td><td>Our server</td><td>Once, right after you agree on first run — this is how the 3-day trial key is issued</td><td>Only in additionally encrypted form; IP not kept in readable form</td></tr>
             <tr><td>Error codes and counters — no text, no nicknames</td><td>Our server</td><td>Only if you turn diagnostics on (off by default)</td><td>30 days</td></tr>
-            <tr><td>Nothing but a download request</td><td>Our server, or Hugging Face</td><td>Once, when you enable auto-tagging</td><td>—</td></tr>
+            <tr><td>A request to download the model for auto-tagging media</td><td>Our server, or Hugging Face</td><td>Once, when you enable auto-tagging</td><td>—</td></tr>
           </tbody>
         </table>
         </div>
@@ -92,10 +92,10 @@
         <p><strong>Your own API keys.</strong> Text goes straight from your browser to the provider under your account. We are not in the path and cannot see it, even in principle.</p>
         <p><strong>Our proxy (with a licence).</strong> So you don't have to obtain provider keys, requests go through our server. It forwards each request and returns the answer. It does <strong>not</strong> store the content: what gets written down is the provider name, the model, the last 8 characters of your licence key, token counts and cost — the numbers needed for billing. Message text is never logged and never written to our database. Our web server does keep ordinary access logs, which include IP addresses.</p>
 
-        <h2>Hiding names from the AI</h2>
-        <p>There is a setting — <em>"Hide nicknames from the AI"</em> — that replaces the fan's nickname and your own name with placeholders before the prompt is sent, and restores them in the reply. It covers reply drafting and coaching advice.</p>
+        <h2>Anonymising nicknames</h2>
+        <p>Nicknames are always hidden from the AI, with nothing to set up: before a request is sent, the fan's nickname and your own name are replaced with placeholders, and put back in the finished result.</p>
         <div class="wp-note">
-          <p>Be clear about what this does and does not do. It removes the <em>identity</em> from the prompt, not the <em>content</em>: the conversation text still goes to the provider. And it only knows the nickname from the chat header and your own name — if a fan types his own name in a message, or if you pasted someone's nickname into your style examples, that stays. It is off by default, because addressing someone by name is part of how flirting reads.</p>
+          <p>Only nicknames are anonymised, not the message text: the AI provider receives the conversation as it is. If a fan gives his name in a message, it stays in the text.</p>
         </div>
 
         <h2>What we do not do</h2>
@@ -109,21 +109,21 @@
         <h2>How to check all of this yourself</h2>
         <p>Installing from the Chrome Web Store does not put the code out of your reach — quite the opposite. Chrome stores every extension <strong>unpacked</strong> on your own disk, so what you read there is literally what runs.</p>
         <ol>
-          <li><strong>Read the permissions in plain words.</strong> Open <code>chrome://extensions</code> → Details. Chrome lists what the extension may access, in its own wording, not ours. It also shows the version and the Web Store listing it came from.</li>
-          <li><strong>Read the host list in the source.</strong> The extension's files sit in your Chrome profile, under <code>Extensions/&lt;id&gt;/&lt;version&gt;/</code>; if you installed from an archive, they are in the folder you unzipped it into. Open <code>manifest.json</code> there: the <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There is no hidden destination, because there cannot be one.</li>
+          <li><strong>Read the permissions in the Google Chrome Web Store.</strong> Chrome shows them when you install the extension, and they stay available under <code>chrome://extensions</code> → Details, in Chrome's own wording, not ours. That page also shows the version and the Web Store listing it came from.</li>
+          <li><strong>Read the host list in the source.</strong> The extension's files sit in your Chrome profile, under <code>Extensions/&lt;id&gt;/&lt;version&gt;/</code>; if you installed from an archive, they are in the folder you unzipped it into. Open <code>manifest.json</code> there: the <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There can be no hidden destination — not because we promise, but because that is how the Google Chrome mechanism works.</li>
           <li><strong>Confirm there is no remote code.</strong> The extension is Manifest V3, which forbids loading and executing code from the network. What lies in that folder is what runs. The tagging model's weights are data for a fixed program, not code.</li>
           <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the hosts from step 2.</li>
-          <li><strong>Search for trackers.</strong> Grep that same folder for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find nothing.</li>
+          <li><strong>Search for trackers.</strong> Search that same folder recursively for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find no code from these services: the only possible matches are ordinary words in interface texts and tag names.</li>
         </ol>
-        <p>Two things the Web Store adds on top: the package is signed and delivered by Google rather than by us, and every update is reviewed before it can reach you — we cannot quietly swap the code in an extension you already have installed.</p>
+        <p>The Google Chrome Web Store adds two things on top: the package is signed and delivered by Google rather than by us, and every update goes through review by Google before it reaches the Chrome Web Store shelf — swapping the code in the extension you already have installed is impossible for us.</p>
 
-        <h2>The honest limits</h2>
-        <p>A privacy claim is only useful if it also says where it stops:</p>
+        <h2>What is out of our hands</h2>
+        <p>Four things worth knowing up front:</p>
         <ul>
-          <li><strong>Translation always happens.</strong> It is the one flow that runs whether or not you use anything else, and the message text does go to a translation provider. With a licence or your own DeepL key that provider is DeepL, under its API terms; otherwise it is Google's public translation endpoint, which carries no contractual data terms.</li>
-          <li><strong>The Telegram mirror is permanent.</strong> Once a conversation is mirrored into your group, it is in Telegram — deleting your data in Velour does not remove it from there. And anyone you add to that group can read it.</li>
-          <li><strong>We cannot vouch for the AI providers.</strong> What they do with a request is governed by their terms, not ours. If that matters to you, run the local model option instead — it never leaves your machine.</li>
-          <li><strong>Local means local, not encrypted.</strong> Your data sits in your browser profile. Anyone with access to your unlocked computer can read it. That is a property of browser extensions in general, not something we can fix.</li>
+          <li><strong>Translation.</strong> To translate a message, its text has to go to a translator. With a Velour subscription that is DeepL or an AI provider, through our server; with your own keys, the same services directly. If they do not respond, or there are no keys, the free Google Translate does the job, and we have no agreement with it on how it treats data. If you do not need translation, untick "Translate conversations" in settings: then nothing goes to a translator.</li>
+          <li><strong>Telegram.</strong> If you enable the mirror, your conversations are copied into your group in Telegram. Deleting your data in Velour does not remove them from there. Anyone you add to that group can read them.</li>
+          <li><strong>AI providers.</strong> When you ask for a draft or advice, an excerpt of the conversation goes to an AI provider. How it treats that text is set by its terms, not by us. If that matters to you, the version from our site can use a model on your own computer: then the request goes nowhere. The Chrome Web Store version does not have this option.</li>
+          <li><strong>Your computer.</strong> The data sits in your browser profile and is not encrypted. Anyone who gets access to your unlocked computer can read it. All browser extensions work this way, and we cannot fix that.</li>
         </ul>
 
         <h2>Found a problem?</h2>
@@ -132,82 +132,82 @@
 
       <!-- RU -->
       <div data-lang="ru">
-        <p>Эта записка — для криейторов, которые решают, доверить ли нам свои личку, и для агентств, которые проверяют инструмент перед тем, как дать его своим моделям. Она намеренно конкретная: под каждым утверждением написано, что открыть и куда посмотреть, чтобы проверить, а не поверить на слово.</p>
+        <p>Эта записка — для криейторов, которые решают, доверить ли нам свою личку, и для агентств, которые проверяют инструмент перед тем, как дать его своим моделям. Она намеренно конкретная: под каждым утверждением написано, что открыть и куда посмотреть, чтобы проверить, а не поверить на слово.</p>
 
         <h2>Коротко</h2>
         <ul>
-          <li><strong>Твой контент остаётся на твоей машине.</strong> Медиа каталога, теги, заметки по подписчикам, досье, цифры CRM и история переписки лежат в хранилище браузера и нам не загружаются.</li>
+          <li><strong>Ваш контент остаётся на вашем устройстве.</strong> Медиа каталога, теги, заметки по подписчикам, досье, цифры CRM и история переписки лежат в хранилище браузера и нам не загружаются.</li>
           <li><strong>Текст уходит только чтобы вернуться обработанным.</strong> Перевод и генерация ответов — сетевые сервисы: текст уходит, результат приходит. На нашей стороне ничего не сохраняется.</li>
-          <li><strong>Разметка контента идёт целиком на твоём устройстве.</strong> Автотеги каталога считает модель, которая работает внутри браузера. Твои фото и видео никуда не отправляются для анализа.</li>
+          <li><strong>Разметка контента идёт целиком на вашем устройстве.</strong> Автотеги каталога считает модель, которая работает внутри браузера. Ваши фото и видео никуда не отправляются для анализа.</li>
         </ul>
 
         <h2>Что остаётся в браузере</h2>
-        <p>Всё это живёт в <code>chrome.storage.local</code> и в собственной IndexedDB расширения, на твоём диске:</p>
+        <p>Всё это живёт в <code>chrome.storage.local</code> и в собственной IndexedDB расширения, на вашем диске:</p>
         <ul>
-          <li>Настройки, профиль стиля и <strong>все ключи и токены</strong>, которые ты вводишь.</li>
+          <li>Настройки, профиль стиля и <strong>все ключи и токены</strong>, которые вы вводите.</li>
           <li>Досье, заметки и брифы по подписчикам, локальный кеш истории переписки.</li>
           <li>Данные CRM: подписки, покупки, суммы из кошелька, списки для обращения.</li>
-          <li>Каталог контента, превью, автотеги и стоп-кадры из твоих видео — те самые кадры, по которым модель проставляет теги; они остаются, чтобы было видно, что внутри ролика, и чтобы после переустановки не размечать всё заново. Устройство не покидают.</li>
+          <li>Каталог контента, превью, автотеги и стоп-кадры из ваших видео — те самые кадры, по которым модель проставляет теги; они остаются, чтобы было видно, что внутри ролика, и чтобы после переустановки не размечать всё заново. Устройство не покидают.</li>
           <li>Веса модели разметки — скачиваются один раз и кешируются.</li>
         </ul>
-        <p>Мы сознательно не используем <code>chrome.storage.sync</code>: он отправил бы объект настроек — вместе с твоими API-ключами — на серверы Google. Перенос на другую машину делается файлом экспорта, и из него секреты по умолчанию вырезаются.</p>
+        <p>Мы сознательно не используем <code>chrome.storage.sync</code>: он отправил бы объект настроек — вместе с вашими API-ключами — на серверы Google. Перенос на другую машину делается файлом экспорта, и из него секреты по умолчанию вырезаются.</p>
 
         <h2>Что уходит и зачем</h2>
         <div class="wp-scroll">
         <table class="wp-table">
           <thead><tr><th>Что</th><th>Куда</th><th>Когда</th><th>Хранится там?</th></tr></thead>
           <tbody>
-            <tr><td>Текст сообщения</td><td>Google Translate или DeepL</td><td>Автоматически, когда читаешь чат</td><td>По их условиям</td></tr>
-            <tr><td>Фрагмент переписки, факты досье, профиль стиля</td><td>Выбранный тобой ИИ-провайдер — или наш, через прокси</td><td>Когда просишь черновик или совет</td><td>По их условиям; на нашем прокси — нет</td></tr>
-            <tr><td>Полный текст зеркалируемых диалогов</td><td><strong>Твой собственный</strong> бот и группа в Телеграме</td><td>Автоматически, если включишь зеркало</td><td>Да — остаётся в Телеграме</td></tr>
-            <tr><td>Случайный код установки (в виде хэша) + слово «fansly»</td><td>Наш сервер</td><td>Один раз, сразу после твоего согласия при первом запуске — так выдаётся пробный ключ на 3 дня</td><td>Только в дополнительно зашифрованном виде; IP в открытом виде не сохраняется</td></tr>
-            <tr><td>Коды ошибок и счётчики — ни текста, ни ников</td><td>Наш сервер</td><td>Только если включишь диагностику (по умолчанию выключена)</td><td>30 дней</td></tr>
-            <tr><td>Ничего, кроме запроса на скачивание</td><td>Наш сервер или Hugging Face</td><td>Один раз, при включении автотегов</td><td>—</td></tr>
+            <tr><td>Текст сообщения</td><td>DeepL или ИИ-провайдер: с подпиской через наш сервер, со своими ключами напрямую. Запасной вариант — Google Translate</td><td>Автоматически, когда вы читаете чат. Перевод можно выключить в настройках</td><td>По их условиям; на нашем прокси — нет</td></tr>
+            <tr><td>Фрагмент переписки, факты досье, профиль стиля</td><td>Выбранный вами ИИ-провайдер — или наш, через прокси</td><td>Когда вы просите черновик или совет</td><td>По их условиям; на нашем прокси — нет</td></tr>
+            <tr><td>Полный текст зеркалируемых диалогов</td><td><strong>Ваш собственный</strong> бот и группа в Телеграме</td><td>Автоматически, если включите зеркало</td><td>Да — остаётся в Телеграме</td></tr>
+            <tr><td>Случайный код установки (в виде хэша) + слово «fansly»</td><td>Наш сервер</td><td>Один раз, сразу после вашего согласия при первом запуске — так выдаётся пробный ключ на 3 дня</td><td>Только в дополнительно зашифрованном виде; IP в открытом виде не сохраняется</td></tr>
+            <tr><td>Коды ошибок и счётчики — ни текста, ни ников</td><td>Наш сервер</td><td>Только если включите диагностику (по умолчанию выключена)</td><td>30 дней</td></tr>
+            <tr><td>Запрос на скачивание модели для автотегирования медиа</td><td>Наш сервер или Hugging Face</td><td>Один раз, при включении автотегов</td><td>—</td></tr>
           </tbody>
         </table>
         </div>
         <p>Медиафайлы не уходят никогда. Если в переписке есть фото или видео, в зеркало Телеграма уходит пометка вида <code>[фото]</code> — сам файл не передаётся.</p>
 
         <h2>Два режима — две разные картины</h2>
-        <p><strong>Свои API-ключи.</strong> Текст идёт из твоего браузера прямо к провайдеру под твоим аккаунтом. Нас в этом пути нет, и увидеть его мы не можем в принципе.</p>
+        <p><strong>Свои API-ключи.</strong> Текст идёт из вашего браузера прямо к провайдеру под вашим аккаунтом. Нас в этом пути нет, и увидеть его мы не можем в принципе.</p>
         <p><strong>Наш прокси (по лицензии).</strong> Чтобы не заводить ключи провайдеров, запросы идут через наш сервер: он передаёт запрос дальше и возвращает ответ. Содержимое он <strong>не сохраняет</strong>. Записывается имя провайдера, модель, последние 8 символов лицензионного ключа, количество токенов и стоимость — цифры, нужные для биллинга. Текст сообщений не пишется ни в лог, ни в базу. При этом веб-сервер ведёт обычные журналы доступа, а в них есть IP-адреса.</p>
 
-        <h2>Как скрыть имена от ИИ</h2>
-        <p>В настройках есть галка <em>«Скрывать ники от ИИ»</em>: ник фана и твоё имя заменяются плейсхолдерами перед отправкой промпта и восстанавливаются в ответе. Работает для генерации ответов и для советов.</p>
+        <h2>Обезличивание ников</h2>
+        <p>Ники от ИИ скрыты всегда, настраивать ничего не нужно: перед отправкой запроса ник фана и ваше имя заменяются условными обозначениями, а в готовом результате подставляются обратно.</p>
         <div class="wp-note">
-          <p>Скажем прямо, что это даёт, а чего нет. Убирается <em>личность</em> из промпта, но не <em>содержание</em>: текст переписки провайдер всё равно получает. И знает эта галка только ник из шапки чата и твоё имя — если фан сам назвал себя в сообщении или если чужой ник попал в твои примеры стиля, они останутся. По умолчанию галка выключена: обращение по имени — часть того, как читается флирт.</p>
+          <p>Обезличиваются только ники, а не текст сообщений: переписку ИИ-провайдер получает как есть. Если фан сам назвал в сообщении своё имя, оно останется в тексте.</p>
         </div>
 
         <h2>Чего мы не делаем</h2>
         <ul>
           <li><strong>Никакой аналитики, трекеров и рекламных пикселей.</strong> Ни одного, ни в одной сборке.</li>
-          <li><strong>Не продаём, не сдаём и не передаём твои данные</strong>, не профилируем ни тебя, ни твоих фанов.</li>
-          <li><strong>Никогда не отправляем сообщения за тебя автоматически.</strong> Каждый ответ отправляешь ты — из панели или со своего пульта в Телеграме.</li>
-          <li><strong>Не обучаем ничего на твоих переписках.</strong> У нас нет ни своей модели, ни копии твоих данных, на которых её можно было бы учить.</li>
+          <li><strong>Не продаём, не сдаём и не передаём ваши данные</strong>, не профилируем ни вас, ни ваших фанов.</li>
+          <li><strong>Никогда не отправляем сообщения за вас автоматически.</strong> Каждый ответ отправляете вы — из панели или со своего пульта в Телеграме.</li>
+          <li><strong>Не обучаем ничего на ваших переписках.</strong> У нас нет ни своей модели, ни копии ваших данных, на которых её можно было бы учить.</li>
         </ul>
 
-        <h2>Как проверить всё это самому</h2>
-        <p>Установка из Chrome Web Store не прячет код от тебя — наоборот. Chrome хранит любое расширение на твоём диске <strong>в распакованном виде</strong>, так что прочитанное там и есть то, что работает.</p>
+        <h2>Как проверить всё это самостоятельно</h2>
+        <p>Установка из Chrome Web Store не прячет код от вас — наоборот. Chrome хранит любое расширение на вашем диске <strong>в распакованном виде</strong>, так что прочитанное там и есть то, что работает.</p>
         <ol>
-          <li><strong>Прочитай разрешения человеческими словами.</strong> Открой <code>chrome://extensions</code> → «Подробнее». Chrome сам перечислит, к чему расширение имеет доступ — своей формулировкой, не нашей. Там же видно версию и то, из какого листинга магазина оно поставлено.</li>
-          <li><strong>Прочитай список хостов в исходниках.</strong> Файлы расширения лежат в профиле Chrome, в папке <code>Extensions/&lt;id&gt;/&lt;версия&gt;/</code>; если ставила из архива — в той папке, куда его распаковала. Открой там <code>manifest.json</code>: массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм так устроен.</li>
-          <li><strong>Убедись, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в этой папке — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
-          <li><strong>Посмотри трафик.</strong> Открой DevTools сервис-воркера расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 2.</li>
-          <li><strong>Поищи трекеры.</strong> Прогрепай ту же папку на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Не найдёшь ничего.</li>
+          <li><strong>Прочитайте разрешения в Google Chrome Web Store.</strong> Chrome покажет их при установке, а потом они всегда доступны в <code>chrome://extensions</code> → «Подробнее» — его формулировкой, не нашей. Там же видно версию и то, из какого листинга магазина расширение поставлено.</li>
+          <li><strong>Прочитайте список хостов в исходниках.</strong> Файлы расширения лежат в профиле Chrome, в папке <code>Extensions/&lt;id&gt;/&lt;версия&gt;/</code>; если ставили из архива — в той папке, куда вы его распаковали. Откройте там <code>manifest.json</code>: массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм Google Chrome так устроен.</li>
+          <li><strong>Убедитесь, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в этой папке — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
+          <li><strong>Посмотрите трафик.</strong> Откройте DevTools service worker расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 2.</li>
+          <li><strong>Поищите трекеры.</strong> Проведите рекурсивный поиск в той же папке на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Кода этих сервисов вы не найдёте: совпасть могут только обычные слова в текстах интерфейса и в названиях тегов.</li>
         </ol>
-        <p>Магазин добавляет к этому две вещи: пакет подписан и раздаётся Google, а не нами, и каждое обновление проходит проверку, прежде чем доехать до тебя — подменить код в уже установленном у тебя расширении мы незаметно не можем.</p>
+        <p>Google Chrome Web Store добавляет к этому две вещи: пакет подписан и раздаётся Google, а не нами, и каждое обновление проходит проверку ревьюера Google, прежде чем попасть на витрину Chrome Web Store — подменить код в уже установленном у вас расширении для нас невозможно.</p>
 
-        <h2>Честные границы</h2>
-        <p>Заявление о приватности чего-то стоит, только если сказано, где оно заканчивается:</p>
+        <h2>Что от нас не зависит</h2>
+        <p>Четыре вещи, о которых лучше знать заранее:</p>
         <ul>
-          <li><strong>Перевод происходит всегда.</strong> Это единственный поток, который работает независимо от того, пользуешься ли ты остальным, и текст сообщения действительно уходит переводчику. С лицензией или со своим ключом DeepL это DeepL с его условиями для API; иначе — публичный переводческий эндпоинт Google, у которого никаких договорных условий по данным нет.</li>
-          <li><strong>Зеркало в Телеграме необратимо.</strong> Отзеркаленный диалог уже в Телеграме — стирание данных в Velour оттуда его не уберёт. И читать его может любой, кого ты добавишь в эту группу.</li>
-          <li><strong>За ИИ-провайдеров мы не ручаемся.</strong> Что они делают с запросом, определяют их условия, а не наши. Если для тебя это принципиально — работай с локальной моделью: она не покидает твою машину.</li>
-          <li><strong>Локально — значит локально, а не зашифровано.</strong> Данные лежат в профиле твоего браузера. Кто имеет доступ к твоему разлоченному компьютеру, тот их прочитает. Это свойство браузерных расширений вообще, а не то, что мы можем исправить.</li>
+          <li><strong>Перевод.</strong> Чтобы перевести сообщение, его текст приходится отправить переводчику. С подпиской Velour это DeepL или ИИ-провайдер через наш сервер, со своими ключами они же, но напрямую. Если они не ответили или ключей нет, переводит бесплатный Google Translate, и договора о том, как он обращается с данными, у нас с ним нет. Если перевод не нужен, снимите галку «Переводить переписку» в настройках: тогда переводчику ничего не уходит.</li>
+          <li><strong>Телеграм.</strong> Если вы включили зеркало, переписка копируется в вашу группу в Телеграме. Удаление данных в Velour её оттуда не убирает. Прочитать её может любой, кого вы добавите в эту группу.</li>
+          <li><strong>ИИ-провайдеры.</strong> Когда вы просите черновик или совет, фрагмент переписки получает ИИ-провайдер. Как он с ним обращается, определяют его условия, а не мы. Если для вас это принципиально, в версии с нашего сайта можно подключить модель на своём компьютере: тогда запрос никуда не уходит. В версии из Chrome Web Store такой возможности нет.</li>
+          <li><strong>Ваш компьютер.</strong> Данные лежат в профиле браузера и не зашифрованы. Кто получит доступ к вашему незаблокированному компьютеру, сможет их прочитать. Так устроены все расширения браузера, исправить это мы не можем.</li>
         </ul>
 
-        <h2>Нашёл ошибку?</h2>
-        <p>Если считаешь, что здесь что-то написано неверно, или нашёл проблему с безопасностью — пиши на <strong>security@velourff.com</strong>. Политика раскрытия — на <a href="security.html">странице безопасности</a>.</p>
+        <h2>Нашли ошибку?</h2>
+        <p>Если считаете, что здесь что-то написано неверно, или нашли проблему с безопасностью — пишите на <strong>security@velourff.com</strong>. Политика раскрытия — на <a href="security.html">странице безопасности</a>.</p>
       </div>
     </article>
   </div>
@@ -228,6 +228,6 @@
   </div>
 </footer>
 
-<script src="lang.js?v=20261102" defer></script>
+<script src="lang.js?v=20261103" defer></script>
 </body>
 </html>

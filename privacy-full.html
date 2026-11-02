@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261102">
+<link rel="stylesheet" href="style.css?v=20261103">
 </head>
 <body>
 <a class="skip-link" href="#main">
@@ -53,7 +53,7 @@
         <h2>What is sent, and where</h2>
         <p>Nothing below happens before you agree to it on first run, in the setup wizard or the extension panel. Until then the only requests are reads of our public configuration files, which carry no data about you. Some features send text to third-party services <em>in transit</em>, only to return a result:</p>
         <ul>
-          <li><strong>Translation</strong> — the message text goes to Google Translate (default) or DeepL (if you add your own DeepL key).</li>
+          <li><strong>Translation</strong> — the message text goes to DeepL or an AI provider: through our server with a subscription, directly with your own keys. If they do not respond, or there are no keys, Google Translate is the fallback. You can switch translation off in settings; then nothing goes to a translator.</li>
           <li><strong>Reply drafts, dossiers, coaching</strong> — the relevant conversation text goes to an AI provider to generate the result. Depending on your setup this is one or more of: Groq, Google (Gemini), Anthropic, or OpenRouter. In the version installed from our site you can also run a local model through Ollama, in which case nothing leaves your machine at all; the Chrome Web Store version does not include this option.</li>
           <li><strong>Telegram</strong> — if you enable chat mirroring or the remote, your conversation messages and notifications are sent to <em>your own</em> Telegram group via the Telegram Bot API using <em>your</em> bot token. Media files are not forwarded — only a marker such as <code>[photo]</code>. Note that whatever is mirrored stays in Telegram permanently, and anyone you add to that group can read it.</li>
           <li><strong>Diagnostics (off by default)</strong> — if you switch on bug reports, the extension sends us error codes, counters, timestamps, build version and a random device id. Never message text, nicknames, or amounts: the payload is restricted by a fixed whitelist of event codes and field names, on the client and again on our server. These records are kept for 30 days.</li>
@@ -64,8 +64,8 @@
           <li><strong>Update and layout config</strong> — the extension periodically fetches two small public files (the current version, and a list of page selectors) from our GitHub Pages site, and a signed list of our server addresses from the server itself. No licence key and no cookies are sent with these requests; the address list's signature is checked against a key built into the extension.</li>
         </ul>
 
-        <h2>Hiding names from the AI</h2>
-        <p>Settings contain a toggle, <strong>"Hide nicknames from the AI"</strong>, which replaces the fan's nickname and your own name with placeholders before a prompt is sent, and restores them in the result. It covers reply drafting and coaching advice. It removes the identity from the prompt, not the content — the conversation text still goes to the provider — and it does not catch names a fan types into a message himself. It is off by default, because being addressed by name is part of how a conversation reads.</p>
+        <h2>Anonymising nicknames</h2>
+        <p>Nicknames are always hidden from the AI: before a request is sent, the fan's nickname and your own name are replaced with placeholders, and put back in the finished result. Only nicknames are anonymised, not the message text: the AI provider receives the conversation as it is.</p>
 
         <h2>Your keys, or our proxy — your choice</h2>
         <p>You can run Velour in two modes:</p>
@@ -75,7 +75,7 @@
         </ul>
 
         <h2>Permissions</h2>
-        <p><code>storage</code> (save your data locally); <code>tabs</code>/<code>alarms</code> (open/refresh Fansly tabs for scheduled data collection you enable); access to <code>fansly.com</code> (read the chats you work with and insert your reply on the page). Network access is limited to a fixed list of hosts: the translation endpoints (<code>translate.googleapis.com</code>, <code>api-free.deepl.com</code>, <code>api.deepl.com</code>), the AI providers (<code>api.anthropic.com</code>, <code>generativelanguage.googleapis.com</code>, <code>api.groq.com</code>, <code>openrouter.ai</code>), <code>api.telegram.org</code>, our own <code>api.velourff.com</code>, <code>velourapp.github.io</code> for update and layout config, <code>huggingface.co</code> for the tagging model, and — in the version from our site only — <code>localhost</code> for a local Ollama model.</p>
+        <p><code>storage</code> (save your data locally); <code>tabs</code>/<code>alarms</code> (open/refresh Fansly tabs for scheduled data collection you enable); access to <code>fansly.com</code> (read the chats you work with and insert your reply on the page). Network access is limited to a fixed list of hosts: the translation endpoints (<code>translate.googleapis.com</code>, <code>api-free.deepl.com</code>, <code>api.deepl.com</code>), the AI providers (<code>api.anthropic.com</code>, <code>generativelanguage.googleapis.com</code>, <code>api.groq.com</code>, <code>openrouter.ai</code>), <code>api.telegram.org</code>, our own servers <code>api.velourff.com</code> and <code>api2.velourff.com</code>, <code>velourapp.github.io</code> for update and layout config, <code>huggingface.co</code> for the tagging model, and — in the version from our site only — <code>localhost</code> for a local Ollama model.</p>
         <p>That list is not a promise — it is the complete set of addresses the extension is able to reach, and Chrome blocks everything else. You can read it yourself in <code>manifest.json</code> inside the build. The Chrome Web Store version does not include <code>localhost</code>: it cannot reach anything on your own computer.</p>
 
         <h2>About your subscribers' data</h2>
@@ -91,7 +91,7 @@
         <p>Velour is a tool for verified adult creators (18+). It is not intended for anyone under 18.</p>
 
         <h2>Contact</h2>
-        <p>General questions: <strong>support@velourff.com</strong>, or @velourappadmin (Telegram support channel). Privacy or security matters: <strong>security@velourff.com</strong> — see our <a href="security.html">disclosure policy</a>. Billing: <strong>sale@velourff.com</strong>.</p>
+        <p>General questions: the <a href="index.html#support">form on our home page</a>, the Telegram bot <a href="https://t.me/velourmebot">@velourmebot</a> (command /support), or <strong>support@velourff.com</strong>. Privacy or security matters: <strong>security@velourff.com</strong> — see our <a href="security.html">disclosure policy</a>. Billing: <strong>sale@velourff.com</strong>.</p>
 
         <h2>Want to verify any of this?</h2>
         <p>Our <a href="whitepaper.html">technical note</a> explains, claim by claim, what to open and where to look.</p>
@@ -105,55 +105,55 @@
         <p>Эта политика описывает <strong>Velour for Fansly</strong> — ассистента для криейторов adult-контента на Fansly — независимо от того, поставлен он из Chrome Web Store или из архива с нашего сайта. Это одно и то же расширение; где они различаются, политика говорит об этом прямо.</p>
 
         <h2>Что делает Velour</h2>
-        <p>Velour помогает тебе вести собственную переписку с подписчиками: переводит сообщения, предлагает черновики ответов в твоём стиле, ведёт заметки и профиль («досье») по подписчикам, показывает простую CRM и бизнес-статистику, а также может зеркалить твои чаты в твою же группу в Telegram. <strong>Velour никогда не отправляет сообщения за тебя автоматически — каждый ответ ты просматриваешь и отправляешь сама.</strong></p>
+        <p>Velour помогает вам вести собственную переписку с подписчиками: переводит сообщения, предлагает черновики ответов в вашем стиле, ведёт заметки и профиль («досье») по подписчикам, показывает простую CRM и бизнес-статистику, а также может зеркалить ваши чаты в вашу же группу в Telegram. <strong>Velour никогда не отправляет сообщения за вас автоматически — каждый ответ вы просматриваете и отправляете сами.</strong></p>
 
-        <h2>Где хранятся твои данные</h2>
-        <p>Всё, что собирает Velour, остаётся <strong>локально в твоём браузере</strong> (<code>chrome.storage</code> и IndexedDB) на твоём устройстве: настройки, стиль-профиль, заметки и досье по подписчикам, локальный кеш истории переписки, суммы покупок/подписок, каталог твоего контента, диагностика. В каталоге хранятся и <strong>стоп-кадры из твоих видео</strong> — по ним сразу видно, что внутри ролика, и по ним же модель проставляет теги. Кадры остаются на устройстве и никуда не отправляются для анализа. Эти данные не загружаются нам на хранение.</p>
+        <h2>Где хранятся ваши данные</h2>
+        <p>Всё, что собирает Velour, остаётся <strong>локально в вашем браузере</strong> (<code>chrome.storage</code> и IndexedDB) на вашем устройстве: настройки, стиль-профиль, заметки и досье по подписчикам, локальный кеш истории переписки, суммы покупок/подписок, каталог вашего контента, диагностика. В каталоге хранятся и <strong>стоп-кадры из ваших видео</strong> — по ним сразу видно, что внутри ролика, и по ним же модель проставляет теги. Кадры остаются на устройстве и никуда не отправляются для анализа. Эти данные не загружаются нам на хранение.</p>
 
         <h2>Что и куда отправляется</h2>
-        <p>Ничего из перечисленного ниже не происходит, пока ты не согласишься с этим при первом запуске, в мастере настройки или в панели расширения. До того расширение только читает наши публичные файлы с настройками, а в них нет никаких данных о тебе. Некоторые функции отправляют текст сторонним сервисам <em>транзитом</em>, только чтобы вернуть результат:</p>
+        <p>Ничего из перечисленного ниже не происходит, пока вы не согласитесь с этим при первом запуске, в мастере настройки или в панели расширения. До того расширение только читает наши публичные файлы с настройками, а в них нет никаких данных о вас. Некоторые функции отправляют текст сторонним сервисам <em>транзитом</em>, только чтобы вернуть результат:</p>
         <ul>
-          <li><strong>Перевод</strong> — текст сообщения уходит в Google Translate (по умолчанию) или DeepL (если добавишь свой ключ DeepL).</li>
-          <li><strong>Черновики ответов, досье, советы</strong> — соответствующий текст переписки уходит AI-провайдеру для генерации результата. В зависимости от твоих настроек это один или несколько из: Groq, Google (Gemini), Anthropic, OpenRouter. В версии с нашего сайта можно работать и с локальной моделью через Ollama — тогда не уходит вообще ничего; в версии из Chrome Web Store такой возможности нет.</li>
-          <li><strong>Telegram</strong> — если включишь зеркало чатов или пульт, сообщения переписки и уведомления отправляются в <em>твою собственную</em> группу Telegram через Telegram Bot API с помощью <em>твоего</em> токена бота. Медиафайлы не пересылаются — только пометка вида <code>[фото]</code>. Учти: отзеркаленное остаётся в Telegram навсегда, и прочитать его может любой, кого ты добавишь в эту группу.</li>
-          <li><strong>Диагностика (по умолчанию выключена)</strong> — если включишь отправку багрепортов, к нам уходят коды ошибок, счётчики, отметки времени, версия сборки и случайный идентификатор устройства. Никогда — текст сообщений, ники и суммы: состав ограничен фиксированным списком допустимых кодов событий и имён полей, и на клиенте, и повторно на нашем сервере. Такие записи хранятся 30 дней.</li>
-          <li><strong>Модель автотегов</strong> — при включении автоматических тегов каталога один раз скачиваются веса модели (~360 МБ), с нашего сервера или с Hugging Face. Это только скачивание: твои изображения никуда не загружаются, разметка идёт внутри браузера.</li>
-          <li><strong>Пробный ключ</strong> — сразу после твоего согласия, чтобы облако заработало без промедления, расширение отправляет нашему серверу отпечаток (хэш) случайного кода этой установки и название площадки — сейчас это всегда одно слово, «fansly», — а в ответ получает пробный ключ на 3 дня. Код создаётся прямо в расширении и ни из чего личного не выводится: ни из аккаунта, ни из устройства. На сервере отпечаток ещё раз хэшируется с секретом и в присланном виде не хранится; IP-адрес в открытом виде не сохраняется и используется только для ограничения частоты выдачи и защиты пробного периода от злоупотреблений.</li>
-          <li><strong>Обращение в поддержку с сайта</strong> — если напишешь нам через форму на главной, на сервер уходит текст обращения и, только если ты сама их укажешь, ключ подписки и контакт для ответа. Обращение попадает в закрытый чат поддержки в Телеграме и хранится там не дольше, чем нужно для ответа. Твой Телеграм-аккаунт поддержка не видит: без контакта ответ приходит через бота по номеру обращения.</li>
-          <li><strong>Оплата на сайте</strong> — когда ты покупаешь тариф на нашей странице оплаты, на сервер уходят ключ подписки, выбранный тариф и способ оплаты; для USDT — ещё идентификатор твоей транзакции: его находим мы сами в публичной сети или вставляешь ты, для Paxum — номер платежа, если укажешь. Это нужно, чтобы привязать платёж к твоему ключу. Ни имя, ни почта, ни данные кошелька, кроме того, что и так видно в блокчейне, не запрашиваются. Заказы хранятся семь дней; IP-адрес используется только для ограничения частоты запросов.</li>
+          <li><strong>Перевод</strong> — текст сообщения уходит DeepL или ИИ-провайдеру: с подпиской через наш сервер, со своими ключами напрямую. Если они не ответили или ключей нет, запасной вариант — Google Translate. Перевод можно выключить в настройках, тогда переводчику ничего не уходит.</li>
+          <li><strong>Черновики ответов, досье, советы</strong> — соответствующий текст переписки уходит AI-провайдеру для генерации результата. В зависимости от ваших настроек это один или несколько из: Groq, Google (Gemini), Anthropic, OpenRouter. В версии с нашего сайта можно работать и с локальной моделью через Ollama — тогда не уходит вообще ничего; в версии из Chrome Web Store такой возможности нет.</li>
+          <li><strong>Telegram</strong> — если включите зеркало чатов или пульт, сообщения переписки и уведомления отправляются в <em>вашу собственную</em> группу Telegram через Telegram Bot API с помощью <em>вашего</em> токена бота. Медиафайлы не пересылаются — только пометка вида <code>[фото]</code>. Учтите: отзеркаленное остаётся в Telegram навсегда, и прочитать его может любой, кого вы добавите в эту группу.</li>
+          <li><strong>Диагностика (по умолчанию выключена)</strong> — если включите отправку багрепортов, к нам уходят коды ошибок, счётчики, отметки времени, версия сборки и случайный идентификатор устройства. Никогда — текст сообщений, ники и суммы: состав ограничен фиксированным списком допустимых кодов событий и имён полей, и на клиенте, и повторно на нашем сервере. Такие записи хранятся 30 дней.</li>
+          <li><strong>Модель автотегов</strong> — при включении автоматических тегов каталога один раз скачиваются веса модели (~360 МБ), с нашего сервера или с Hugging Face. Это только скачивание: ваши изображения никуда не загружаются, разметка идёт внутри браузера.</li>
+          <li><strong>Пробный ключ</strong> — сразу после вашего согласия, чтобы облако заработало без промедления, расширение отправляет нашему серверу отпечаток (хэш) случайного кода этой установки и название площадки — сейчас это всегда одно слово, «fansly», — а в ответ получает пробный ключ на 3 дня. Код создаётся прямо в расширении и ни из чего личного не выводится: ни из аккаунта, ни из устройства. На сервере отпечаток ещё раз хэшируется с секретом и в присланном виде не хранится; IP-адрес в открытом виде не сохраняется и используется только для ограничения частоты выдачи и защиты пробного периода от злоупотреблений.</li>
+          <li><strong>Обращение в поддержку с сайта</strong> — если напишете нам через форму на главной, на сервер уходит текст обращения и, только если вы сами их укажете, ключ подписки и контакт для ответа. Обращение попадает в закрытый чат поддержки в Телеграме и хранится там не дольше, чем нужно для ответа. Ваш Телеграм-аккаунт поддержка не видит: без контакта ответ приходит через бота по номеру обращения.</li>
+          <li><strong>Оплата на сайте</strong> — когда вы покупаете тариф на нашей странице оплаты, на сервер уходят ключ подписки, выбранный тариф и способ оплаты; для USDT — ещё идентификатор вашей транзакции: его находим мы сами в публичной сети или вставляете вы, для Paxum — номер платежа, если укажете. Это нужно, чтобы привязать платёж к вашему ключу. Ни имя, ни почта, ни данные кошелька, кроме того, что и так видно в блокчейне, не запрашиваются. Заказы хранятся семь дней; IP-адрес используется только для ограничения частоты запросов.</li>
           <li><strong>Конфиг обновлений и вёрстки</strong> — расширение периодически забирает два небольших публичных файла (текущая версия и список селекторов страниц) с нашего сайта на GitHub Pages, а с нашего сервера — подписанный список его адресов. Ни лицензионный ключ, ни куки с этими запросами не отправляются; подпись списка адресов проверяется ключом, зашитым в сборку.</li>
         </ul>
 
-        <h2>Как скрыть имена от ИИ</h2>
-        <p>В настройках есть галка <strong>«Скрывать ники от ИИ»</strong>: ник фана и твоё имя заменяются плейсхолдерами перед отправкой промпта и восстанавливаются в результате. Работает для генерации ответов и для советов. Убирается личность, но не содержание — текст переписки провайдер всё равно получает, — и она не ловит имена, которые фан пишет в сообщении сам. По умолчанию выключена: обращение по имени — часть того, как читается разговор.</p>
+        <h2>Обезличивание ников</h2>
+        <p>Ники от ИИ скрыты всегда: перед отправкой запроса ник фана и ваше имя заменяются условными обозначениями, а в готовом результате подставляются обратно. Обезличиваются только ники, а не текст сообщений: переписку ИИ-провайдер получает как есть.</p>
 
-        <h2>Свои ключи или наш прокси — на твой выбор</h2>
+        <h2>Свои ключи или наш прокси — на ваш выбор</h2>
         <p>Velour можно использовать в двух режимах:</p>
         <ul>
-          <li><strong>Свои API-ключи</strong> — текст идёт напрямую из твоего браузера к AI/провайдеру перевода под твоим аккаунтом. Мы его не видим.</li>
-          <li><strong>Прокси Velour Cloud (опциональная подписка)</strong> — чтобы не заводить ключи провайдеров, запросы маршрутизируются через наш прокси по твоему лицензионному ключу. Прокси передаёт каждый запрос провайдеру и возвращает результат; он <strong>не сохраняет содержимое</strong> твоих сообщений. Записывается имя провайдера, модель, последние 8 символов лицензионного ключа, количество токенов и стоимость — цифры, нужные для счёта. Текст сообщений не пишется ни в лог, ни в базу. При этом веб-сервер ведёт обычные журналы доступа, а в них есть IP-адреса.</li>
+          <li><strong>Свои API-ключи</strong> — текст идёт напрямую из вашего браузера к AI/провайдеру перевода под вашим аккаунтом. Мы его не видим.</li>
+          <li><strong>Прокси Velour Cloud (опциональная подписка)</strong> — чтобы не заводить ключи провайдеров, запросы маршрутизируются через наш прокси по вашему лицензионному ключу. Прокси передаёт каждый запрос провайдеру и возвращает результат; он <strong>не сохраняет содержимое</strong> ваших сообщений. Записывается имя провайдера, модель, последние 8 символов лицензионного ключа, количество токенов и стоимость — цифры, нужные для счёта. Текст сообщений не пишется ни в лог, ни в базу. При этом веб-сервер ведёт обычные журналы доступа, а в них есть IP-адреса.</li>
         </ul>
 
         <h2>Разрешения</h2>
-        <p><code>storage</code> (локальное хранение твоих данных); <code>tabs</code>/<code>alarms</code> (открывать/обновлять вкладки Fansly для периодического сбора данных, который ты включаешь); доступ к <code>fansly.com</code> (чтение чатов, с которыми ты работаешь, и вставка твоего ответа на странице). Сетевой доступ ограничен фиксированным списком хостов: эндпоинты перевода (<code>translate.googleapis.com</code>, <code>api-free.deepl.com</code>, <code>api.deepl.com</code>), ИИ-провайдеры (<code>api.anthropic.com</code>, <code>generativelanguage.googleapis.com</code>, <code>api.groq.com</code>, <code>openrouter.ai</code>), <code>api.telegram.org</code>, наш <code>api.velourff.com</code>, <code>velourapp.github.io</code> для конфига обновлений и вёрстки, <code>huggingface.co</code> для модели автотегов и — только в версии с нашего сайта — <code>localhost</code> для локальной модели Ollama.</p>
-        <p>Этот список — не обещание, а полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Прочитать его можно самой — в <code>manifest.json</code> внутри сборки. В версии из Chrome Web Store <code>localhost</code> нет: она не может обратиться ни к чему на твоём собственном компьютере.</p>
+        <p><code>storage</code> (локальное хранение ваших данных); <code>tabs</code>/<code>alarms</code> (открывать/обновлять вкладки Fansly для периодического сбора данных, который вы включаете); доступ к <code>fansly.com</code> (чтение чатов, с которыми вы работаете, и вставка вашего ответа на странице). Сетевой доступ ограничен фиксированным списком хостов: эндпоинты перевода (<code>translate.googleapis.com</code>, <code>api-free.deepl.com</code>, <code>api.deepl.com</code>), ИИ-провайдеры (<code>api.anthropic.com</code>, <code>generativelanguage.googleapis.com</code>, <code>api.groq.com</code>, <code>openrouter.ai</code>), <code>api.telegram.org</code>, наши серверы <code>api.velourff.com</code> и <code>api2.velourff.com</code>, <code>velourapp.github.io</code> для конфига обновлений и вёрстки, <code>huggingface.co</code> для модели автотегов и — только в версии с нашего сайта — <code>localhost</code> для локальной модели Ollama.</p>
+        <p>Этот список — не обещание, а полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Прочитать его можно самостоятельно — в <code>manifest.json</code> внутри сборки. В версии из Chrome Web Store <code>localhost</code> нет: она не может обратиться ни к чему на вашем собственном компьютере.</p>
 
-        <h2>О данных твоих подписчиков</h2>
-        <p>Velour обрабатывает информацию, которая и так видна тебе в твоём аккаунте криейтора (сообщения, которыми вы обмениваетесь, покупки, статус подписки), чтобы помочь тебе в работе. Как криейтор ты являешься контролёром этих данных; Velour хранит их локально на твоём устройстве для твоего же использования. Мы не продаём, не сдаём и не передаём их, и не используем для рекламы или профилирования.</p>
+        <h2>О данных ваших подписчиков</h2>
+        <p>Velour обрабатывает информацию, которая и так видна вам в вашем аккаунте криейтора (сообщения, которыми вы обмениваетесь, покупки, статус подписки), чтобы помочь вам в работе. Как криейтор вы являетесь контролёром этих данных; Velour хранит их локально на вашем устройстве для вашего же использования. Мы не продаём, не сдаём и не передаём их, и не используем для рекламы или профилирования.</p>
 
         <h2>Удаление данных</h2>
-        <p>Контроль у тебя. В настройках можно <strong>«Стереть данные фанов»</strong> (переписки, досье, CRM, финансы — настройки, лицензия и стиль сохраняются) или сделать <strong>«Полный сброс»</strong> (всё, кроме лицензии и настроек, для смены аккаунта). Отдельно есть <strong>«Очистить каталог»</strong> — он убирает каталог твоего контента: превью, кадры видео и теги, не трогая переписки и досье. Также можно удалить данные <strong>отдельного подписчика</strong> в CRM. Удаление расширения стирает все локально сохранённые данные. Учти: данные на самой Fansly этими действиями не затрагиваются, а то, что уже отзеркалено в Telegram, остаётся в твоей группе Telegram.</p>
+        <p>Контроль у вас. В настройках можно <strong>«Стереть данные фанов»</strong> (переписки, досье, CRM, финансы — настройки, лицензия и стиль сохраняются) или сделать <strong>«Полный сброс»</strong> (всё, кроме лицензии и настроек, для смены аккаунта). Отдельно есть <strong>«Очистить каталог»</strong> — он убирает каталог вашего контента: превью, кадры видео и теги, не трогая переписки и досье. Также можно удалить данные <strong>отдельного подписчика</strong> в CRM. Удаление расширения стирает все локально сохранённые данные. Учтите: данные на самой Fansly этими действиями не затрагиваются, а то, что уже отзеркалено в Telegram, остаётся в вашей группе Telegram.</p>
 
         <h2>Без слежки</h2>
-        <p>Никакой аналитики, рекламы, стороннего трекинга, продажи или передачи твоих данных. Данные используются только для предоставления тех функций, которыми ты пользуешься.</p>
+        <p>Никакой аналитики, рекламы, стороннего трекинга, продажи или передачи ваших данных. Данные используются только для предоставления тех функций, которыми вы пользуетесь.</p>
 
         <h2>Только для взрослых</h2>
         <p>Velour — инструмент для верифицированных взрослых криейторов (18+). Он не предназначен для лиц младше 18 лет.</p>
 
         <h2>Контакт</h2>
-        <p>Общие вопросы: <strong>support@velourff.com</strong> или @velourappadmin (канал поддержки в Телеграме). Приватность и безопасность: <strong>security@velourff.com</strong>, см. <a href="security.html">политику раскрытия</a>. Оплата: <strong>sale@velourff.com</strong>.</p>
+        <p>Общие вопросы: <a href="index.html#support">форма на главной странице</a>, бот <a href="https://t.me/velourmebot">@velourmebot</a> в Телеграме (команда /support) или <strong>support@velourff.com</strong>. Приватность и безопасность: <strong>security@velourff.com</strong>, см. <a href="security.html">политику раскрытия</a>. Оплата: <strong>sale@velourff.com</strong>.</p>
 
-        <h2>Хочешь проверить?</h2>
+        <h2>Хотите проверить?</h2>
         <p>В <a href="whitepaper.html">технической записке</a> под каждым утверждением написано, что открыть и куда посмотреть.</p>
 
         <h2>Изменения</h2>
@@ -176,6 +176,6 @@
   </div>
 </footer>
 
-<script src="lang.js?v=20261102" defer></script>
+<script src="lang.js?v=20261103" defer></script>
 </body>
 </html>
