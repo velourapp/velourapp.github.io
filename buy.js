@@ -62,7 +62,7 @@
     waitingReview:   { ru: 'Заявка принята. Проверяем вручную — обычно в течение дня.', en: 'Request received. We are checking it by hand — usually within a day.' },
     closeOk:         { ru: 'Страницу можно закрыть: когда платёж дойдёт, подписка включится сама. Чтобы вернуться к этому счёту, открой страницу и вставь ключ ещё раз.', en: 'You can close this page: once the payment arrives, the subscription switches on by itself. To return to this invoice, open the page and paste your key again.' },
     timer:           { ru: 'Счёт действует ещё {t}', en: 'Invoice valid for {t}' },
-    txLabel:         { ru: 'После перевода вставь ID транзакции (TxID)', en: 'After the transfer, paste the transaction ID (TxID)' },
+    txLabel:         { ru: 'Если подписка не включилась за пару минут, вставь ID транзакции (TxID)', en: 'If the subscription has not switched on within a couple of minutes, paste the transaction ID (TxID)' },
     txCheck:         { ru: 'Проверить', en: 'Check' },
     txBad:           { ru: 'Это не похоже на ID транзакции: нужны 64 знака (цифры и буквы a–f).', en: 'That does not look like a transaction ID: it should be 64 characters (digits and letters a–f).' },
     noteLabel:       { ru: 'Номер платежа Paxum (если есть)', en: 'Paxum payment number (if any)' },
