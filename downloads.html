@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- Сгенерировано release.mjs. Правки руками потеряются при следующем релизе — меняй шаблон в release.mjs. -->
 <!-- 28.10.2026 вручную: убраны Lite и OnlyFans (Lite больше нет, версии для OnlyFans пока нет). Шаблон release.mjs ещё выдаёт их — поправить до следующего релиза. -->
+<!-- 02.11.2026 вручную: обращение на «вы». В шаблоне release.mjs текст ещё старый — поправить до следующего релиза. -->
 <html lang="en"
       data-title-ru="Скачать и проверить — Velour"
       data-title-en="Download and verify — Velour"
@@ -14,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261102">
+<link rel="stylesheet" href="style.css?v=20261103">
 <style>
   .dl-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
   .dl-table th, .dl-table td { text-align: left; padding: .7rem .6rem; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; }
@@ -52,7 +53,7 @@
       </p>
 
       <p>
-        <span data-lang="ru">Рядом с каждой сборкой — её контрольная сумма SHA-256. Сверь её после скачивания: совпала — файл ровно тот, что мы выложили; не совпала — файл повреждён при скачивании или подменён, устанавливать его не надо.</span>
+        <span data-lang="ru">Рядом с каждой сборкой — её контрольная сумма SHA-256. Сверьте её после скачивания: совпала — файл ровно тот, что мы выложили; не совпала — файл повреждён при скачивании или подменён, устанавливать его не надо.</span>
         <span data-lang="en">Each build is listed with its SHA-256 checksum. Check it after downloading: if it matches, the file is exactly the one we published; if it does not, the file was corrupted in transit or tampered with — do not install it.</span>
       </p>
 
@@ -78,12 +79,12 @@
 
       <h2><span data-lang="ru">Как сверить — Windows</span><span data-lang="en">How to check — Windows</span></h2>
       <p>
-        <span data-lang="ru">Открой PowerShell в папке со скачанным файлом и выполни (подставь своё имя файла):</span>
+        <span data-lang="ru">Откройте PowerShell в папке со скачанным файлом и выполните (подставьте своё имя файла):</span>
         <span data-lang="en">Open PowerShell in the folder with the downloaded file and run (substitute your file name):</span>
       </p>
       <pre><code>Get-FileHash .\velour-fansly-1.2.0.zip -Algorithm SHA256 | Format-List</code></pre>
       <p>
-        <span data-lang="ru">В строке <code>Hash</code> будет 64 символа. Сравни их со строкой из таблицы выше — регистр не важен. Проще всего скопировать оба значения и сравнить поиском, а не глазами.</span>
+        <span data-lang="ru">В строке <code>Hash</code> будет 64 символа. Сравните их со строкой из таблицы выше — регистр не важен. Проще всего скопировать оба значения и сравнить поиском, а не глазами.</span>
         <span data-lang="en">The <code>Hash</code> line contains 64 characters. Compare them with the row in the table above — case does not matter. Easiest is to copy both values and compare them with a search rather than by eye.</span>
       </p>
 
@@ -117,6 +118,6 @@
   </div>
 </footer>
 
-<script src="lang.js?v=20261102" defer></script>
+<script src="lang.js?v=20261103" defer></script>
 </body>
 </html>
