@@ -46,8 +46,8 @@
     <article class="policy">
       <h1><span data-lang="ru">Как Velour обращается с данными</span><span data-lang="en">How Velour handles data</span></h1>
       <p class="effective-date">
-        <span data-lang="ru">Техническая записка · 02.11.2026 · дополняет <a href="privacy-full.html">политику конфиденциальности</a></span>
-        <span data-lang="en">Technical note · 2 November 2026 · companion to the <a href="privacy-full.html">privacy policy</a></span>
+        <span data-lang="ru">Техническая записка · 03.11.2026 · дополняет <a href="privacy-full.html">политику конфиденциальности</a></span>
+        <span data-lang="en">Technical note · 3 November 2026 · companion to the <a href="privacy-full.html">privacy policy</a></span>
       </p>
 
       <!-- EN -->
@@ -110,9 +110,9 @@
         <p>Installing from the Chrome Web Store does not put the code out of your reach — quite the opposite. Chrome stores every extension <strong>unpacked</strong> on your own disk, so what you read there is literally what runs.</p>
         <ol>
           <li><strong>Read the permissions in the Google Chrome Web Store.</strong> Chrome shows them when you install the extension, and they stay available under <code>chrome://extensions</code> → Details, in Chrome's own wording, not ours. That page also shows the version and the Web Store listing it came from.</li>
-          <li><strong>Read the host list in the source.</strong> The extension's files sit in your Chrome profile, under <code>Extensions/&lt;id&gt;/&lt;version&gt;/</code>; if you installed from an archive, they are in the folder you unzipped it into. Open <code>manifest.json</code> there: the <code>host_permissions</code> array is the complete set of addresses the extension is able to contact — Chrome blocks everything else. There can be no hidden destination — not because we promise, but because that is how the Google Chrome mechanism works.</li>
+          <li><strong>Read the host list in the source.</strong> The extension's files sit in your Chrome profile, under <code>Extensions/&lt;id&gt;/&lt;version&gt;/</code>; if you installed from an archive, they are in the folder you unzipped it into. Open <code>manifest.json</code> there: the <code>host_permissions</code> array is the list of services the extension works with. Our server addresses can change without an extension update; the current list is public: <a href="https://api.velourff.com/v1/endpoints">api.velourff.com/v1/endpoints</a>.</li>
           <li><strong>Confirm there is no remote code.</strong> The extension is Manifest V3, which forbids loading and executing code from the network. What lies in that folder is what runs. The tagging model's weights are data for a fixed program, not code.</li>
-          <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the hosts from step 2.</li>
+          <li><strong>Watch the traffic.</strong> Open DevTools on the extension's service worker and use the Network tab while you work. You will see requests only to the addresses from step 2. If the tagging model downloads from Hugging Face, it may serve the file from its own storage, and you will see that address too.</li>
           <li><strong>Search for trackers.</strong> Search that same folder recursively for <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. You will find no code from these services: the only possible matches are ordinary words in interface texts and tag names.</li>
         </ol>
         <p>The Google Chrome Web Store adds two things on top: the package is signed and delivered by Google rather than by us, and every update goes through review by Google before it reaches the Chrome Web Store shelf — swapping the code in the extension you already have installed is impossible for us.</p>
@@ -190,9 +190,9 @@
         <p>Установка из Chrome Web Store не прячет код от вас — наоборот. Chrome хранит любое расширение на вашем диске <strong>в распакованном виде</strong>, так что прочитанное там и есть то, что работает.</p>
         <ol>
           <li><strong>Прочитайте разрешения в Google Chrome Web Store.</strong> Chrome покажет их при установке, а потом они всегда доступны в <code>chrome://extensions</code> → «Подробнее» — его формулировкой, не нашей. Там же видно версию и то, из какого листинга магазина расширение поставлено.</li>
-          <li><strong>Прочитайте список хостов в исходниках.</strong> Файлы расширения лежат в профиле Chrome, в папке <code>Extensions/&lt;id&gt;/&lt;версия&gt;/</code>; если ставили из архива — в той папке, куда вы его распаковали. Откройте там <code>manifest.json</code>: массив <code>host_permissions</code> — это полный перечень адресов, куда расширение вообще способно обратиться; всё остальное блокирует сам Chrome. Скрытого адресата там быть не может — не потому что мы обещаем, а потому что механизм Google Chrome так устроен.</li>
+          <li><strong>Прочитайте список хостов в исходниках.</strong> Файлы расширения лежат в профиле Chrome, в папке <code>Extensions/&lt;id&gt;/&lt;версия&gt;/</code>; если ставили из архива — в той папке, куда вы его распаковали. Откройте там <code>manifest.json</code>: массив <code>host_permissions</code> — это список сервисов, с которыми работает расширение. Адреса наших серверов могут меняться без обновления расширения, их текущий список открыт: <a href="https://api.velourff.com/v1/endpoints">api.velourff.com/v1/endpoints</a>.</li>
           <li><strong>Убедитесь, что нет удалённого кода.</strong> Расширение на Manifest V3, а он запрещает загружать и исполнять код из сети. Что лежит в этой папке — то и работает. Веса модели разметки — это данные для фиксированной программы, а не код.</li>
-          <li><strong>Посмотрите трафик.</strong> Откройте DevTools service worker расширения и вкладку Network во время работы. Запросы будут только к хостам из пункта 2.</li>
+          <li><strong>Посмотрите трафик.</strong> Откройте DevTools service worker расширения и вкладку Network во время работы. Запросы будут только к адресам из пункта 2. Если модель разметки скачивается с Hugging Face, он может отдать файл со своего хранилища, и вы увидите ещё и этот адрес.</li>
           <li><strong>Поищите трекеры.</strong> Проведите рекурсивный поиск в той же папке на <code>analytics</code>, <code>sentry</code>, <code>gtag</code>, <code>posthog</code>. Кода этих сервисов вы не найдёте: совпасть могут только обычные слова в текстах интерфейса и в названиях тегов.</li>
         </ol>
         <p>Google Chrome Web Store добавляет к этому две вещи: пакет подписан и раздаётся Google, а не нами, и каждое обновление проходит проверку ревьюера Google, прежде чем попасть на витрину Chrome Web Store — подменить код в уже установленном у вас расширении для нас невозможно.</p>
