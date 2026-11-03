@@ -267,6 +267,7 @@ section { padding: 72px 0; }
 
 .demo-shots img,
 .demo-video img {
+  height: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
 }
