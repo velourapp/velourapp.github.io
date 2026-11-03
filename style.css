@@ -6,6 +6,7 @@
   --bg-card: #221a2b;
   --accent: #e91e8c;
   --accent-ink: #1d0e16;
+  --link: #ff5cb0;
   --text: #efe7f0;
   --text-muted: #a596ad;
   --border: #2a1f33;
@@ -32,6 +33,14 @@ body {
 img { max-width: 100%; display: block; }
 
 a { color: inherit; text-decoration: none; }
+
+/* Ссылки в тексте. Кнопки ходят со своими классами, меню и подвал лежат вне main. */
+main a:not([class]) {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+main a:not([class]):hover { color: var(--text); }
 
 h1, h2, h3 { margin: 0 0 0.5em; font-weight: 500; line-height: 1.25; }
 p { margin: 0 0 1em; color: var(--text-muted); }
@@ -122,6 +131,8 @@ html[lang="en"] [data-lang="ru"] { display: none; }
   transition: color 0.15s;
 }
 .main-nav a:hover { color: var(--text); }
+.main-nav a.nav-download { color: var(--link); font-weight: 500; }
+.main-nav a.nav-download:hover { color: var(--text); }
 
 .lang-switch {
   display: flex;
@@ -458,6 +469,11 @@ section { padding: 72px 0; }
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.install-cta {
+  text-align: center;
+  margin-bottom: 36px;
 }
 
 .install-help {

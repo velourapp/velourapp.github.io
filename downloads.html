@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <!-- Сгенерировано release.mjs. Правки руками потеряются при следующем релизе — меняй шаблон в release.mjs. -->
-<!-- 28.10.2026 вручную: убраны Lite и OnlyFans (Lite больше нет, версии для OnlyFans пока нет). Шаблон release.mjs ещё выдаёт их — поправить до следующего релиза. -->
-<!-- 02.11.2026 вручную: обращение на «вы». В шаблоне release.mjs текст ещё старый — поправить до следующего релиза. -->
 <html lang="en"
-      data-title-ru="Скачать и проверить — Velour"
-      data-title-en="Download and verify — Velour"
-      data-desc-ru="Ссылки на сборки Velour и SHA-256 каждой из них: как убедиться, что скачанный файл не подменён."
-      data-desc-en="Velour builds with the SHA-256 of each: how to check the file you downloaded was not tampered with.">
+      data-title-ru="Скачать Velour"
+      data-title-en="Download Velour"
+      data-desc-ru="Скачать расширение Velour для Google Chrome: как установить, обновить и проверить файл."
+      data-desc-en="Download the Velour extension for Google Chrome: how to install, update and verify the file.">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Download and verify — Velour</title>
-<meta name="description" content="Velour builds and their SHA-256 checksums.">
+<title>Download Velour</title>
+<meta name="description" content="Download the Velour extension for Google Chrome: how to install, update and verify the file.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261103">
+<link rel="stylesheet" href="style.css?v=2026110302">
 <style>
   .dl-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
   .dl-table th, .dl-table td { text-align: left; padding: .7rem .6rem; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; }
   .dl-file { opacity: .7; font-size: .85em; margin-top: .2rem; }
   .dl-hash { font-size: .78em; word-break: break-all; }
   .dl-scroll { overflow-x: auto; }
+  .dl-main { margin: 1.5rem 0 2.5rem; }
+  .dl-main .btn { font-size: 16px; padding: 16px 32px; }
+  .dl-main .dl-file { margin-top: .7rem; }
+  .policy .install-steps { max-width: none; margin: 0 0 1.5rem; font-size: 15px; }
+  .policy h3 { font-size: 15px; margin-top: 24px; color: var(--text); }
 </style>
 </head>
 <body>
@@ -47,14 +50,49 @@
 <main id="main">
   <div class="container">
     <article class="policy">
-      <h1><span data-lang="ru">Скачать и проверить</span><span data-lang="en">Download and verify</span></h1>
-      <p class="effective-date">
-        <span data-lang="ru">Версия 1.2.0</span><span data-lang="en">Version 1.2.0</span>
+      <h1><span data-lang="ru">Скачать Velour</span><span data-lang="en">Download Velour</span></h1>
+      <p>
+        <span data-lang="ru">Расширение для Google Chrome. Установка из архива занимает пять минут.</span>
+        <span data-lang="en">An extension for Google Chrome. Installing from the archive takes about five minutes.</span>
       </p>
 
+      <div class="dl-main">
+        <a class="btn btn-primary" href="files/velour-fansly-1.2.0.zip"><span data-lang="ru">Скачать Velour 1.2.0</span><span data-lang="en">Download Velour 1.2.0</span></a>
+        <div class="dl-file">velour-fansly-1.2.0.zip · 6.42 <span data-lang="ru">МБ</span><span data-lang="en">MB</span></div>
+      </div>
+
+      <h2><span data-lang="ru">Как установить</span><span data-lang="en">How to install</span></h2>
+      <ol class="install-steps" data-lang="ru">
+        <li>Распакуйте архив в папку, которую не будете удалять: расширение работает прямо из неё.</li>
+        <li>Откройте <code>chrome://extensions</code>, включите «Режим разработчика» и нажмите «Загрузить распакованное». Выберите папку, в которой лежит файл <code>manifest.json</code>.</li>
+        <li>Откройте свои чаты на Fansly и подтвердите, что согласны с тем, что и куда уходит. Дальше мастер настройки проведёт по шагам.</li>
+      </ol>
+      <ol class="install-steps" data-lang="en">
+        <li>Unzip the archive into a folder you will not delete: the extension runs right from it.</li>
+        <li>Open <code>chrome://extensions</code>, switch on "Developer mode" and click "Load unpacked". Pick the folder that contains <code>manifest.json</code>.</li>
+        <li>Open your chats on Fansly and confirm you agree with what goes where. The setup wizard then walks you through the rest.</li>
+      </ol>
+
+      <h2><span data-lang="ru">Как обновить</span><span data-lang="en">How to update</span></h2>
       <p>
-        <span data-lang="ru">Рядом с каждой сборкой — её контрольная сумма SHA-256. Сверьте её после скачивания: совпала — файл ровно тот, что мы выложили; не совпала — файл повреждён при скачивании или подменён, устанавливать его не надо.</span>
-        <span data-lang="en">Each build is listed with its SHA-256 checksum. Check it after downloading: if it matches, the file is exactly the one we published; if it does not, the file was corrupted in transit or tampered with — do not install it.</span>
+        <span data-lang="ru">О новой версии расширение скажет само, баннером в панели. Не загружайте новую папку как отдельное расширение: Chrome посчитает его другим, оно откроется пустым, а ваши данные останутся в старой копии.</span>
+        <span data-lang="en">The extension will tell you about a new version itself, with a banner in the panel. Do not load the new folder as a separate extension: Chrome will treat it as a different one, it will open empty, and your data will stay with the old copy.</span>
+      </p>
+      <ol class="install-steps" data-lang="ru">
+        <li>Скачайте архив и распакуйте его.</li>
+        <li>Скопируйте файлы из новой папки в ту, откуда расширение установлено, с заменой.</li>
+        <li>На <code>chrome://extensions</code> нажмите круглую стрелку на карточке Velour, затем обновите вкладку Fansly (F5).</li>
+      </ol>
+      <ol class="install-steps" data-lang="en">
+        <li>Download the archive and unzip it.</li>
+        <li>Copy the files from the new folder into the one the extension is installed from, replacing the old ones.</li>
+        <li>On <code>chrome://extensions</code>, click the round arrow on the Velour card, then reload the Fansly tab (F5).</li>
+      </ol>
+
+      <h2><span data-lang="ru">Как проверить файл</span><span data-lang="en">How to verify the file</span></h2>
+      <p>
+        <span data-lang="ru">Это необязательно. Рядом со сборкой указана её контрольная сумма SHA-256. Сверьте её после скачивания: совпала — файл ровно тот, что мы выложили; не совпала — файл повреждён при скачивании или подменён, устанавливать его не надо.</span>
+        <span data-lang="en">This is optional. Each build is listed with its SHA-256 checksum. Check it after downloading: if it matches, the file is exactly the one we published; if it does not, the file was corrupted in transit or tampered with — do not install it.</span>
       </p>
 
       <div class="dl-scroll">
@@ -77,7 +115,7 @@
       </table>
       </div>
 
-      <h2><span data-lang="ru">Как сверить — Windows</span><span data-lang="en">How to check — Windows</span></h2>
+      <h3>Windows</h3>
       <p>
         <span data-lang="ru">Откройте PowerShell в папке со скачанным файлом и выполните (подставьте своё имя файла):</span>
         <span data-lang="en">Open PowerShell in the folder with the downloaded file and run (substitute your file name):</span>
@@ -88,10 +126,10 @@
         <span data-lang="en">The <code>Hash</code> line contains 64 characters. Compare them with the row in the table above — case does not matter. Easiest is to copy both values and compare them with a search rather than by eye.</span>
       </p>
 
-      <h2><span data-lang="ru">macOS и Linux</span><span data-lang="en">macOS and Linux</span></h2>
+      <h3><span data-lang="ru">macOS и Linux</span><span data-lang="en">macOS and Linux</span></h3>
       <pre><code>shasum -a 256 velour-fansly-1.2.0.zip</code></pre>
 
-      <h2><span data-lang="ru">Что эта проверка даёт, а что нет</span><span data-lang="en">What this check does and does not prove</span></h2>
+      <h3><span data-lang="ru">Что эта проверка даёт, а что нет</span><span data-lang="en">What this check does and does not prove</span></h3>
       <p>
         <span data-lang="ru"><strong>Даёт:</strong> уверенность, что скачанный архив совпадает с тем, который мы собрали и опубликовали — то есть по дороге его не повредили и не подменили.</span>
         <span data-lang="en"><strong>It does prove:</strong> that the archive you downloaded is the same one we built and published — it was not corrupted or swapped along the way.</span>
@@ -118,6 +156,6 @@
   </div>
 </footer>
 
-<script src="lang.js?v=20261103" defer></script>
+<script src="lang.js?v=2026110302" defer></script>
 </body>
 </html>
