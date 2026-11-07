@@ -2,6 +2,7 @@
   "_note": "Оверрайд DOM-селекторов Velour. Публикуется в корень velourapp.github.io. ПУСТО = используется вшитый в расширение реестр (ничего не меняет). При редизайне Fansly/OnlyFans добавь в 'fansly'/'onlyfans' ТОЛЬКО сломавшийся ключ с новым селектором. Значение — строка ИЛИ массив кандидатов (пробуются по порядку, первый живой побеждает; старый оставляй в конце как запас). Приоритет: этот файл > вшитый реестр. Ключи и текущие селекторы — см. PLAT.SEL в content.js (subCard, earnRoot, earnRow, earnMedia, moreOverlay, mediaPreview, broadcastCard, postCard, notifRow, notifMediaOrder, notifSubPay, notifSubExpire, notifTipRow, notifTime, vaultTile, vaultReady, ...).",
   "_note_notif": "Типы нотификаций детектятся ТЕГОМ компонента (ключи-признаки notifMediaOrder/notifSubPay/notifSubExpire; текстовые регэкспы — только фолбэк, Fansly их локализует). notifTipRow пуст: тег tip-нотификации ещё не пойман — когда появится в ленте, впиши его сюда, и детект типов станет структурным без перевыпуска.",
   "_note_predicate": "mediaPreview — ключ-ПРИЗНАК: селектор не ищет узел, а проверяется на самом элементе (matches). Кандидаты здесь — варианты одного признака: подходит совпадение с ЛЮБЫМ из них, а не 'первый живой', поэтому старый кандидат в цепочке не маскирует новый. Признак служебного превью-варианта закрытого видео; один на четыре места (кошелёк, vault, посты, бандл). Если Fansly переименует класс — ДОБАВЬ новый кандидат ('.media-preview'), старый оставь. Не пиши сюда подстроку вида [class*=preview]: она поймает и настоящее медиа с классом preview-*, а потерять реальный файл хуже, чем посчитать лишний.",
+  "_note_vault": "07.11.2026: редизайн хранилища Fansly — Overview на карточках fansly-album-card, папки в выпадающем списке под названием (.vault-title-dropdown), подпись плитки fansly-media-tile-caption. Прежние селекторы оставлены последними кандидатами: у кого хранилище ещё старое, ничего не меняется. vaultAlbum / vaultAlbumName / vaultAlbumCount вторым источником читают список папок: числа в нём те же, что на Overview, и скан изнутри папки знает её размер без возврата на Overview (кнопки «Overview» больше нет). Убрать отсюда, когда эти кандидаты войдут во вшитый реестр (PLAT.SEL в content.js) и релиз разойдётся.",
   "_example": {
     "fansly": {
       "postCard": ["app-feed-post.feed-item", "app-post.feed-item", "app-post"],
@@ -11,7 +12,19 @@
       "mediaPreview": [".preview", ".media-preview"]
     }
   },
-  "_updated": "2026-08-11",
-  "fansly": {},
+  "_updated": "2026-11-07",
+  "fansly": {
+    "vaultAlbum": [".vault-album", ".vault-title-dropdown .dropdown-item"],
+    "vaultAlbumName": [".vault-album-footer .fansly-album-card-title", ".vault-album-footer .semi-bold", ".dropdown-item-label"],
+    "vaultAlbumCount": [".vault-album-footer .fansly-album-card-meta", ".vault-album-footer .dark-blue-1", ".fansly-count-badge"],
+    "vaultMenu": [".vault-title-wrap", ".quick-menu"],
+    "vaultBubble": [".vault-title-wrap .dropdown-item-label", ".bubble"],
+    "vaultBubbleActive": [".vault-title-text", ".bubble.active"],
+    "vaultMore": [".vault-title-dropdown", ".transparent-dropdown"],
+    "vaultMoreToggle": [":scope > .vault-title-btn", ":scope > .bubble"],
+    "vaultFolderName": [".dropdown-item-label", ".eclipse"],
+    "vaultFileName": [".fansly-media-tile-caption-name", ".image-filename"],
+    "vaultFileDate": [".fansly-media-tile-caption-meta", ".image-date"]
+  },
   "onlyfans": {}
 }
