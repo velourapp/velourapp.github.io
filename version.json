@@ -1,7 +1,7 @@
 {
-  "_note": "Канал обновлений. Читает background.checkVersion → velourapp.github.io/version.json. Баннер в панели показывается ТОЛЬКО если version здесь БОЛЬШЕ версии в manifest.json у пользователя. Между релизами держать равной текущей опубликованной версии — тогда баннера нет, но канал живой. В момент релиза поднимать вместе с бампом манифеста. url — куда ведёт баннер (страница загрузок). notes — одна строка ≤300 знаков, показывается всем, поэтому RU · EN.",
-  "version": "1.2.1",
-  "url": "https://velourff.com/downloads",
-  "notes": "1.2.1: плашка об исчерпанном пакете, оплата срабатывает сразу, совет и разбор на вашем языке, правки перевода интерфейса, согласия и мастера настройки. · Used-up plan notice, payment takes effect at once, advice and review in your language, interface, consent and setup wizard fixes.",
-  "updated": "2026-11-04"
+  "_note": "Канал обновлений. Читает background.checkVersion → velourapp.github.io/version.json. Баннер в панели показывается ТОЛЬКО установкам из архива (версию из Chrome Web Store обновляет сам магазин) и ТОЛЬКО если version здесь БОЛЬШЕ версии в manifest.json у пользователя. Между релизами держать равной версии, которая сейчас в магазине, — тогда баннера нет, но канал живой. Поднимать, когда новая версия появится в Chrome Web Store, а не в момент бампа манифеста: баннер ведёт на страницу установки, оттуда в магазин. url — куда ведёт баннер (страница установки); хост только velourapp.github.io, github.com или objects.githubusercontent.com — другой расширение отбрасывает, и кнопки в баннере нет. notes — одна строка ≤300 знаков, показывается всем, поэтому RU · EN.",
+  "version": "1.3.0",
+  "url": "https://velourapp.github.io/downloads",
+  "notes": "1.3.0: панель «Посты» на странице Fansly, деньги в Телеграм, точнее «Динамика бизнеса», уведомления снова работают после переделки Fansly. · Posts panel on the Fansly page, money alerts in Telegram, more accurate Business dynamics, notifications work again after the Fansly redesign.",
+  "updated": "2026-11-21"
 }
